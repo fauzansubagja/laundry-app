@@ -23,7 +23,6 @@
                                     <div class="media-body">
                                         <p class="mb-1">Total Pelanggan</p>
                                         <h4 class="mb-0">3280</h4>
-                                        <span class="badge badge-primary">+3.5%</span>
                                     </div>
                                 </div>
                             </div>
@@ -44,9 +43,8 @@
                                         </svg>
                                     </span>
                                     <div class="media-body">
-                                        <p class="mb-1">Total Outet</p>
+                                        <p class="mb-1">Total Outlet</p>
                                         <h4 class="mb-0">3280</h4>
-                                        <span class="badge badge-primary">+3.5%</span>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +65,6 @@
                                     <div class="media-body">
                                         <p class="mb-1">Total Pesanan</p>
                                         <h4 class="mb-0">3280</h4>
-                                        <span class="badge badge-primary">+3.5%</span>
                                     </div>
                                 </div>
                             </div>
