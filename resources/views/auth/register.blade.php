@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Admin Dashboard</title>
+    <title>Register</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
@@ -50,7 +50,8 @@
                                             <input type="password" class="form-control" value="Password">
                                         </div>
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Sign me
+                                                up</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
