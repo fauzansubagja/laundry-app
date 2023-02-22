@@ -17,10 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['Admin', 'Kasir', 'Owner']);
-            $table->unsignedBigInteger('outlet_id');
+            $table->unsignedBigInteger('outlet_id')->nullable();
             $table->foreign('outlet_id')->references('id')->on('users');
             $table->rememberToken();
             $table->timestamps();
