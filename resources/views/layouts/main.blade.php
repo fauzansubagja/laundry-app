@@ -13,21 +13,22 @@
     <meta property="og:description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
     <meta property="og:image" content="https:/fillow.dexignlab.com/xhtml/social-image.png">
     <meta name="format-detection" content="telephone=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE HERE -->
     <title>Laundry APP</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-    <link href="assets/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/vendor/nouislider/nouislider.min.css">
+    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css')}}">
 
     <!-- Datatable -->
-    <link href="assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <!-- Custom Stylesheet -->
-    <link href="assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
     <!-- Style css -->
 
 </head>
@@ -932,37 +933,37 @@
         <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a href="" class="" aria-expanded="false">
+                    <li><a href="{{ url('/dashboard') }}" class="{{ request()->is('dashboard*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/outlet') }}" class="{{ request()->is('outlet*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-store"></i>
                             <span class="nav-text">Outlet</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-cart-plus"></i>
                             <span class="nav-text">Transaksi</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-cubes"></i>
                             <span class="nav-text">Paket Laundry</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/management/user') }}" class="{{ request()->is('management/user*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-user-cog"></i>
                             <span class="nav-text">Management User</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/registrasi/pelanggan') }}" class="{{ request()->is('registrasi/pelanggan*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-users"></i>
                             <span class="nav-text">Registrasi Pelanggan</span>
                         </a>
                     </li>
-                    <li><a href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{ url('/laporan') }}" class="{{ request()->is('laporan*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-info-circle"></i>
                             <span class="nav-text">Laporan</span>
                         </a>
@@ -1040,30 +1041,29 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="assets/vendor/global/global.min.js"></script>
-    <script src="assets/vendor/chart.js/Chart.bundle.min.js"></script>
-    <script src="assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    @stack('ajax_crud')
+    <script src="{{ asset('assets/vendor/global/global.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
 
     <!-- Apex Chart -->
-    <script src="assets/vendor/apexchart/apexchart.js"></script>
+    <script src="{{ asset('assets/vendor/apexchart/apexchart.js')}}"></script>
 
-    <script src="assets/vendor/chart.js/Chart.bundle.min.js"></script>
     <!-- Datatable -->
-    <script src="assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="assets/js/plugins-init/datatables.init.js"></script>
+    <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('assets/js/plugins-init/datatables.init.js')}}"></script>
 
-    <script src="assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
     <!-- Chart piety plugin files -->
-    <script src="assets/vendor/peity/jquery.peity.min.js"></script>
+    <script src="{{ asset('assets/vendor/peity/jquery.peity.min.js')}}"></script>
     <!-- Dashboard 1 -->
-    <script src="assets/js/dashboard/dashboard-1.js"></script>
+    <script src="{{ asset('assets/js/dashboard/dashboard-1.js')}}"></script>
 
-    <script src="assets/vendor/owl-carousel/owl.carousel.js"></script>
+    <script src="{{ asset('assets/vendor/owl-carousel/owl.carousel.js')}}"></script>
 
-    <script src="assets/js/custom.min.js"></script>
-    <script src="assets/js/dlabnav-init.js"></script>
-    <script src="assets/js/demo.js"></script>
-    <script src="assets/js/styleSwitcher.js"></script>
+    <script src="{{ asset('assets/js/custom.min.js')}}"></script>
+    <script src="{{ asset('assets/js/dlabnav-init.js')}}"></script>
+    <script src="{{ asset('assets/js/demo.js')}}"></script>
+    <script src="{{ asset('assets/js/styleSwitcher.js')}}"></script>
     <script>
         function cardsCenter()
 		{
