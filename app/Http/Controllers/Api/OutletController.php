@@ -39,7 +39,7 @@ class OutletController extends Controller
         DB::beginTransaction();
 
         $create = Outlet::create($data);
-        
+
         DB::commit();
 
         return response()->json([
@@ -77,9 +77,9 @@ class OutletController extends Controller
         ];
         // dd($outlet);
         DB::beginTransaction();
-        
+
         $create = $outlet->update($data);
-        
+
         DB::commit();
 
         return response()->json([

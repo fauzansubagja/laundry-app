@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -22,13 +24,20 @@ Route::get('/paket', [App\Http\Controllers\PaketController::class, 'index']);
 
 Route::get('/management/user', [App\Http\Controllers\UserManagementController::class, 'index']);
 
-Route::get('/registrasi/pelanggan', [App\Http\Controllers\PelangganController::class, 'index']);
+Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
+Route::get('read', [PelangganController::class, 'read']);
+Route::get('create', [PelangganController::class, 'create']);
+Route::get('store', [PelangganController::class, 'store']);
+Route::get('edit/{id}', [PelangganController::class, 'edit']);
+Route::get('update/{id}', [PelangganController::class, 'update']);
+Route::get('destroy/{id}', [PelangganController::class, 'destroy']);
 
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
 
 Route::get('/outlet', [App\Http\Controllers\OutletController::class, 'index']);
-
 Route::ApiResource('api/outlet', App\Http\Controllers\Api\OutletController::class);
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -59,5 +68,3 @@ Route::ApiResource('api/outlet', App\Http\Controllers\Api\OutletController::clas
 // Route::get('/7', function () {
 //     return view('admin.pengguna.index');
 // });
-
-
