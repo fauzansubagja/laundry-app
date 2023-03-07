@@ -27,11 +27,12 @@ class PelangganController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $data['nama'] = $request->nama;
         $data['alamat'] = $request->alamat;
         $data['tlp'] = $request->tlp;
         $data['jenis_kelamin'] = $request->jenis_kelamin;
-        Member::insert($data);
+        Member::create($data);
     }
 
     public function edit($id)

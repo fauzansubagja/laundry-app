@@ -27,10 +27,10 @@ Route::get('/management/user', [App\Http\Controllers\UserManagementController::c
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
 Route::get('read', [PelangganController::class, 'read']);
 Route::get('create', [PelangganController::class, 'create']);
-Route::get('store', [PelangganController::class, 'store']);
+Route::post('store', [PelangganController::class, 'store']);
 Route::get('edit/{id}', [PelangganController::class, 'edit']);
-Route::get('update/{id}', [PelangganController::class, 'update']);
-Route::get('destroy/{id}', [PelangganController::class, 'destroy']);
+Route::put('update/{id}', [PelangganController::class, 'update']);
+Route::delete('destroy/{id}', [PelangganController::class, 'destroy']);
 
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
 
