@@ -11,10 +11,11 @@ class PelangganController extends Controller
     {
         return view('admin.pelanggan.index');
     }
-
+    
     public function read()
-    {
+    {        
         $data = Member::all();
+        // dd($data);
         return view('admin.pelanggan.read')->with([
             'data' => $data
         ]);

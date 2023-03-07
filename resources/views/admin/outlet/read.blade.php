@@ -5,7 +5,6 @@
         <td>{{ $item->nama }}</td>
         <td>{{ $item->alamat }}</td>
         <td>{{ $item->tlp }}</td>
-        <td>{{ $item->jenis_kelamin }}</td>
         <td>
             <div class="d-flex">
                 <button type="button" id="btn-modal-edit" item-id="{{ $item->id }}"

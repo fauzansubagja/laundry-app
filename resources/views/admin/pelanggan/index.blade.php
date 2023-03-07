@@ -34,6 +34,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="read">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -44,23 +45,23 @@
 
 
             <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Outlet</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <div class="basic-form">
-                               <div id="page"></div>
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Pelanggan</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div id="page"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             {{-- <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,14 +98,14 @@
 
         // Read Database
         function read() {
-            $.get("{{ url('read') }}", {}, function(data, status) {
+            $.get("{{ url('/registrasi/pelanggan/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
 
         // Untuk modal halaman create
         function create() {
-            $.get("{{ url('create') }}", {}, function(data, status) {
+            $.get("{{ url('/registrasi/pelanggan/create') }}", {}, function(data, status) {
                 $("#exampleModalLabel").html('Tambah Pelanggan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -119,13 +120,13 @@
             var jenis_kelamin = $("#jenis_kelamin").val();
             $.ajax({
                 type: "post",
-                url: "{{ url('store') }}",
+                url: "{{ url('/registrasi/pelanggan/store') }}",
                 data: {
                     'nama': nama,
                     'alamat': alamat,
                     'tlp': tlp,
                     'jenis_kelamin': jenis_kelamin,
-                    '_token': '{{csrf_token()}}',
+                    '_token': '{{ csrf_token() }}',
                 },
                 success: function(data) {
                     $(".btn-close").click();
@@ -136,7 +137,7 @@
 
         // Untuk modal halaman edit show
         function edit(id) {
-            $.get("{{ url('edit') }}/" + id, {}, function(data, status) {
+            $.get("{{ url('/registrasi/pelanggan/edit') }}/" + id, {}, function(data, status) {
                 $("#exampleModalLabel").html('Edit Pelanggan')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
@@ -151,13 +152,13 @@
             var jenis_kelamin = $("#jenis_kelamin").val();
             $.ajax({
                 type: "post",
-                url: "{{ url('update') }}/" + id,
+                url: "{{ url('/registrasi/pelanggan/update') }}/" + id,
                 data: {
                     'nama': nama,
                     'alamat': alamat,
                     'tlp': tlp,
                     'jenis_kelamin': jenis_kelamin,
-                    '_token': '{{csrf_token()}}',
+                    '_token': '{{ csrf_token() }}',
                     '_method': 'PUT',
                 },
                 success: function(data) {
@@ -171,9 +172,9 @@
         function destroy(id) {
             $.ajax({
                 type: "post",
-                url: "{{ url('destroy') }}/" + id,
+                url: "{{ url('/Pelanggan/destroy') }}/" + id,
                 data: {
-                    '_token': '{{csrf_token()}}',
+                    '_token': '{{ csrf_token() }}',
                     '_method': 'delete',
                 },
                 success: function(data) {

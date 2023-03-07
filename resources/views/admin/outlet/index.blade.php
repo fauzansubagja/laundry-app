@@ -1,257 +1,166 @@
 @extends('layouts.main')
 @section('konten')
-<div class="content-body">
-    <!-- row -->
-    <div class="container-fluid">
-        <div class="row page-titles">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Outlet</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
-            </ol>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Data Outlet</h4>
-                        <button type="button" class="btn btn-rounded btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#modal-create"><i class="fas fa-plus"></i>
-                            Tambah
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="example3" class="display" style="min-width: 845px">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>Telephone</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="table-outlet">
-                                    @php $no = 1; @endphp
-                                    @foreach ($outlet as $data)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->alamat }}</td>
-                                        <td>{{ $data->tlp }}</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <button type="button" id="btn-modal-edit" data-id="{{$data->id}}"
-                                                    class="btn btn-primary shadow btn-xs sharp me-1"
-                                                    data-bs-toggle="modal" data-bs-target="#modal-edit"><i
-                                                        class="fas fa-pencil-alt"></i>
-                                                </button>
-                                                <button class="btn btn-danger shadow btn-xs sharp"
-                                                    data-id="{{ $data->id }}" id="btn-delete"><i
-                                                        class="fa fa-trash"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+            <div class="row page-titles">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Outlet</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
+                </ol>
             </div>
-        </div>
-
-        {{-- modal create --}}
-        <div class="modal fade" id="modal-create" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Outlet</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Data Outlet</h4>
+                            {{-- <button class="btn btn-primary" onClick="create()">+ Tambah Product</button> --}}
+                            <button type="button" class="btn btn-rounded btn-primary" onClick="create()"><i
+                                    class="fas fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
                         <div class="card-body">
-                            <div class="basic-form">
-                                <form>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">Nama Outlet</label>
-                                            <input type="text" name="nama" id="inputNama" class="form-control"
-                                                placeholder="Nama Outlet">
-                                        </div>
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">Alamat</label>
-                                            <input type="text" name="alamat" id="inputAlamat" class="form-control"
-                                                placeholder="Alamat">
-                                        </div>
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">No Telephone</label>
-                                            <input type="text" name="tlp" id="inputTlp" class="form-control"
-                                                placeholder="No Telephone">
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="table-responsive">
+                                <table id="example3" class="display" style="min-width: 845px">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Alamat</th>
+                                            <th>Telephone</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="read">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            id="btnCreateClose">Batal</button>
-                        <button type="button" class="btn btn-primary" id="btnCreateSimpan">Simpan</button>
-                    </div>
                 </div>
             </div>
-        </div>
-        {{-- end modal create --}}
 
-        {{-- modal edit --}}
-        <div class="modal fade" id="modal-edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Outlet</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <form>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">Nama Outlet</label>
-                                            <input type="text" name="nama" id="inputNama" class="form-control"
-                                                placeholder="Nama Outlet">
-                                        </div>
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">Alamat</label>
-                                            <input type="text" name="alamat" id="inputAlamat" class="form-control"
-                                                placeholder="Alamat">
-                                        </div>
-                                        <div class="mb-3 col-md-12">
-                                            <label class="form-label">No Telephone</label>
-                                            <input type="text" name="tlp" id="inputTlp" class="form-control"
-                                                placeholder="No Telephone">
-                                        </div>
-                                    </div>
-                                </form>
+
+            <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Outlet</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <div id="page"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            id="btnEditClose">Batal</button>
-                        <button type="button" class="btn btn-primary" id="btnEditSimpan">Simpan</button>
-                    </div>
                 </div>
             </div>
         </div>
-        {{-- end modal edit --}}
     </div>
-</div>
 @endsection
 
 @push('ajax_crud')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
-<script>
-    $('#btnCreateSimpan').on('click', function() {
-            $.ajax({
-                type: "POST",
-                url: "{{ url('api/outlet') }}",
-                data: {
-                    'nama': $('#modal-create').find('#inputNama').val(),
-                    'alamat': $('#modal-create').find('#inputAlamat').val(),
-                    'tlp': $('#modal-create').find('#inputTlp').val(),
-                    '_token': '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    getOutlet();
-                    $('#btnCreateClose').click()
-                    $('#modal-create').find('#inputNama').val(''),
-                    $('#modal-create').find('#inputAlamat').val('')
-                    $('#modal-create').find('#inputTlp').val('')
-                }
-            });
-        })
-
-        $(document).on('click', '#btn-modal-edit', function() {
-            let id = $(this).data('id');
-            $.ajax({
-                type: "GET",
-                url: "{{url('api/outlet')}}/" + id,
-                success: function (response) {
-                    $('#modal-edit').find('#inputNama').val(response.data.nama)
-                    $('#modal-edit').find('#inputAlamat').val(response.data.alamat)
-                    $('#modal-edit').find('#inputTlp').val(response.data.tlp)
-                    $('#btnEditSimpan').on('click', function () {
-                        $.ajax({
-                            type: "POST",
-                            url: "{{ url('api/outlet') }}/" + id,
-                            data: {
-                                'nama': $('#modal-edit').find('#inputNama').val(),
-                                'alamat': $('#modal-edit').find('#inputAlamat').val(),
-                                'tlp': $('#modal-edit').find('#inputTlp').val(),
-                                '_method': 'PUT',
-                                '_token': '{{ csrf_token() }}'
-                            },
-                            success: function (response) {
-                                id = null;
-                                getOutlet();
-                                $('#btnEditClose').click();
-                            }
-                        });
-                    })
-                    
-                }
-            });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            read()
         });
 
-        $(document).on('click', '#btn-delete', function() {
-            const id = $(this).data('id');
-            $.ajax({
-                type: "POST",
-                url: "{{url('api/outlet')}}/"+ id,
-                data: {
-                    '_method': 'DELETE', 
-                    '_token': '{{csrf_token()}}'
-                },
-                success: function (response) {
-                    getOutlet();
-                }
-            });
-        })
-
-        function getOutlet() {
-            $.ajax({
-                type: "GET",
-                url: "{{ url('api/outlet') }}",
-                dataType: "JSON",
-                success: function(response) {
-                    let rows = '';
-                    $.each(response.datas, function(idx, data) {
-                        idx++
-                        rows += 
-                            '<tr>' +
-                                '<td>' + idx + '</td>' +
-                                '<td>' + data.nama + '</td>' +
-                                '<td>' + data.alamat + '</td>' +
-                                '<td>' + data.tlp + '</td>' +
-                                '<td>' +
-                                '<div class="d-flex">' +
-                                    '<button type="button" id="btn-modal-edit" data-id="'+ data.id +'" class="btn btn-primary shadow btn-xs sharp me-1" data-bs-toggle="modal" data-bs-target="#modal-edit"><i class="fas fa-pencil-alt"></i></button>'+
-                                    '<button class="btn btn-danger shadow btn-xs sharp" data-id="'+ data.id +'" id="btn-delete"><i class="fa fa-trash"></i></button>'+
-                                '</div>' +
-                                '</td>' +
-                            '</tr>' ;
-                    });
-                    $('#table-outlet').html('');
-                    $('#table-outlet').append(rows);
-                }
-
+        // Read Database
+        function read() {
+            $.get("{{ url('/outlet/read') }}", {}, function(data, status) {
+                $("#read").html(data);
             });
         }
-</script>
+
+        // Untuk modal halaman create
+        function create() {
+            $.get("{{ url('/outlet/create') }}", {}, function(data, status) {
+                $("#exampleModalLabel").html('Tambah Outlet')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
+        // untuk proses create data
+        function store() {
+            var nama = $("#nama").val();
+            var alamat = $("#alamat").val();
+            var tlp = $("#tlp").val();
+            $.ajax({
+                type: "post",
+                url: "{{ url('/outlet/store') }}",
+                data: {
+                    'nama': nama,
+                    'alamat': alamat,
+                    'tlp': tlp,
+                    '_token': '{{ csrf_token() }}',
+                },
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
+            });
+        }
+
+        // Untuk modal halaman edit show
+        function edit(id) {
+            $.get("{{ url('/outlet/edit') }}/" + id, {}, function(data, status) {
+                $("#exampleModalLabel").html('Edit Outlet')
+                $("#page").html(data);
+                $("#exampleModal").modal('show');
+            });
+        }
+
+        // untuk proses update data
+        function update(id) {
+            var nama = $("#nama").val();
+            var alamat = $("#alamat").val();
+            var tlp = $("#tlp").val();
+            $.ajax({
+                type: "post",
+                url: "{{ url('/outlet/update') }}/" + id,
+                data: {
+                    'nama': nama,
+                    'alamat': alamat,
+                    'tlp': tlp,
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'PUT',
+                },
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
+            });
+        }
+
+        // untuk delete atau destroy data
+        function destroy(id) {
+            $.ajax({
+                type: "post",
+                url: "{{ url('/outlet/destroy') }}/" + id,
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'delete',
+                },
+                success: function(data) {
+                    $(".btn-close").click();
+                    read()
+                }
+            });
+        }
+    </script>
 @endpush
