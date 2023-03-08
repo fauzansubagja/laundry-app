@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Paket</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Pengguna</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
             </ol>
         </div>
@@ -13,7 +13,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Data Paket</h4>
+                        <h4 class="card-title">Data Pengguna</h4>
                         {{-- <button class="btn btn-primary" onClick="create()">+ Tambah Product</button> --}}
                         <button type="button" class="btn btn-rounded btn-primary" onClick="create()"><i
                                 class="fas fa-plus"></i>
@@ -72,7 +72,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Paket</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Pengguna</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -139,7 +139,9 @@
         // untuk proses create data
         function store() {
             var name = $("#name").val();
+            var username = $("#username").val();
             var email = $("#email").val();
+            var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
             $.ajax({
@@ -147,7 +149,9 @@
                 url: "{{ url('/management/user/store') }}",
                 data: {
                     'name': name,
+                    'username': username,
                     'email': email,
+                    'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
                     '_token': '{{ csrf_token() }}',
@@ -172,7 +176,9 @@
         // untuk proses update data
         function update(id) {
             var name = $("#name").val();
+            var username = $("#username").val();
             var email = $("#email").val();
+            var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
             $.ajax({
@@ -180,7 +186,9 @@
                 url: "{{ url('/management/user/update') }}/" + id,
                 data: {
                     'name': name,
+                    'username': username,
                     'email': email,
+                    'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
                     '_token': '{{ csrf_token() }}',

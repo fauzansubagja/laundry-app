@@ -27,6 +27,10 @@ class User extends Authenticatable
         'role',
         'password',
     ];
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

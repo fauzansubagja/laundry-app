@@ -79,9 +79,9 @@ Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index'])
 // Route::ApiResource('api/outlet', App\Http\Controllers\Api\OutletController::class);
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/profile', function () {
+    return view('profile');
+});
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });
