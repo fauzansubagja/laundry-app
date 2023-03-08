@@ -9,7 +9,11 @@ class PelangganController extends Controller
 {
     public function index()
     {
-        return view('admin.pelanggan.index');
+        $data = Member::all();
+        // dd($data);
+        return view('admin.pelanggan.index')->with([
+            'data' => $data
+        ]);
     }
     
     public function read()

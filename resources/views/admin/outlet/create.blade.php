@@ -17,5 +17,4 @@
             <button type="button" class="btn btn-primary" onclick="store()">Simpan</button>
         </div>
     </div>
-
 </form>

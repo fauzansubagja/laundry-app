@@ -9,7 +9,10 @@ class OutletController extends Controller
 {
     public function index()
     {
-        return view('admin.outlet.index');
+        $data = Outlet::all();
+        return view('admin.outlet.index')->with([
+            'data' => $data
+        ]);
     }
 
     public function read()

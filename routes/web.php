@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PaketController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\OutletController;
 
 Auth::routes();
 
+Route::get('/', function () {
+    return redirect(url('/login'));
+});
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
@@ -24,6 +29,16 @@ Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'inde
 Route::get('/paket', [App\Http\Controllers\PaketController::class, 'index']);
 
 Route::get('/management/user', [App\Http\Controllers\UserManagementController::class, 'index']);
+
+// route paket
+Route::get('/paket', [PaketController::class, 'index']);
+Route::get('/paket/read', [PaketController::class, 'read']);
+Route::get('/paket/create', [PaketController::class, 'create']);
+Route::post('/paket/store', [PaketController::class, 'store']);
+Route::get('/paket/edit/{id}', [PaketController::class, 'edit']);
+Route::put('/paket/update/{id}', [PaketController::class, 'update']);
+Route::delete('/paket/destroy/{id}', [PaketController::class, 'destroy']);
+// end route paket
 
 // route pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
