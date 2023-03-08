@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,19 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
 
-Route::get('/paket', [App\Http\Controllers\PaketController::class, 'index']);
+// Route::get('/paket', [App\Http\Controllers\PaketController::class, 'index']);
 
-Route::get('/management/user', [App\Http\Controllers\UserManagementController::class, 'index']);
+// Route::get('/management/user', [App\Http\Controllers\UserManagementController::class, 'index']);
+
+// route pengguna
+Route::get('/management/user', [UserManagementController::class, 'index']);
+Route::get('/management/user/read', [UserManagementController::class, 'read']);
+Route::get('/management/user/create', [UserManagementController::class, 'create']);
+Route::post('/management/user/store', [UserManagementController::class, 'store']);
+Route::get('/management/user/edit/{id}', [UserManagementController::class, 'edit']);
+Route::put('/management/user/update/{id}', [UserManagementController::class, 'update']);
+Route::delete('/management/user/destroy/{id}', [UserManagementController::class, 'destroy']);
+// end route pengguna
 
 // route paket
 Route::get('/paket', [PaketController::class, 'index']);

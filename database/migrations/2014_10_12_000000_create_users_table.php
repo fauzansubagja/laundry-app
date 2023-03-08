@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('role', ['Admin', 'Kasir', 'Owner']);
             $table->unsignedBigInteger('outlet_id')->nullable();
-            $table->foreign('outlet_id')->references('id')->on('users');
+            $table->foreign('outlet_id')->references('id')->on('outlet');
             $table->rememberToken();
             $table->timestamps();
         });

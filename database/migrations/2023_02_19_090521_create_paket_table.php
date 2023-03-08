@@ -19,7 +19,7 @@ class CreatePaketTable extends Migration
             $table->string('harga');
             $table->enum('jenis', ['kiloan', 'selimut', 'bed_cover', 'kaos', 'lain']);
             $table->unsignedBigInteger('outlet_id');
-            $table->foreign('outlet_id')->references('id')->on('paket');
+            $table->foreign('outlet_id')->references('id')->on('outlet');
             $table->timestamps();
         });
     }

@@ -1,8 +1,8 @@
 <form>
     <div class="row">
         <div class="mb-3 col-md-12">
-            <label class="form-label">Nama Pelanggan</label>
-            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Pelanggan">
+            <label class="form-label">Nama Outlet</label>
+            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Outlet">
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Alamat</label>
