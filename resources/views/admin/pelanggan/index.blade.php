@@ -199,7 +199,7 @@
         function destroy(id) {
             $.ajax({
                 type: "post",
-                url: "{{ url('/Pelanggan/destroy') }}/" + id,
+                url: "{{ url('/pelanggan/destroy') }}/" + id,
                 data: {
                     '_token': '{{ csrf_token() }}',
                     '_method': 'delete',

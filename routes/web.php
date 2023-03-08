@@ -47,7 +47,7 @@ Route::get('/registrasi/pelanggan/create', [PelangganController::class, 'create'
 Route::post('/registrasi/pelanggan/store', [PelangganController::class, 'store']);
 Route::get('/registrasi/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
 Route::put('/registrasi/pelanggan/update/{id}', [PelangganController::class, 'update']);
-Route::delete('/registrasi/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
+Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
 // end route pelanggan
 
 // route outlet
