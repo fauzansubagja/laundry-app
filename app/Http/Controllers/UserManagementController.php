@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Member;
 use App\Models\Outlet;
+use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
 {
@@ -13,6 +14,18 @@ class UserManagementController extends Controller
         return view('admin.pengguna.index', [
             'user' => User::all(),
             'outlet' => Outlet::all(),
+        ]);
+    }
+
+    public function profile($id)
+    {
+        return view('admin.profile.index', [
+            'user' => User::findOrFail($id),
+            // 'data' => User::all(),
+            'member' => Member::all(),
+            'members' => Member::count(),
+            'outlet' => Outlet::all(),
+            'outlets' => Outlet::count(),
         ]);
     }
 

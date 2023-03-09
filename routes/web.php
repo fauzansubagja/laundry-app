@@ -40,6 +40,7 @@ Route::post('/management/user/store', [UserManagementController::class, 'store']
 Route::get('/management/user/edit/{id}', [UserManagementController::class, 'edit']);
 Route::put('/management/user/update/{id}', [UserManagementController::class, 'update']);
 Route::delete('/management/user/destroy/{id}', [UserManagementController::class, 'destroy']);
+Route::get('/profile/{id}', [UserManagementController::class, 'profile']);
 // end route pengguna
 
 // route paket
@@ -79,9 +80,9 @@ Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index'])
 // Route::ApiResource('api/outlet', App\Http\Controllers\Api\OutletController::class);
 
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+// Route::get('/profile', function () {
+//     return view('profile');
+// });
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });

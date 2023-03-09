@@ -27,6 +27,7 @@
     <!-- Datatable -->
     <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{asset('vendor/select2/css/select2.min.css')}}">
     <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
     <!-- Style css -->
@@ -886,7 +887,7 @@
                                     <img src="assets/images/user.jpg" width="56" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="app-profile.html" class="dropdown-item ai-icon">
+                                    <a href="{{ url('/profile/' . Auth::user()->id) }}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -906,7 +907,9 @@
                                         </svg>
                                         <span class="ms-2">Inbox </span>
                                     </a>
-                                    <a href="page-error-404.html" class="dropdown-item ai-icon">
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();" class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
                                             width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -914,6 +917,9 @@
                                             <polyline points="16 17 21 12 16 7"></polyline>
                                             <line x1="21" y1="12" x2="9" y2="12"></line>
                                         </svg>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                         <span class="ms-2">Logout </span>
                                     </a>
                                 </div>
@@ -976,7 +982,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="side-bar-profile">
+                {{-- <div class="side-bar-profile">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="side-bar-profile-img">
                             <img src="assets/images/user.jpg" alt="">
@@ -995,7 +1001,7 @@
                             <span class="sr-only">45% Complete</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="copyright">
                     <p><strong>Fillow Saas Admin</strong> © 2023 All Rights Reserved</p>

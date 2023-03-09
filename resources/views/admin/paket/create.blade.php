@@ -6,7 +6,7 @@
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Harga</label>
-            <input type="text" name="harga" id="harga" class="form-control" placeholder="Harga">
+            <input type="text" name="harga" id="harga" class="form-control" placeholder="Harga" oninput="formatRupiah(this)">
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Jenis</label>

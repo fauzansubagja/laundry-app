@@ -15,8 +15,8 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('outlet_id');
-            $table->foreign('outlet_id')->references('id')->on('outlet');
+            $table->unsignedBigInteger('paket_id');
+            $table->foreign('paket_id')->references('id')->on('paket');
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')->references('id')->on('member');
             $table->unsignedBigInteger('user_id');

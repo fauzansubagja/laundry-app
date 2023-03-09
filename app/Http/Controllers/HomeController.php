@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Member;
+use App\Models\Outlet;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +28,10 @@ class HomeController extends Controller
     {
         return view('dashboard', [
             'user' => User::all(),
+            'member' => Member::all(),
+            'members' => Member::count(),
+            'outlet' => Outlet::all(),
+            'outlets' => Outlet::count(),
         ]);
     }
 }
