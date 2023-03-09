@@ -16,7 +16,10 @@ class Paket extends Model
         'nama_paket',
         'harga'
     ];
-
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
     public function outlet()
     {
         return $this->belongsTo(Outlet::class, 'outlet_id', 'id');

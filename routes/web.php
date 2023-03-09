@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -26,11 +27,17 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
+// Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
 
-// Route::get('/paket', [App\Http\Controllers\PaketController::class, 'index']);
-
-// Route::get('/management/user', [App\Http\Controllers\UserManagementController::class, 'index']);
+// route transaksi
+Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::get('/transaksi/read', [TransaksiController::class, 'read']);
+Route::get('/transaksi/create', [TransaksiController::class, 'create']);
+Route::post('/transaksi/store', [TransaksiController::class, 'store']);
+Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
+Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
+Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
+// end route transaksi
 
 // route pengguna
 Route::get('/management/user', [UserManagementController::class, 'index']);
@@ -75,10 +82,6 @@ Route::delete('/outlet/destroy/{id}', [OutletController::class, 'destroy']);
 
 
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
-
-// Route::get('/outlet', [App\Http\Controllers\OutletController::class, 'index']);
-// Route::ApiResource('api/outlet', App\Http\Controllers\Api\OutletController::class);
-
 
 // Route::get('/profile', function () {
 //     return view('profile');

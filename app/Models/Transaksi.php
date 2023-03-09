@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Paket;
+use App\Models\Member;
+use App\Models\Outlet;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaksi extends Model
 {
@@ -11,14 +15,31 @@ class Transaksi extends Model
 
     protected $table = 'transaksi';
     protected $fillable = [
+        'outlet_id',
+        'member_id',
+        'user_id',
+        'paket_id',
         'kode_invoice',
-        'tgl',
-        'batas_waktu',
-        'tgl_bayar',
-        'biaya_tambahan',
+        'tgl_transaksi',
         'diskon',
-        'pajak',
+        'total_biaya',
         'status',
         'dibayar',
     ];
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class);
+    }
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function paket()
+    {
+        return $this->belongsTo(Paket::class);
+    }
 }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Paket;
+use App\Models\Member;
+use App\Models\Outlet;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
@@ -9,7 +13,83 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::all();
-        return view('admin.transaksi.index', compact('transaksi'));
+        return view('admin.transaksi.index', [
+            'transaksi' => Transaksi::all(),
+            'user' => User::all(),
+            'outlet' => Outlet::all(),
+        ]);
+    }
+
+    public function read()
+    {
+        $data = User::all();
+        return view('admin.transaksi.read')->with([
+            'data' => $data
+        ]);
+    }
+
+    public function create()
+    {
+        return view('admin.transaksi.create', [
+            'outlet' => Outlet::all(),
+            'transaksi' => Transaksi::all(),
+            'user' => User::all(),
+            'member' => Member::all(),
+            'paket' => Paket::all(),
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $data['outlet_id'] = $request->outlet_id;
+        $data['member_id'] = $request->member_id;
+        $data['user_id'] = $request->user_id;
+        $data['paket_id'] = $request->paket_id;
+        $data['kode_invoice'] = $request->kode_invoice;
+        $data['tgl_transaksi'] = $request->tgl_transaksi;
+        $data['diskon'] = $request->diskon;
+        $data['total_biaya'] = $request->total_biaya;
+        $data['status'] = $request->status;
+        $data['dibayar'] = $request->dibayar;
+        User::create($data);
+    }
+
+    public function edit($id)
+    {
+        return view('admin.transaksi.edit', [
+            'transaksi' => Transaksi::all(),
+            'user' => User::all(),
+            'outlet' => Outlet::all(),
+            'member' => Member::all(),
+            'paket' => Paket::all(),
+        ]);
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = Transaksi::findOrFail($id);
+        $data->outlet_id = $request->outlet_id;
+        $data->member_id = $request->member_id;
+        $data->user_id = $request->user_id;
+        $data->paket_id = $request->paket_id;
+        $data->kode_invoice = $request->kode_invoice;
+        $data->tgl_transaksi = $request->tgl_transaksi;
+        $data->diskon = $request->diskon;
+        $data->total_biaya = $request->total_biaya;
+        $data->status = $request->status;
+        $data->dibayar = $request->dibayar;
+        $data->save();
+    }
+
+    public function destroy($id)
+    {
+        $data = Transaksi::findOrFail($id);
+        // dd($data);
+        $data->delete();
     }
 }
