@@ -17,7 +17,22 @@ class OutletSeeder extends Seeder
         Outlet::create([
             'nama' => 'Cabang 1',
             'alamat' => 'Jl Jupiter',
-            'tlp' => '082130002048',
+            'tlp' => '0820',
+        ]);
+        Outlet::create([
+            'nama' => 'Cabang 2',
+            'alamat' => 'Jl Mars',
+            'tlp' => '0821',
+        ]);
+        Outlet::create([
+            'nama' => 'Cabang 3',
+            'alamat' => 'Jl Pluto',
+            'tlp' => '0822',
+        ]);
+        Outlet::create([
+            'nama' => 'Cabang 4',
+            'alamat' => 'Jl Bulan',
+            'tlp' => '0822',
         ]);
     }
 }

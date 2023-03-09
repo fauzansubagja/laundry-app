@@ -28,14 +28,12 @@
                                         <th>Kode Invoice</th>
                                         <th>Berat Cucian</th>
                                         <th>Total Bayar</th>
-                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>asd</td>
                                         <td>asd</td>
                                         <td>asd</td>
                                         <td>asd</td>

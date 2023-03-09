@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('users-images')->default('default.jpg');
             $table->enum('role', ['Admin', 'Kasir', 'Owner']);
             $table->unsignedBigInteger('outlet_id');
             $table->foreign('outlet_id')->references('id')->on('outlet');

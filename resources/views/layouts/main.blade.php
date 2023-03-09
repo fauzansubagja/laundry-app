@@ -58,7 +58,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="{{ url('/dashboard') }}" class="brand-logo">
                 {{-- <svg class="logo-abbr" width="55" height="55" viewbox="0 0 55 55" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -884,7 +884,7 @@
 
                             <li class="nav-item dropdown  header-profile">
                                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                                    <img src="assets/images/user.jpg" width="56" alt="">
+                                    <img src="{{ Storage::url('public/images/default.jpg') }}" width="56" alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="{{ url('/profile/' . Auth::user()->id) }}" class="dropdown-item ai-icon">

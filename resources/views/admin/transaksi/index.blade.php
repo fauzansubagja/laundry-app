@@ -24,21 +24,17 @@
                                         <th>No</th>
                                         <th>Nama Member</th>
                                         <th>Jenis Paket</th>
-                                        <th>Nama Outlet</th>
                                         <th>Kode Invoice</th>
                                         <th>Berat Cucian</th>
                                         <th>Total Bayar</th>
                                         <th>Status</th>
                                         <th>Status Bayar</th>
-                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
                                         <td>asd</td>
                                         <td>asd</td>
                                         <td>asd</td>
