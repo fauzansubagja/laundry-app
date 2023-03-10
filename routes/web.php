@@ -37,6 +37,8 @@ Route::post('/transaksi/store', [TransaksiController::class, 'store']);
 Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
 Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
+Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
+Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
 // end route transaksi
 
 // route pengguna

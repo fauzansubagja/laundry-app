@@ -103,6 +103,7 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
 </script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <script>
     function formatRupiah(angka) {
             var number_string = angka.value.replace(/[^,\d]/g, '').toString(),
@@ -124,7 +125,7 @@
     $(document).ready(function() {
             read()
         });
-
+        
         // Read Database
         function read() {
             $.get("{{ url('/transaksi/read') }}", {}, function(data, status) {
@@ -139,7 +140,10 @@
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
+           
         }
+
+        
 
         // untuk proses create data
         function store() {

@@ -40,7 +40,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->outlet->nama }}</td>
                                                 <td>{{ $item->nama_paket }}</td>
-                                                <td>{{ $item->harga }}</td>
+                                                <td>Rp.{{ number_format($item->harga, 0, ',', '.') }}</td>
                                                 <td>{{ $item->jenis }}</td>
                                                 <td>
                                                     <div class="d-flex">

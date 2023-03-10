@@ -20,6 +20,14 @@ class TransaksiController extends Controller
         ]);
     }
 
+    public function getPaketPrice($id)
+    {
+        $paket = Paket::find($id);
+        $harga = $paket->harga;
+        return response()->json(['harga' => $harga]);
+    }
+
+
     public function read()
     {
         $data = User::all();
@@ -39,6 +47,23 @@ class TransaksiController extends Controller
         ]);
     }
 
+    public function getDiskon(Request $request)
+    {
+        $total = $request->input('total'); // ambil nilai total dari request
+
+        // logika untuk menghitung diskon
+        if ($total >= 500000) {
+            $diskon = 0.2 * $total;
+        } elseif ($total >= 250000) {
+            $diskon = 0.1 * $total;
+        } else {
+            $diskon = 0;
+        }
+
+        return response()->json(['diskon' => $diskon]); // kembalikan nilai diskon dalam bentuk JSON
+    }
+
+
     public function store(Request $request)
     {
         // dd($request);
@@ -46,7 +71,6 @@ class TransaksiController extends Controller
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
         $data['paket_id'] = $request->paket_id;
-        $data['kode_invoice'] = $request->kode_invoice;
         $data['tgl_transaksi'] = $request->tgl_transaksi;
         $data['diskon'] = $request->diskon;
         $data['total_biaya'] = $request->total_biaya;
@@ -58,9 +82,9 @@ class TransaksiController extends Controller
     public function edit($id)
     {
         return view('admin.transaksi.edit', [
-            'transaksi' => Transaksi::all(),
-            'user' => User::all(),
             'outlet' => Outlet::all(),
+            'transaksi' => Transaksi::findOrFail($id),
+            'user' => User::all(),
             'member' => Member::all(),
             'paket' => Paket::all(),
         ]);

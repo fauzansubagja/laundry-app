@@ -16,43 +16,43 @@ class PaketSeeder extends Seeder
     {
         Paket::create([
             'nama_paket' => 'Cuci Lipat Rapi',
-            'harga' => 'Rp. 35.000',
+            'harga' => '35000',
             'jenis' => 'kiloan',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'Regular Service',
-            'harga' => 'Rp. 28.000',
+            'harga' => '28000',
             'jenis' => 'kiloan',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'One Day Service',
-            'harga' => 'Rp. 30.000',
+            'harga' => '30000',
             'jenis' => 'lain',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'Setrika Wangi',
-            'harga' => 'Rp. 8.000',
+            'harga' => '8000',
             'jenis' => 'lain',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'Selimut',
-            'harga' => 'Rp. 10.000',
+            'harga' => '10000',
             'jenis' => 'selimut',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'Bed Cover',
-            'harga' => 'Rp. 10.000',
+            'harga' => '10000',
             'jenis' => 'bed_cover',
             'outlet_id' => '1',
         ]);
         Paket::create([
             'nama_paket' => 'Kaos',
-            'harga' => 'Rp. 10.000',
+            'harga' => '10000',
             'jenis' => 'kaos',
             'outlet_id' => '1',
         ]);
