@@ -5,7 +5,7 @@
                 <label class="form-label">Nama Outlet</label>
                 <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
                     @foreach ($outlet as $item)
-                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -14,7 +14,7 @@
                 <select class="default-select  form-control wide" name="member_id" id="member_id">
                     <option value="" selected>-- Pilih Member --</option>
                     @foreach ($member as $item)
-                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -23,9 +23,9 @@
                 <select class="default-select  form-control wide" name="user_id" id="user_id">
                     <option value="" selected>-- Pilih Kasir --</option>
                     @foreach ($user as $item)
-                        @if ($item->role == 'Kasir')
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endif
+                    @if ($item->role == 'Kasir')
+                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -34,14 +34,14 @@
                 <select class="default-select form-control wide" name="paket_id" id="paket_id">
                     <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
-                        <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
+                    <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Kode Invoice</label>
-                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control"
-                    placeholder="Kode Invoice" readonly>
+                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
+                    readonly>
             </div>
         </div>
         <div class="col-lg-6">
@@ -57,8 +57,8 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Total Biaya</label>
-                <input type="text" name="total_biaya" id="total_biaya" class="form-control"
-                    placeholder="Total Biaya">
+                <input type="text" name="total_biaya" id="total_biaya" class="form-control" placeholder="Total Biaya"
+                    readonly>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Status</label>
@@ -84,11 +84,11 @@
         </div>
     </div>
 </form>
-<script>
+{{-- <script>
     $('form').submit(function() {
         $('#kode_invoice').val('INV-' + Date.now());
     });
-</script>
+</script> --}}
 <script>
     function addPercent() {
         var diskonInput = document.getElementById("diskon");
@@ -102,6 +102,7 @@
         var diskon = $(this).val();
         var total_biaya = $('#total_biaya').val();
         if (diskon) {
+            diskon = diskon.replace('%', ''); // remove % character
             var diskon_biaya = (diskon / 100) * total_biaya;
             $('#total_biaya').val(total_biaya - diskon_biaya);
         }

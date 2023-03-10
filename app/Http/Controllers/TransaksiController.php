@@ -66,24 +66,40 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $data['outlet_id'] = $request->outlet_id;
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
         $data['paket_id'] = $request->paket_id;
         $data['tgl_transaksi'] = $request->tgl_transaksi;
-        $data['diskon'] = $request->diskon;
+
+        // generate kode_invoice dengan format "INV-tgl skrng"
+        $tgl_sekarang = date('Ymd');
+        $data['kode_invoice'] = "INV-$tgl_sekarang";
+
+        $data['diskon'] = null;
         $data['total_biaya'] = $request->total_biaya;
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
-        User::create($data);
+
+        if ($request->has('diskon') && $request->diskon != null) {
+            // ekstraksi nilai diskon numerik dari input diskon
+            preg_match_all('/\d+/', $request->diskon, $matches);
+            $diskon_numerik = implode('', $matches[0]);
+
+            // simpan nilai diskon numerik ke dalam variabel 'diskon'
+            $data['diskon'] = (int) $diskon_numerik;
+        }
+        // dd($data);
+
+        // simpan data ke dalam database
+        Transaksi::create($data);
     }
 
     public function edit($id)
     {
         return view('admin.transaksi.edit', [
-            'outlet' => Outlet::all(),
             'transaksi' => Transaksi::findOrFail($id),
+            'outlet' => Outlet::all(),
             'user' => User::all(),
             'member' => Member::all(),
             'paket' => Paket::all(),
@@ -97,16 +113,29 @@ class TransaksiController extends Controller
     public function update(Request $request, $id)
     {
         $data = Transaksi::findOrFail($id);
-        $data->outlet_id = $request->outlet_id;
-        $data->member_id = $request->member_id;
-        $data->user_id = $request->user_id;
-        $data->paket_id = $request->paket_id;
-        $data->kode_invoice = $request->kode_invoice;
-        $data->tgl_transaksi = $request->tgl_transaksi;
-        $data->diskon = $request->diskon;
-        $data->total_biaya = $request->total_biaya;
-        $data->status = $request->status;
-        $data->dibayar = $request->dibayar;
+        $data['outlet_id'] = $request->outlet_id;
+        $data['member_id'] = $request->member_id;
+        $data['user_id'] = $request->user_id;
+        $data['paket_id'] = $request->paket_id;
+        $data['tgl_transaksi'] = $request->tgl_transaksi;
+
+        // generate kode_invoice dengan format "INV-tgl skrng"
+        $tgl_sekarang = date('Ymd');
+        $data['kode_invoice'] = "INV-$tgl_sekarang";
+
+        $data['diskon'] = null;
+        $data['total_biaya'] = $request->total_biaya;
+        $data['status'] = $request->status;
+        $data['dibayar'] = $request->dibayar;
+
+        if ($request->has('diskon') && $request->diskon != null) {
+            // ekstraksi nilai diskon numerik dari input diskon
+            preg_match_all('/\d+/', $request->diskon, $matches);
+            $diskon_numerik = implode('', $matches[0]);
+
+            // simpan nilai diskon numerik ke dalam variabel 'diskon'
+            $data['diskon'] = (int) $diskon_numerik;
+        }
         $data->save();
     }
 

@@ -39,11 +39,12 @@
                                     @php $no = 1; @endphp
                                     @foreach ($transaksi as $item)
                                     <tr>
+                                        {{-- {{ dd($item) }} --}}
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->member->nama }}</td>
                                         <td>{{ $item->paket->nama_paket }}</td>
                                         <td>{{ $item->kode_invoice }}</td>
-                                        <td>{{ $item->total_bayar }}</td>
+                                        <td>Rp.{{ number_format($item->total_biaya, 0, ',', '.') }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->dibayar }}</td>
                                         <td>
@@ -142,8 +143,6 @@
             });
            
         }
-
-        
 
         // untuk proses create data
         function store() {
