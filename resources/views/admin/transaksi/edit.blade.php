@@ -7,7 +7,8 @@
                 <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
                     <option value="" selected>-- Pilih Outlet --</option>
                     @foreach ($outlet as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>
+                            {{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -16,7 +17,8 @@
                 <select class="default-select  form-control wide" name="member_id" id="member_id">
                     <option value="" selected>-- Pilih Member --</option>
                     @foreach ($member as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>
+                            {{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -26,7 +28,8 @@
                     <option value="" selected>-- Pilih Kasir --</option>
                     @foreach ($user as $item)
                         @if ($item->role == 'Kasir')
-                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                            <option value="{{ $item->id }}"
+                                {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{ $item->name }}</option>
                         @endif
                     @endforeach
                 </select>
@@ -36,7 +39,8 @@
                 <select class="default-select form-control wide" name="paket_id" id="paket_id">
                     <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>{{ $item->nama_paket }}</option>
+                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>
+                            {{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
             </div>
@@ -50,7 +54,7 @@
             <div class="mb-3 col-md-12">
                 <label class="form-label">Tanggal Transaksi</label>
                 <input type="datetime-local" name="tgl_transaksi" id="tgl_transaksi" class="form-control"
-                    placeholder="Tanggal Transaksi" value={{ $transaksi->tgl_transaksi }}>
+                    placeholder="Tanggal Transaksi" value="{{ $transaksi->tgl_transaksi }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Diskon</label>

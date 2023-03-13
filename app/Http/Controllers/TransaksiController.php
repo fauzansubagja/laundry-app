@@ -70,7 +70,8 @@ class TransaksiController extends Controller
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
         $data['paket_id'] = $request->paket_id;
-        $data['tgl_transaksi'] = $request->tgl_transaksi;
+        $tgl_transaksi = date('Y-m-d H:i:s', strtotime($request->input('tgl_transaksi')));
+        $data['tgl_transaksi'] = $tgl_transaksi;
 
         // generate kode_invoice dengan format "INV-tgl skrng"
         $tgl_sekarang = date('Ymd');
@@ -89,7 +90,7 @@ class TransaksiController extends Controller
             // simpan nilai diskon numerik ke dalam variabel 'diskon'
             $data['diskon'] = (int) $diskon_numerik;
         }
-        
+
         // simpan data ke dalam database
         Transaksi::create($data);
     }
@@ -98,13 +99,13 @@ class TransaksiController extends Controller
     {
         // dd(Transaksi::where('id',$id)->get());
         return view('admin.transaksi.edit', [
-            'transaksi' => Transaksi::where('id',$id)->first(),
+            'transaksi' => Transaksi::where('id', $id)->first(),
+            'transaksis' => Transaksi::find($id),
             'outlet' => Outlet::all(),
             'user' => User::all(),
             'member' => Member::all(),
             'paket' => Paket::all(),
         ]);
-        
     }
 
     public function show($id)
@@ -113,7 +114,7 @@ class TransaksiController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = Transaksi::findOrFail($id);
+        $data = Transaksi::where('id', $id)->first();
         $data['outlet_id'] = $request->outlet_id;
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
@@ -142,7 +143,7 @@ class TransaksiController extends Controller
 
     public function destroy($id)
     {
-        $data = Transaksi::findOrFail($id);
+        $data = Transaksi::where('id', $id)->first();
         // dd($data);
         $data->delete();
     }

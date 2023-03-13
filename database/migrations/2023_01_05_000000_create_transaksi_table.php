@@ -25,7 +25,7 @@ class CreateTransaksiTable extends Migration
             $table->foreign('paket_id')->references('id')->on('paket');
             $table->string('kode_invoice');
             $table->dateTime('tgl_transaksi');
-            $table->decimal('diskon', 5, 2)->nullable();
+            $table->integer('diskon')->nullable();
             $table->integer('total_biaya');
             $table->enum('status', ['baru', 'proses', 'selesai', 'diambil']);
             $table->enum('dibayar', ['dibayar', 'belum_dibayar']);
