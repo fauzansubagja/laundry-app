@@ -38,6 +38,7 @@
                                 <tbody>
                                     @php $no = 1; @endphp
                                     @foreach ($transaksi as $item)
+                                    {{-- {{dd($item)}} --}}
                                     <tr>
                                         {{-- {{ dd($item) }} --}}
                                         <td>{{ $no++ }}</td>

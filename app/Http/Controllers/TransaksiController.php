@@ -74,9 +74,9 @@ class TransaksiController extends Controller
         $data['tgl_transaksi'] = $tgl_transaksi;
 
         // generate kode_invoice dengan format "INV-tgl skrng"
-        $tgl_sekarang = date('Ymd');
-        $data['kode_invoice'] = "INV-$tgl_sekarang";
-
+        $kode_invoice = "INV-" . date('YmdHis');
+        $data['kode_invoice'] = $kode_invoice;
+        
         $data['diskon'] = null;
         $data['total_biaya'] = $request->total_biaya;
         $data['status'] = $request->status;
