@@ -89,21 +89,22 @@ class TransaksiController extends Controller
             // simpan nilai diskon numerik ke dalam variabel 'diskon'
             $data['diskon'] = (int) $diskon_numerik;
         }
-        // dd($data);
-
+        
         // simpan data ke dalam database
         Transaksi::create($data);
     }
 
     public function edit($id)
     {
+        // dd(Transaksi::where('id',$id)->get());
         return view('admin.transaksi.edit', [
-            'transaksi' => Transaksi::findOrFail($id),
+            'transaksi' => Transaksi::where('id',$id)->first(),
             'outlet' => Outlet::all(),
             'user' => User::all(),
             'member' => Member::all(),
             'paket' => Paket::all(),
         ]);
+        
     }
 
     public function show($id)

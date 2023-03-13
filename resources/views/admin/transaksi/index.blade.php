@@ -44,7 +44,7 @@
                                         <td>{{ $item->member->nama }}</td>
                                         <td>{{ $item->paket->nama_paket }}</td>
                                         <td>{{ $item->kode_invoice }}</td>
-                                        <td>Rp.{{ number_format($item->total_biaya, 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->dibayar }}</td>
                                         <td>
@@ -183,6 +183,7 @@
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('/transaksi/edit') }}/" + id, {}, function(data, status) {
+                // console.log(data)
                 $("#exampleModalLabel").html('Edit Transaksi')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');

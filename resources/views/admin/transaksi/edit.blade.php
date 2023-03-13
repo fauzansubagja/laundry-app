@@ -1,51 +1,49 @@
 <form>
     <div class="row">
+        {{-- {{dd($kode_invoice)}} --}}
         <div class="col-lg-6">
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
-                <select class="default-select  form-control wide" name="outlet_id" id="outlet_id" value={{
-                    $transaksi->outlet_id }}>
+                <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
+                    <option value="" selected>-- Pilih Outlet --</option>
                     @foreach ($outlet as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>{{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Member</label>
-                <select class="default-select  form-control wide" name="member_id" id="member_id" value={{
-                    $transaksi->member_id }}>
+                <select class="default-select  form-control wide" name="member_id" id="member_id">
                     <option value="" selected>-- Pilih Member --</option>
                     @foreach ($member as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>{{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">User</label>
-                <select class="default-select  form-control wide" name="user_id" id="user_id" value={{
-                    $transaksi->member_id }}>
+                <select class="default-select  form-control wide" name="user_id" id="user_id">
                     <option value="" selected>-- Pilih Kasir --</option>
                     @foreach ($user as $item)
-                    @if ($item->role == 'Kasir')
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endif
+                        @if ($item->role == 'Kasir')
+                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
-                <select class="default-select form-control wide" name="paket_id" id="paket_id" value={{
-                    $transaksi->paket_id }}>
+                <select class="default-select form-control wide" name="paket_id" id="paket_id">
                     <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>{{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Kode Invoice</label>
-                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
-                    readonly value={{ $transaksi->kode_invoice }}>
+                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control"
+                    placeholder="Kode Invoice" disabled value={{ $transaksi->kode_invoice }}>
             </div>
         </div>
         <div class="col-lg-6">
@@ -66,8 +64,7 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Status</label>
-                <select class="default-select  form-control wide" name="status" id="status" value={{ $transaksi->status
-                    }}>
+                <select class="default-select  form-control wide" name="status" id="status" value=>
                     <option value="baru">Baru</option>
                     <option value="proses">Proses</option>
                     <option value="selesai">Selesai</option>
@@ -76,8 +73,7 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Status Bayar</label>
-                <select class="default-select  form-control wide" name="dibayar" id="dibayar" value={{
-                    $transaksi->dibayar }}>
+                <select class="default-select  form-control wide" name="dibayar" id="dibayar">
                     <option value="dibayar">Dibayar</option>
                     <option value="belum_dibayar">Belum Dibayar</option>
                 </select>
@@ -86,7 +82,7 @@
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCreateClose">Batal</button>
-            <button type="button" class="btn btn-primary" onClick="update({{ $pakets->id }})">Simpan</button>
+            <button type="button" class="btn btn-primary" onClick="update({{ $transaksi->id }})">Simpan</button>
         </div>
     </div>
 </form>

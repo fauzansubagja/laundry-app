@@ -39,7 +39,6 @@ class Transaksi extends Model
     public function outlet()
     {
         return $this->belongsTo(Outlet::class);
-        return $this->hashOne(Outlet::class);
     }
     public function member()
     {
