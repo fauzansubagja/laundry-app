@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserManagementController;
@@ -82,8 +83,8 @@ Route::put('/outlet/update/{id}', [OutletController::class, 'update']);
 Route::delete('/outlet/destroy/{id}', [OutletController::class, 'destroy']);
 // end route outlet
 
-
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
+Route::get('/laporan/export', [App\Http\Controllers\LaporanController::class, 'export'])->name('laporan.export');
 
 // Route::get('/profile', function () {
 //     return view('profile');

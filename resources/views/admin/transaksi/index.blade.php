@@ -46,7 +46,21 @@
                                         <td>{{ $item->paket->nama_paket }}</td>
                                         <td>{{ $item->kode_invoice }}</td>
                                         <td>Rp. {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>
+                                            @if($item->status == 'Baru')
+                                            <button type="button" class="btn btn-rounded btn-primary"
+                                                disabled="disabled">{{ $item->status }}</button>
+                                            @elseif($item->status == 'Proses')
+                                            <button type="button" class="btn btn-rounded btn-secondary"
+                                                disabled="disabled">{{ $item->status }}</button>
+                                            @elseif($item->status == 'Selesai')
+                                            <button type="button" class="btn btn-rounded btn-success"
+                                                disabled="disabled">{{ $item->status }}</button>
+                                            @elseif($item->status == 'Diambil')
+                                            <button type="button" class="btn btn-rounded btn-danger"
+                                                disabled="disabled">{{ $item->status }}</button>
+                                            @endif
+                                        </td>
                                         <td>{{ $item->dibayar }}</td>
                                         <td>
                                             <div class="d-flex">
@@ -113,12 +127,12 @@
                 sisa    = split[0].length % 3,
                 rupiah  = split[0].substr(0, sisa),
                 ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
-    
+
             if (ribuan) {
                 separator = sisa ? '.' : '';
                 rupiah += separator + ribuan.join('.');
             }
-    
+
             rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
             angka.value = 'Rp ' + rupiah;
         }
@@ -127,7 +141,7 @@
     $(document).ready(function() {
             read()
         });
-        
+
         // Read Database
         function read() {
             $.get("{{ url('/transaksi/read') }}", {}, function(data, status) {
@@ -142,7 +156,7 @@
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
-           
+
         }
 
         // untuk proses create data

@@ -26,16 +26,6 @@ class Transaksi extends Model
         'status',
         'dibayar',
     ];
-    // protected $primaryKey = 'kode_invoice';
-
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     static::creating(function ($model) {
-    //         $model->{$model->getKeyName()} = 'INV-' . date('YmdHis');
-    //     });
-    // }
     public function outlet()
     {
         return $this->belongsTo(Outlet::class);

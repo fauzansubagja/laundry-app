@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Data Laporan Transaksi</h4>
-                        <a href="" class="btn btn-rounded btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                        <a href="{{ route('laporan.export') }}" class="btn btn-success">Export Excel</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -26,29 +26,24 @@
                                         <th>Jenis Paket</th>
                                         <th>Nama Outlet</th>
                                         <th>Kode Invoice</th>
-                                        <th>Berat Cucian</th>
                                         <th>Total Bayar</th>
-                                        <th>Aksi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{-- {{dd($laporan)}} --}}
+                                    @php $no = 1; @endphp
+                                    @foreach ($transaksi as $item)
                                     <tr>
-                                        <td>1</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
-                                        <td>asd</td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                        class="fas fa-pencil-alt"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->member->nama }}</td>
+                                        <td>{{ $item->paket->nama_paket }}</td>
+                                        <td>{{ $item->outlet->nama }}</td>
+                                        <td>{{ $item->kode_invoice }}</td>
+                                        <td>Rp. {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
+                                        <td>{{ $item->status }}</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

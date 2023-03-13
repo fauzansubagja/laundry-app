@@ -27,8 +27,8 @@ class CreateTransaksiTable extends Migration
             $table->dateTime('tgl_transaksi');
             $table->integer('diskon')->nullable();
             $table->integer('total_biaya');
-            $table->enum('status', ['baru', 'proses', 'selesai', 'diambil']);
-            $table->enum('dibayar', ['dibayar', 'belum_dibayar']);
+            $table->enum('status', ['Baru', 'Proses', 'Selesai', 'Diambil']);
+            $table->enum('dibayar', ['Dibayar', 'Belum Dibayar']);
             $table->timestamps();
         });
     }
