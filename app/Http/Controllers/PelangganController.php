@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Member;
 
 class PelangganController extends Controller
-{
+{   
     public function index()
     {
         $data = Member::all();

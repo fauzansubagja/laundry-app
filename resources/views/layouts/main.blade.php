@@ -945,18 +945,21 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    @can('admin')
                     <li><a href="{{ url('/outlet') }}" class="{{ request()->is('outlet*') ? 'active' : '' }}"
                             aria-expanded="false">
                             <i class="fas fa-store"></i>
                             <span class="nav-text">Outlet</span>
                         </a>
                     </li>
+                    @endcan
                     <li><a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}"
                             aria-expanded="false">
                             <i class="fas fa-cart-plus"></i>
                             <span class="nav-text">Transaksi</span>
                         </a>
                     </li>
+                    @can('admin')                        
                     <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}"
                             aria-expanded="false">
                             <i class="fas fa-cubes"></i>
@@ -969,6 +972,7 @@
                             <span class="nav-text">Management User</span>
                         </a>
                     </li>
+                    @endcan
                     <li><a href="{{ url('/registrasi/pelanggan') }}"
                             class="{{ request()->is('registrasi/pelanggan*') ? 'active' : '' }}" aria-expanded="false">
                             <i class="fas fa-users"></i>
@@ -982,27 +986,6 @@
                         </a>
                     </li>
                 </ul>
-                {{-- <div class="side-bar-profile">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="side-bar-profile-img">
-                            <img src="assets/images/user.jpg" alt="">
-                        </div>
-                        <div class="profile-info1">
-                            <h4 class="fs-18 font-w500">Soeng Souy</h4>
-                            <span>example@mail.com</span>
-                        </div>
-                        <div class="profile-button">
-                            <i class="fas fa-caret-down scale5 text-light"></i>
-                        </div>
-                    </div>
-                    <div class="progress default-progress">
-                        <div class="progress-bar bg-gradientf progress-animated" style="width: 100%; height:10px;"
-                            role="progressbar">
-                            <span class="sr-only">45% Complete</span>
-                        </div>
-                    </div>
-                </div> --}}
-
                 <div class="copyright">
                     <p><strong>Fillow Saas Admin</strong> © 2023 All Rights Reserved</p>
                     <p class="fs-12">Made with <span class="heart"></span> by Fauzan Subagja</p>

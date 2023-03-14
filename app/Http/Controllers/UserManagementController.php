@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('role:admin,owner');
+        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy']]);
+    }
     public function index()
     {
         return view('admin.pengguna.index', [

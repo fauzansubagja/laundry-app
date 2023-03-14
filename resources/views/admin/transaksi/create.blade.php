@@ -73,7 +73,7 @@
                 <label class="form-label">Status Bayar</label>
                 <select class="default-select  form-control wide" name="dibayar" id="dibayar">
                     <option value="dibayar">Dibayar</option>
-                    <option value="belum_dibayar">Belum Dibayar</option>
+                    <option value="belum dibayar">Belum Dibayar</option>
                 </select>
             </div>
         </div>
@@ -84,11 +84,6 @@
         </div>
     </div>
 </form>
-{{-- <script>
-    $('form').submit(function() {
-        $('#kode_invoice').val('INV-' + Date.now());
-    });
-</script> --}}
 <script>
     function addPercent() {
         var diskonInput = document.getElementById("diskon");
