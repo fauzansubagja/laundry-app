@@ -126,7 +126,7 @@
                                                         <span class="fs-18 font-w500">
                                                             <svg class="me-3" width="20" height="20" viewbox="0 0 20 20"
                                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <rect width="20" height="20" rx="6" fill="#886CC0">
+                                                                <rect width="20" height="20" rx="6" fill="#26E023">
                                                                 </rect>
                                                             </svg>
                                                             Pesanan Selesai
@@ -138,7 +138,7 @@
                                                         <span class="fs-18 font-w500">
                                                             <svg class="me-3" width="20" height="20" viewbox="0 0 20 20"
                                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <rect width="20" height="20" rx="6" fill="#26E023">
+                                                                <rect width="20" height="20" rx="6" fill="#886CC0">
                                                                 </rect>
                                                             </svg>
                                                             Pesanan Tersisa
@@ -159,3 +159,171 @@
     </div>
 </div>
 @endsection
+<script>
+    var revenueMap = function () {
+    var options = {
+        series: [
+            {
+                name: "Net Profit",
+                data: [
+                    <?php
+                    $today = Carbon\Carbon::today();
+                    $days = array();
+                    for ($i = 0; $i < 7; $i++) {
+                        $day = $today->subDays($i);
+                        $total_biaya = App\Models\Transaksi::where('status', 'Selesai')->whereDate('created_at', $day->format('Y-m-d'))->sum('total_biaya');
+                        $days[] = $total_biaya;
+                    }
+                    $days = array_reverse($days);
+                    echo implode(",", $days);
+                    ?>
+                ],
+            },
+        ],
+        chart: {
+            type: "line",
+            height: 368,
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: "70%",
+                endingShape: "rounded",
+            },
+        },
+        colors: ["#886CC0"],
+        dataLabels: {
+            enabled: false,
+        },
+        markers: {
+            shape: "circle",
+        },
+
+        legend: {
+            show: false,
+        },
+        stroke: {
+            show: true,
+            width: 10,
+            curve: "smooth",
+            colors: ["var(--primary)"],
+        },
+
+        grid: {
+            borderColor: "#eee",
+            show: true,
+            xaxis: {
+                lines: {
+                    show: true,
+                },
+            },
+            yaxis: {
+                lines: {
+                    show: false,
+                },
+            },
+        },
+        xaxis: {
+            categories: ["Minggu","Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            labels: {
+                style: {
+                    colors: "#7E7F80",
+                    fontSize: "13px",
+                    fontFamily: "Poppins",
+                    fontWeight: 100,
+                    cssClass: "apexcharts-xaxis-label",
+                },
+            },
+            crosshairs: {
+                show: false,
+            },
+        },
+        yaxis: {
+            show: true,
+            labels: {
+                offsetX: -15,
+                style: {
+                    colors: "#7E7F80",
+                    fontSize: "14px",
+                    fontFamily: "Poppins",
+                    fontWeight: 100,
+                },
+                formatter: function (y) {
+                    return y.toFixed(0) + "k";
+                },
+            },
+        },
+        fill: {
+            opacity: 1,
+            colors: "#FAC7B6",
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return "$ " + val + " hundred";
+                },
+            },
+        },
+    };
+
+    var chartBar1 = new ApexCharts(
+        document.querySelector("#revenueMap"),
+        options
+    );
+    chartBar1.render();
+};
+</script>
+
+<script>
+    var emailchart = function () {
+            var options = {
+                labels: ['Pesanan Selesai', 'Pesanan Tersisa'],
+                series: [
+                    {{ $selesai }}, // mengambil data dari variabel $selesai
+                    {{ $transaksi_baru }} // mengambil data dari variabel $transaksi_baru
+                ],
+                chart: {
+                    type: "donut",
+                    height: 300,
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                stroke: {
+                    width: 0,
+                },
+                colors: ["#26E023", "var(--primary)"],
+                legend: {
+                    position: "bottom",
+                    show: false,
+                },
+                responsive: [
+                    {
+                        breakpoint: 1800,
+                        options: {
+                            chart: {
+                                height: 200,
+                            },
+                        },
+                    },
+                    {
+                        breakpoint: 1800,
+                        options: {
+                            chart: {
+                                height: 200,
+                            },
+                        },
+                    },
+                ],
+            };
+
+            var chart = new ApexCharts(
+                document.querySelector("#emailchart"),
+                options
+            );
+            chart.render();
+        };
+</script>

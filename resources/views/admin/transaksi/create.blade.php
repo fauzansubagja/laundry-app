@@ -86,6 +86,11 @@
 </form>
 <script>
     function addPercent() {
+        if (diskon > 100) {
+    alert('Diskon tidak boleh melebihi 100%');
+    $(this).val('');
+    return;
+    }
         var diskonInput = document.getElementById("diskon");
         var diskonValue = parseInt(diskonInput.value);
         if (!isNaN(diskonValue)) {
