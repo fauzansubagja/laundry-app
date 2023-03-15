@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
@@ -31,6 +32,10 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
 
+// route pelanggan
+Route::get('/pelanggan', [MemberController::class, 'index']);
+// end route pelanggan
+
 // route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::get('/transaksi/read', [TransaksiController::class, 'read']);
@@ -43,7 +48,7 @@ Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPr
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
 // end route transaksi
 
-// route pelanggan
+// route registrasi pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
 Route::get('/registrasi/pelanggan/read', [PelangganController::class, 'read']);
 Route::get('/registrasi/pelanggan/create', [PelangganController::class, 'create']);
@@ -51,7 +56,7 @@ Route::post('/registrasi/pelanggan/store', [PelangganController::class, 'store']
 Route::get('/registrasi/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
 Route::put('/registrasi/pelanggan/update/{id}', [PelangganController::class, 'update']);
 Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
-// end route pelanggan
+// end route registrasi pelanggan
 
 Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     // route paket

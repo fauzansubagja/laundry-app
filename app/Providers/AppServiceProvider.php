@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Models\Transaksi;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +39,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('owner', function ($user) {
             return $user->role === 'Owner';
         });
+
+        view()->composer('*', function($view) {
+            $users = User::take(5)->get();
+            $view->with('users', $users);
+       });       
     }
 }
