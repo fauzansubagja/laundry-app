@@ -27,8 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $transaksi_baru = Transaksi::where('status', 'Baru')->count();
-
         return view('dashboard', [
             'user' => User::all(),
             'member' => Member::all(),
@@ -37,7 +35,8 @@ class HomeController extends Controller
             'outlets' => Outlet::count(),
             'transaksi' => Transaksi::all(),
             'data' => Transaksi::count(),
-            'transaksi_baru' => $transaksi_baru,
+            'selesai' => Transaksi::where('status', 'Selesai')->count(),
+            'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
         ]);
     }
 }
