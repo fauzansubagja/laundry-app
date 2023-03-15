@@ -9,6 +9,7 @@ use App\Models\Laporan;
 use App\Models\Transaksi;
 use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
@@ -26,5 +27,24 @@ class LaporanController extends Controller
     public function export()
     {
         return Excel::download(new LaporanExport, 'laporan.xlsx');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $status = $request->input('status');
+
+        $transaksi->status = $status;
+        // dd($request->all());
+        $transaksi->save();
+    
+        return redirect('/pelanggan');
+    }
+
+    public function deleteView(Request $request, $id)
+    {
+        $data = Transaksi::findOrFail($id);
+        $data->deleted_at = now();
+        $data->save();
     }
 }

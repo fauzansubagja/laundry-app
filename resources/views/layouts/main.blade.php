@@ -20,16 +20,16 @@
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css')}}">
+    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css') }}">
 
     <!-- Datatable -->
-    <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{{asset('vendor/select2/css/select2.min.css')}}">
-    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
-    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+    <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <!-- Style css -->
 
 </head>
@@ -107,10 +107,12 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"></rect>
+                                            <rect fill="#000000" x="4" y="11" width="16"
+                                                height="2" rx="1"></rect>
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
-                                                x="4" y="11" width="16" height="2" rx="1"></rect>
+                                                x="4" y="11" width="16" height="2"
+                                                rx="1"></rect>
                                         </g>
                                     </svg></a>
                                 <div>
@@ -121,10 +123,14 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
-                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                            <rect x="0" y="0" width="24" height="24">
+                                            </rect>
+                                            <circle fill="#000000" cx="5" cy="12" r="2">
+                                            </circle>
+                                            <circle fill="#000000" cx="12" cy="12" r="2">
+                                            </circle>
+                                            <circle fill="#000000" cx="19" cy="12" r="2">
+                                            </circle>
                                         </g>
                                     </svg></a>
                             </div>
@@ -134,7 +140,8 @@
                                     <li class="active dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -146,7 +153,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -158,7 +166,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -170,7 +179,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -183,7 +193,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -195,7 +206,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -207,7 +219,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -220,7 +233,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -232,7 +246,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -245,7 +260,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -257,7 +273,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -269,7 +286,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -281,7 +299,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -294,7 +313,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -306,7 +326,8 @@
                                     <li class="dlab-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="">
+                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img"
+                                                    alt="">
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -327,7 +348,8 @@
                                             <polygon points="0 0 24 0 24 24 0 24"></polygon>
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
-                                                x="14" y="7" width="2" height="10" rx="1"></rect>
+                                                x="14" y="7" width="2" height="10"
+                                                rx="1"></rect>
                                             <path
                                                 d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
                                                 fill="#000000" fill-rule="nonzero"
@@ -341,15 +363,19 @@
                                     <p class="mb-0 text-success">Online</p>
                                 </div>
                                 <div class="dropdown">
-                                    <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false"><svg
-                                            xmlns="http://www.w3.org/2000/svg"
+                                    <a href="javascript:void(0);" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                             viewbox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                <circle fill="#000000" cx="5" cy="12" r="2"></circle>
-                                                <circle fill="#000000" cx="12" cy="12" r="2"></circle>
-                                                <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                <rect x="0" y="0" width="24" height="24">
+                                                </rect>
+                                                <circle fill="#000000" cx="5" cy="12" r="2">
+                                                </circle>
+                                                <circle fill="#000000" cx="12" cy="12" r="2">
+                                                </circle>
+                                                <circle fill="#000000" cx="19" cy="12" r="2">
+                                                </circle>
                                             </g>
                                         </svg></a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -359,14 +385,16 @@
                                             btn-close friends</li>
                                         <li class="dropdown-item"><i class="fa fa-plus text-primary me-2"></i> Add to
                                             group</li>
-                                        <li class="dropdown-item"><i class="fa fa-ban text-primary me-2"></i> Block</li>
+                                        <li class="dropdown-item"><i class="fa fa-ban text-primary me-2"></i> Block
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body msg_card_body dlab-scroll" id="DLAB_W_Contacts_Body3">
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         Hi, how are you samim?
@@ -379,12 +407,14 @@
                                         <span class="msg_time_send">8:55 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         I am good too, thank you for your chat template
@@ -397,12 +427,14 @@
                                         <span class="msg_time_send">9:05 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         I am looking for your next templates
@@ -415,12 +447,14 @@
                                         <span class="msg_time_send">9:10 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         Bye, see you
@@ -429,7 +463,8 @@
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         Hi, how are you samim?
@@ -442,12 +477,14 @@
                                         <span class="msg_time_send">8:55 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         I am good too, thank you for your chat template
@@ -460,12 +497,14 @@
                                         <span class="msg_time_send">9:05 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         I am looking for your next templates
@@ -478,12 +517,14 @@
                                         <span class="msg_time_send">9:10 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="">
+                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg"
+                                            alt="">
                                     </div>
                                     <div class="msg_cotainer">
                                         Bye, see you
@@ -509,10 +550,14 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
-                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
-                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                            <rect x="0" y="0" width="24" height="24">
+                                            </rect>
+                                            <circle fill="#000000" cx="5" cy="12" r="2">
+                                            </circle>
+                                            <circle fill="#000000" cx="12" cy="12" r="2">
+                                            </circle>
+                                            <circle fill="#000000" cx="19" cy="12" r="2">
+                                            </circle>
                                         </g>
                                     </svg></a>
                                 <div>
@@ -523,7 +568,8 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                            <rect x="0" y="0" width="24" height="24">
+                                            </rect>
                                             <path
                                                 d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
                                                 fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
@@ -586,10 +632,12 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1"></rect>
+                                            <rect fill="#000000" x="4" y="11" width="16"
+                                                height="2" rx="1"></rect>
                                             <rect fill="#000000" opacity="0.3"
                                                 transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) "
-                                                x="4" y="11" width="16" height="2" rx="1"></rect>
+                                                x="4" y="11" width="16" height="2"
+                                                rx="1"></rect>
                                         </g>
                                     </svg></a>
                                 <div>
@@ -600,7 +648,8 @@
                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px"
                                         viewbox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                            <rect x="0" y="0" width="24" height="24">
+                                            </rect>
                                             <path
                                                 d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z"
                                                 fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
@@ -704,7 +753,8 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                                <a class="nav-link" href="javascript:void(0);" role="button"
+                                    data-bs-toggle="dropdown">
                                     <svg width="28" height="28" viewbox="0 0 28 28" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -714,51 +764,61 @@
                                             d="M9.9819 24.5C10.3863 25.2088 10.971 25.7981 11.6766 26.2079C12.3823 26.6178 13.1838 26.8337 13.9999 26.8337C14.816 26.8337 15.6175 26.6178 16.3232 26.2079C17.0288 25.7981 17.6135 25.2088 18.0179 24.5H9.9819Z"
                                             fill="#717579"></path>
                                     </svg>
-                                    <span class="badge light text-white bg-warning rounded-circle">12</span>
+                                    <span class="badge light text-white bg-warning rounded-circle">{{ $count }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <div id="DZ_W_Notification1" class="widget-media dlab-scroll p-3"
                                         style="height:380px;">
                                         <ul class="timeline">
-                                            @foreach ($users as $item)
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media me-2">
-                                                        <img alt="image" width="50" src="assets/images/avatar/1.jpg">
+                                            @foreach ($data->whereNull('deleted_at') as $item)
+                                                <li>
+                                                    <div class="timeline-panel">
+                                                        <div class="media me-2">
+                                                            <img alt="image" width="50"
+                                                                src="assets/images/avatar/1.jpg">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h6 class="mb-1">{{ $item->member->nama }} Order
+                                                                @if ($item->status == 'Baru')
+                                                                    <span
+                                                                        class="badge badge-secondary">{{ $item->status }}<span
+                                                                            class="ms-1 fa fa-archive"></span></span>
+                                                                @elseif ($item->status == 'Proses')
+                                                                    <span
+                                                                        class="badge badge-primary">{{ $item->status }}<span
+                                                                            class="ms-1 fa fa-redo"></span></span>
+                                                                @elseif ($item->status == 'Selesai')
+                                                                    <span
+                                                                        class="badge badge-success">{{ $item->status }}<span
+                                                                            class="ms-1 fa fa-check"></span></span>
+                                                                @elseif ($item->status == 'Diambil')
+                                                                    <span
+                                                                        class="badge badge-warning">{{ $item->status }}<span
+                                                                            class="ms-1 fa fa-paper-plane"></span></span>
+                                                                @endif
+                                                            </h6>
+                                                            <small class="d-block">{{ $item->created_at->diffForHumans() }} By <strong>{{ $item->user->name }}</strong></small>
+                                                        </div>
+                                                        <div class="delete-button">
+                                                            <button type="button"
+                                                                style="border:none; background:none;"
+                                                                onclick="deleteView(this, {{ $item->id }})"><span
+                                                                    class="ms-1 fa fa-times"></span></button>
+                                                        </div>
                                                     </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">{{ $item->name }}</h6>
-                                                        <small class="d-block">{{ $item->created_at }}</small>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <a class="all-notification" href="{{url('/pelanggan')}}">See all notifications <i
-                                            class="ti-arrow-end"></i></a>
+                                    <a class="all-notification" href="{{ url('/pesanan') }}">See all notifications
+                                        <i class="ti-arrow-end"></i></a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link bell-link " href="javascript:void(0);">
-                                    <svg width="28" height="28" viewbox="0 0 28 28" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M27.076 6.24662C26.962 5.48439 26.5787 4.78822 25.9955 4.28434C25.4123 3.78045 24.6679 3.50219 23.8971 3.5H4.10289C3.33217 3.50219 2.58775 3.78045 2.00456 4.28434C1.42137 4.78822 1.03803 5.48439 0.924011 6.24662L14 14.7079L27.076 6.24662Z"
-                                            fill="#717579"></path>
-                                        <path
-                                            d="M14.4751 16.485C14.3336 16.5765 14.1686 16.6252 14 16.6252C13.8314 16.6252 13.6664 16.5765 13.5249 16.485L0.875 8.30025V21.2721C0.875926 22.1279 1.2163 22.9484 1.82145 23.5536C2.42659 24.1587 3.24707 24.4991 4.10288 24.5H23.8971C24.7529 24.4991 25.5734 24.1587 26.1786 23.5536C26.7837 22.9484 27.1241 22.1279 27.125 21.2721V8.29938L14.4751 16.485Z"
-                                            fill="#717579"></path>
-                                    </svg>
-                                    <span class="badge light text-white bg-danger rounded-circle">76</span>
-                                </a>
-                            </li>
-
 
                             <li class="nav-item dropdown notification_dropdown">
                                 <a class="nav-link " href="javascript:void(0);" data-bs-toggle="dropdown">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none"
-                                        class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                        fill="none" class="bi bi-cart-fill" viewBox="0 0 16 16">
                                         <path
                                             d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                                             fill="#717579" />
@@ -776,8 +836,9 @@
                                                 <div class="timeline-badge primary"></div>
                                                 <a class="timeline-panel text-muted" href="javascript:void(0);">
                                                     <span>10 minutes ago</span>
-                                                    <h6 class="mb-0">Youtube, a video-sharing website, goes live <strong
-                                                            class="text-primary">$500</strong>.</h6>
+                                                    <h6 class="mb-0">Youtube, a video-sharing website, goes live
+                                                        <strong class="text-primary">$500</strong>.
+                                                    </h6>
                                                 </a>
                                             </li>
                                             <li>
@@ -813,7 +874,8 @@
                                                 </div>
                                                 <a class="timeline-panel text-muted" href="javascript:void(0);">
                                                     <span>20 minutes ago</span>
-                                                    <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
+                                                    <h6 class="mb-0">Mashable, a news website and blog, goes live.
+                                                    </h6>
                                                 </a>
                                             </li>
                                             <li>
@@ -821,7 +883,8 @@
                                                 </div>
                                                 <a class="timeline-panel text-muted" href="javascript:void(0);">
                                                     <span>20 minutes ago</span>
-                                                    <h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
+                                                    <h6 class="mb-0">Mashable, a news website and blog, goes live.
+                                                    </h6>
                                                 </a>
                                             </li>
                                         </ul>
@@ -830,14 +893,18 @@
                             </li>
 
                             <li class="nav-item dropdown  header-profile">
-                                <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                                    <img src="{{ Storage::url('public/images/default.jpg') }}" width="56" alt="">
+                                <a class="nav-link" href="javascript:void(0);" role="button"
+                                    data-bs-toggle="dropdown">
+                                    <img src="{{ Storage::url('public/images/default.jpg') }}" width="56"
+                                        alt="">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="{{ url('/profile/' . Auth::user()->id) }}" class="dropdown-item ai-icon">
+                                    <a href="{{ url('/profile/' . Auth::user()->id) }}"
+                                        class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
-                                            width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>
@@ -845,8 +912,9 @@
                                     </a>
                                     <a href="email-inbox.html" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success"
-                                            width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <path
                                                 d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                             </path>
@@ -855,16 +923,20 @@
                                         <span class="ms-2">Inbox </span>
                                     </a>
                                     <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();" class="dropdown-item ai-icon">
+                                        onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();"
+                                        class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
-                                            width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
                                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                             <polyline points="16 17 21 12 16 7"></polyline>
-                                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            <line x1="21" y1="12" x2="9" y2="12">
+                                            </line>
                                         </svg>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
                                             @csrf
                                         </form>
                                         <span class="ms-2">Logout </span>
@@ -893,12 +965,12 @@
                         </a>
                     </li>
                     @can('admin')
-                    <li><a href="{{ url('/outlet') }}" class="{{ request()->is('outlet*') ? 'active' : '' }}"
-                            aria-expanded="false">
-                            <i class="fas fa-store"></i>
-                            <span class="nav-text">Outlet</span>
-                        </a>
-                    </li>
+                        <li><a href="{{ url('/outlet') }}" class="{{ request()->is('outlet*') ? 'active' : '' }}"
+                                aria-expanded="false">
+                                <i class="fas fa-store"></i>
+                                <span class="nav-text">Outlet</span>
+                            </a>
+                        </li>
                     @endcan
                     <li><a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}"
                             aria-expanded="false">
@@ -906,22 +978,23 @@
                             <span class="nav-text">Transaksi</span>
                         </a>
                     </li>
-                    @can('admin')                        
-                    <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}"
-                            aria-expanded="false">
-                            <i class="fas fa-cubes"></i>
-                            <span class="nav-text">Paket Laundry</span>
-                        </a>
-                    </li>
-                    <li><a href="{{ url('/management/user') }}"
-                            class="{{ request()->is('management/user*') ? 'active' : '' }}" aria-expanded="false">
-                            <i class="fas fa-user-cog"></i>
-                            <span class="nav-text">Management User</span>
-                        </a>
-                    </li>
+                    @can('admin')
+                        <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}"
+                                aria-expanded="false">
+                                <i class="fas fa-cubes"></i>
+                                <span class="nav-text">Paket Laundry</span>
+                            </a>
+                        </li>
+                        <li><a href="{{ url('/management/user') }}"
+                                class="{{ request()->is('management/user*') ? 'active' : '' }}" aria-expanded="false">
+                                <i class="fas fa-user-cog"></i>
+                                <span class="nav-text">Management User</span>
+                            </a>
+                        </li>
                     @endcan
                     <li><a href="{{ url('/registrasi/pelanggan') }}"
-                            class="{{ request()->is('registrasi/pelanggan*') ? 'active' : '' }}" aria-expanded="false">
+                            class="{{ request()->is('registrasi/pelanggan*') ? 'active' : '' }}"
+                            aria-expanded="false">
                             <i class="fas fa-users"></i>
                             <span class="nav-text">Registrasi Pelanggan</span>
                         </a>
@@ -959,7 +1032,8 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2021</p>
+                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2021
+                </p>
             </div>
         </div>
         <!--**********************************
@@ -985,76 +1059,44 @@
     ***********************************-->
     <!-- Required vendors -->
     @stack('ajax_crud')
-    <script src="{{ asset('assets/vendor/global/global.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/chart.js/Chart.bundle.min.js')}}"></script>
-    <script src="{{ asset('assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 
     <!-- Apex Chart -->
-    <script src="{{ asset('assets/vendor/apexchart/apexchart.js')}}"></script>
+    <script src="{{ asset('assets/vendor/apexchart/apexchart.js') }}"></script>
 
     <!-- Datatable -->
-    <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins-init/datatables.init.js')}}"></script>
+    <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins-init/datatables.init.js') }}"></script>
 
     <!-- Chart piety plugin files -->
-    <script src="{{ asset('assets/vendor/peity/jquery.peity.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/peity/jquery.peity.min.js') }}"></script>
     <!-- Dashboard 1 -->
-    <script src="{{ asset('assets/js/dashboard/dashboard-1.js')}}"></script>
+    <script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
 
-    <script src="{{ asset('assets/vendor/owl-carousel/owl.carousel.js')}}"></script>
+    <script src="{{ asset('assets/vendor/owl-carousel/owl.carousel.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom.min.js')}}"></script>
-    <script src="{{ asset('assets/js/dlabnav-init.js')}}"></script>
-    <script src="{{ asset('assets/js/demo.js')}}"></script>
-    <script src="{{ asset('assets/js/styleSwitcher.js')}}"></script>
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dlabnav-init.js') }}"></script>
+    <script src="{{ asset('assets/js/demo.js') }}"></script>
+    <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
+
     <script>
-        function cardsCenter()
-		{
-
-			/*  testimonial one function by = owl.carousel.js */
-
-
-
-			jQuery('.card-slider').owlCarousel({
-				loop:true,
-				margin:0,
-				nav:true,
-				//center:true,
-				slideSpeed: 3000,
-				paginationSpeed: 3000,
-				dots: true,
-				navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
-				responsive:{
-					0:{
-						items:1
-					},
-					576:{
-						items:1
-					},
-					800:{
-						items:1
-					},
-					991:{
-						items:1
-					},
-					1200:{
-						items:1
-					},
-					1600:{
-						items:1
-					}
-				}
-			})
-		}
-
-		jQuery(window).on('load',function(){
-			setTimeout(function(){
-				cardsCenter();
-			}, 1000);
-		});
-
+        function deleteView(button, id) {
+            $.ajax({
+                type: "post",
+                url: "{{ url('/delete-view') }}/" + id,
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'delete',
+                },
+                success: function(data) {
+                    $(button).closest('li').remove();
+                }
+            });
+        }
     </script>
-
 </body>
 
 </html>

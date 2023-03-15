@@ -90,7 +90,7 @@ class TransaksiController extends Controller
             // simpan nilai diskon numerik ke dalam variabel 'diskon'
             $data['diskon'] = (int) $diskon_numerik;
         }
-
+        
         // simpan data ke dalam database
         Transaksi::create($data);
     }

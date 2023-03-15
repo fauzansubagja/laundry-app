@@ -33,7 +33,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 // Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
 
 // route pelanggan
-Route::get('/pelanggan', [MemberController::class, 'index']);
 // end route pelanggan
 
 // route transaksi
@@ -46,6 +45,7 @@ Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
 Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
+Route::get('/pesanan', [MemberController::class, 'index']);
 // end route transaksi
 
 // route registrasi pelanggan
@@ -91,5 +91,7 @@ Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     // end route outlet
 });
 
+Route::put('/pelanggan/{id}/status', [LaporanController::class, 'updateStatus']);
+Route::delete('/delete-view/{id}', [App\Http\Controllers\LaporanController::class, 'deleteView']);
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
 Route::get('/laporan/export', [App\Http\Controllers\LaporanController::class, 'export'])->name('laporan.export');

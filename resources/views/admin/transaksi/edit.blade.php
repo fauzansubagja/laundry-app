@@ -72,7 +72,7 @@
                     <option value="baru">Baru</option>
                     <option value="proses">Proses</option>
                     <option value="selesai">Selesai</option>
-                    <option value="diambil">Sudah di Ambil</option>
+                    <option value="diambil">Diambil</option>
                 </select>
             </div>
             <div class="mb-3 col-md-12">

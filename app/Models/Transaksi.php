@@ -7,12 +7,14 @@ use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Outlet;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaksi extends Model
 {
     use HasFactory;
-
+    use SoftDeletes; // tambahkan trait SoftDeletes pada model
+    
     protected $table = 'transaksi';
     protected $fillable = [
         'outlet_id',
@@ -26,6 +28,9 @@ class Transaksi extends Model
         'status',
         'dibayar',
     ];
+
+    protected $dates = ['deleted_at'];
+    
     public function outlet()
     {
         return $this->belongsTo(Outlet::class);
@@ -42,4 +47,10 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Paket::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereNull('deleted_at');
+    }
+    
 }
