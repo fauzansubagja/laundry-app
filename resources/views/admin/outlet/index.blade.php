@@ -34,7 +34,8 @@
                                     </thead>
                                     <tbody>
                                         @php $no = 1; @endphp
-                                        @foreach ($data as $item)
+                                        @foreach ($outlet as $item)
+                                            {{-- {{dd($item)}} --}}
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->nama }}</td>
@@ -50,9 +51,11 @@
                                                                 class="fas fa-pencil-alt"></i>
                                                         </button>
                                                         <button class="btn btn-danger shadow btn-xs sharp"
-                                                            item-id="{{ $item->id }}" id="btn-delete"
-                                                            onclick="destroy({{ $item->id }})"><i
-                                                                class="fa fa-trash"></i></button>
+                                                            item-id="{{ $item->id }}"
+                                                            id="btn-delete-{{ $item->id }}"
+                                                            onclick="destroy({{ $item->id }})">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -90,110 +93,133 @@
 @endsection
 
 @push('ajax_crud')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            read()
-            
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+</script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        read()
+
+    });
+
+
+    // Read Database
+    function read() {
+        $.get("{{ url('/outlet/read') }}", {}, function(data, status) {
+            $("#read").html(data);
         });
-        
+    }
 
-        // Read Database
-        function read() {
-            $.get("{{ url('/outlet/read') }}", {}, function(data, status) {
-                $("#read").html(data);
-            });
-        }
+    // Untuk modal halaman create
+    function create() {
+        $.get("{{ url('/outlet/create') }}", {}, function(data, status) {
+            $("#exampleModalLabel").html('Tambah Outlet')
+            $("#page").html(data);
+            $("#exampleModal").modal('show');
+        });
+    }
 
-        // Untuk modal halaman create
-        function create() {
-            $.get("{{ url('/outlet/create') }}", {}, function(data, status) {
-                $("#exampleModalLabel").html('Tambah Outlet')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
+    // untuk proses create data
+    function store() {
+        var nama = $("#nama").val();
+        var alamat = $("#alamat").val();
+        var tlp = $("#tlp").val();
+        $.ajax({
+            type: "post",
+            url: "{{ url('/outlet/store') }}",
+            data: {
+                'nama': nama,
+                'alamat': alamat,
+                'tlp': tlp,
+                '_token': '{{ csrf_token() }}',
+            },
+            success: function(data) {
+                $(".btn-close").click();
+                read();
+                location.reload();
 
-        // untuk proses create data
-        function store() {
-            var nama = $("#nama").val();
-            var alamat = $("#alamat").val();
-            var tlp = $("#tlp").val();
-            $.ajax({
-                type: "post",
-                url: "{{ url('/outlet/store') }}",
-                data: {
-                    'nama': nama,
-                    'alamat': alamat,
-                    'tlp': tlp,
-                    '_token': '{{ csrf_token() }}',
-                },
-                success: function(data) {
-                    $(".btn-close").click();
-                    read();
-                    location.reload();
+            }
+        });
+    }
 
-                }
-            });
-        }
+    // Untuk modal halaman edit show
+    function edit(id) {
+        $.get("{{ url('/outlet/edit') }}/" + id, {}, function(data, status) {
+            $("#exampleModalLabel").html('Edit Outlet')
+            $("#page").html(data);
+            $("#exampleModal").modal('show');
+        });
+    }
 
-        // Untuk modal halaman edit show
-        function edit(id) {
-            $.get("{{ url('/outlet/edit') }}/" + id, {}, function(data, status) {
-                $("#exampleModalLabel").html('Edit Outlet')
-                $("#page").html(data);
-                $("#exampleModal").modal('show');
-            });
-        }
+    // untuk proses update data
+    function update(id) {
+        var nama = $("#nama").val();
+        var alamat = $("#alamat").val();
+        var tlp = $("#tlp").val();
+        $.ajax({
+            type: "post",
+            url: "{{ url('/outlet/update') }}/" + id,
+            data: {
+                'nama': nama,
+                'alamat': alamat,
+                'tlp': tlp,
+                '_token': '{{ csrf_token() }}',
+                '_method': 'PUT',
+            },
+            success: function(data) {
+                $(".btn-close").click();
+                read();
+                location.reload();
 
-        // untuk proses update data
-        function update(id) {
-            var nama = $("#nama").val();
-            var alamat = $("#alamat").val();
-            var tlp = $("#tlp").val();
-            $.ajax({
-                type: "post",
-                url: "{{ url('/outlet/update') }}/" + id,
-                data: {
-                    'nama': nama,
-                    'alamat': alamat,
-                    'tlp': tlp,
-                    '_token': '{{ csrf_token() }}',
-                    '_method': 'PUT',
-                },
-                success: function(data) {
-                    $(".btn-close").click();
-                    read();
-                    location.reload();
+            }
+        });
+    }
 
-                }
-            });
-        }
-
-        // untuk delete atau destroy data
-        function destroy(id) {
-            $.ajax({
-                type: "post",
-                url: "{{ url('/outlet/destroy') }}/" + id,
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    '_method': 'delete',
-                },
-                success: function(data) {
-                    $(".btn-close").click();
-                    read();
-                    location.reload();
-
-                }
-            });
-        }
-    </script>
+    // untuk delete atau destroy data
+    function destroy(id) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda tidak akan bisa mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus saja!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ url('/outlet/destroy') }}/" + id,
+                    data: {
+                        '_token': '{{ csrf_token() }}',
+                        '_method': 'delete',
+                    },
+                    success: function(data) {
+                        $(".btn-close").click();
+                        read();
+                        location.reload();
+                        Swal.fire(
+                            'Deleted!',
+                            'Item has been deleted.',
+                            'success'
+                        )
+                    },
+                    error: function(data) {
+                        Swal.fire(
+                            'Oops...',
+                            'Something went wrong!',
+                            'error'
+                        )
+                    }
+                });
+            }
+        });
+    }
+</script>
 @endpush

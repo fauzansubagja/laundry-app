@@ -15,9 +15,8 @@ class OutletController extends Controller
     
     public function index()
     {
-        $data = Outlet::all();
-        return view('admin.outlet.index')->with([
-            'data' => $data
+        return view('admin.outlet.index', [
+            'outlet' => Outlet::all(),
         ]);
     }
 

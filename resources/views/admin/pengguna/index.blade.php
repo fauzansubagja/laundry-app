@@ -188,17 +188,41 @@
 
         // untuk delete atau destroy data
         function destroy(id) {
-            $.ajax({
-                type: "post",
-                url: "{{ url('/management/user/destroy') }}/" + id,
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    '_method': 'delete',
-                },
-                success: function(data) {
-                    $(".btn-close").click();
-                    read()
-                    location.reload();
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus saja!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/management/user/destroy') }}/" + id,
+                        data: {
+                            '_token': '{{ csrf_token() }}',
+                            '_method': 'delete',
+                        },
+                        success: function(data) {
+                            $(".btn-close").click();
+                            read();
+                            location.reload();
+                            Swal.fire(
+                                'Deleted!',
+                                'Item has been deleted.',
+                                'success'
+                            )
+                        },
+                        error: function(data) {
+                            Swal.fire(
+                                'Oops...',
+                                'Something went wrong!',
+                                'error'
+                            )
+                        }
+                    });
                 }
             });
         }
