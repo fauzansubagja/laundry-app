@@ -35,7 +35,8 @@
                                     </thead>
                                     <tbody>
                                         @php $no = 1; @endphp
-                                        @foreach ($data as $item)
+                                        @foreach ($member as $item)
+                                        {{-- {{dd($item)}} --}}
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->nama }}</td>

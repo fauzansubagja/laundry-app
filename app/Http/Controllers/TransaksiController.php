@@ -70,11 +70,12 @@ class TransaksiController extends Controller
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
         $data['paket_id'] = $request->paket_id;
-        $tgl_transaksi = date('Y-m-d H:i:s', strtotime($request->input('tgl_transaksi')));
+        $tgl_transaksi = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
         $data['tgl_transaksi'] = $tgl_transaksi;
 
+
         // generate kode_invoice dengan format "INV-tgl skrng"
-        $kode_invoice = "INV-" . date('YmdHis');
+        $kode_invoice = "INV-" . date('Ymd');
         $data['kode_invoice'] = $kode_invoice;
         
         $data['diskon'] = null;
@@ -99,6 +100,19 @@ class TransaksiController extends Controller
     {
         // dd(Transaksi::where('id',$id)->get());
         return view('admin.transaksi.edit', [
+            'transaksi' => Transaksi::where('id', $id)->first(),
+            'transaksis' => Transaksi::find($id),
+            'outlet' => Outlet::all(),
+            'user' => User::all(),
+            'member' => Member::all(),
+            'paket' => Paket::all(),
+        ]);
+    }
+
+    public function detail($id)
+    {
+        // dd(Transaksi::where('id',$id)->get());
+        return view('admin.transaksi.detail', [
             'transaksi' => Transaksi::where('id', $id)->first(),
             'transaksis' => Transaksi::find($id),
             'outlet' => Outlet::all(),

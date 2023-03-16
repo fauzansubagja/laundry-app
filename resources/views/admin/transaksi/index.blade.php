@@ -64,14 +64,19 @@
                                         <td>{{ $item->dibayar }}</td>
                                         <td>
                                             <div class="d-flex">
+                                                <button type="button" id="btn-modal-detail" item-id="{{ $item->id }}"
+                                                    class="btn btn-info shadow btn-xs sharp me-1"
+                                                    item-bs-toggle="modal" item-bs-target="#modal-detail"
+                                                    onclick="detail({{ $item->id }})" title="Lihat"><i class="fas fa-eye"></i>
+                                                </button>
                                                 <button type="button" id="btn-modal-edit" item-id="{{ $item->id }}"
                                                     class="btn btn-primary shadow btn-xs sharp me-1"
                                                     item-bs-toggle="modal" item-bs-target="#modal-edit"
-                                                    onclick="edit({{ $item->id }})"><i class="fas fa-pencil-alt"></i>
+                                                    onclick="edit({{ $item->id }})" title="Edit"><i class="fas fa-pencil-alt"></i>
                                                 </button>
                                                 <button class="btn btn-danger shadow btn-xs sharp"
                                                     item-id="{{ $item->id }}" id="btn-delete"
-                                                    onclick="destroy({{ $item->id }})"><i
+                                                    onclick="destroy({{ $item->id }})" title="Hapus"><i
                                                         class="fa fa-trash"></i></button>
                                             </div>
                                         </td>
@@ -101,6 +106,23 @@
                                 <div id="page"></div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="basicModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Keterangan Transaksi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+                    <div id="page1"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -202,6 +224,16 @@
                 $("#exampleModalLabel").html('Edit Transaksi')
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
+            });
+        }
+
+        // Untuk modal halaman edit show
+        function detail(id) {
+            $.get("{{ url('/transaksi/detail') }}/" + id, {}, function(data, status) {
+                // console.log(data)
+                $("#exampleModalLabel").html('Detail Transaksi')
+                $("#page1").html(data);
+                $("#basicModal").modal('show');
             });
         }
 

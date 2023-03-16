@@ -12,7 +12,7 @@ class UserManagementController extends Controller
     public function __construct()
     {
         // $this->middleware('role:admin,owner');
-        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy']]);
+        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy','profile']]);
     }
     public function index()
     {

@@ -28,35 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // mengambil data dari senin-minggu
-        // $totalBiayaSenin = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Monday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaSelasa = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Tuesday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaRabu = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Wednesday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaKamis = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Thursday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaJumat = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Friday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaSabtu = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Saturday')
-        //     ->sum('total_biaya');
-
-        // $totalBiayaMinggu = Transaksi::where('status', 'Selesai')
-        //     ->whereDay('created_at', '=', 'Sunday')
-        //     ->sum('total_biaya');
-
         $daysOfWeek = [
             'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
         ];
@@ -66,13 +37,13 @@ class HomeController extends Controller
         $totalBiayaPerDay = [];
 
         foreach ($daysOfWeek as $day) {
-            $totalBiaya = Transaksi::where('status', 'Selesai')
+            $totalBiaya = Transaksi::where('dibayar', 'Dibayar')
                 ->whereDate('created_at', $today->copy()->startOfWeek()->modify($day))
                 ->sum('total_biaya');
 
             $totalBiayaPerDay[] = $totalBiaya;
         }
-
+        // dd($totalBiayaPerDay[0]);
         return view('dashboard', [
             'user' => User::all(),
             'member' => Member::all(),
@@ -81,9 +52,9 @@ class HomeController extends Controller
             'outlets' => Outlet::count(),
             'transaksi' => Transaksi::all(),
             'data' => Transaksi::count(),
-            'selesai' => Transaksi::where('status', 'Selesai')->count(),
+            'selesai' => Transaksi::where('status', ['Selesai','Diambil','Dikirim'])->count(),
             'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
-            'totalBiaya' => $totalBiaya,
+            'totalBiayaPerDay' => $totalBiayaPerDay,
             // 'totalBiayaSenin' => $totalBiayaSenin,
             // 'totalBiayaSelasa' => $totalBiayaSelasa,
             // 'totalBiayaRabu' => $totalBiayaRabu,

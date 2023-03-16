@@ -9,10 +9,9 @@ class PelangganController extends Controller
 {   
     public function index()
     {
-        $data = Member::all();
-        // dd($data);
+        
         return view('admin.pelanggan.index')->with([
-            'data' => $data
+            'member' => Member::all(),
         ]);
     }
     

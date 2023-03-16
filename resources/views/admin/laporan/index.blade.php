@@ -14,7 +14,10 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Data Laporan Transaksi</h4>
-                        <a href="{{ route('laporan.export') }}" class="btn btn-success">Export Excel</a>
+                        {{-- <button type="button" class="btn btn-rounded btn-warning"><span class="btn-icon-start text-warning"><i class="fa fa-download color-warning"></i>
+                        </span>Download</button> --}}
+                        <a href="{{ route('laporan.export') }}" class="btn btn-success"><span class="btn-icon-start text-success"><i class="fa fa-download color-warning"></i>
+                        </span>Export Excel</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

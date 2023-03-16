@@ -41,6 +41,7 @@ Route::get('/transaksi/read', [TransaksiController::class, 'read']);
 Route::get('/transaksi/create', [TransaksiController::class, 'create']);
 Route::post('/transaksi/store', [TransaksiController::class, 'store']);
 Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
+Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
 Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
 Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
