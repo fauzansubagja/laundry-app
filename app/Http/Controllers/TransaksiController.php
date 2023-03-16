@@ -20,14 +20,6 @@ class TransaksiController extends Controller
         ]);
     }
 
-    public function getPaketPrice($id)
-    {
-        $paket = Paket::find($id);
-        $harga = $paket->harga;
-        return response()->json(['harga' => $harga]);
-    }
-
-
     public function read()
     {
         $data = User::all();
@@ -63,16 +55,19 @@ class TransaksiController extends Controller
         return response()->json(['diskon' => $diskon]); // kembalikan nilai diskon dalam bentuk JSON
     }
 
+    public function getPaketPrice($id)
+    {
+        $paket = Paket::find($id);
+        $harga = $paket->harga;
+        return response()->json(['harga' => $harga]);
+    }
 
     public function store(Request $request)
     {
         $data['outlet_id'] = $request->outlet_id;
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
-        $data['paket_id'] = $request->paket_id;
-        $tgl_transaksi = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
-        $data['tgl_transaksi'] = $tgl_transaksi;
-
+        $data['tgl_transaksi'] = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
 
         // generate kode_invoice dengan format "INV-tgl skrng"
         $kode_invoice = "INV-" . date('Ymd');
@@ -83,18 +78,36 @@ class TransaksiController extends Controller
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
 
+        // create an array to store the package IDs
+        $paket_ids = [];
+
+        if ($request->has('paket_id') && !empty($request->paket_id)) {
+            // loop through the selected package IDs and add them to the $paket_ids array
+            foreach ($request->paket_id as $id) {
+                $paket = Paket::find($id);
+                if ($paket) {
+                    $paket_ids[] = $id;
+                }
+            }
+        }
+
+        // save the package IDs to the $data variable
+        $data['paket_id'] = $paket_ids;
+
         if ($request->has('diskon') && $request->diskon != null) {
-            // ekstraksi nilai diskon numerik dari input diskon
+            // extract the numeric value of the discount from the input
             preg_match_all('/\d+/', $request->diskon, $matches);
             $diskon_numerik = implode('', $matches[0]);
 
-            // simpan nilai diskon numerik ke dalam variabel 'diskon'
+            // save the discount value to the $data variable
             $data['diskon'] = (int) $diskon_numerik;
         }
 
-        // simpan data ke dalam database
+        // save the data to the database
         Transaksi::create($data);
+        dd($data);
     }
+
 
     public function edit($id)
     {

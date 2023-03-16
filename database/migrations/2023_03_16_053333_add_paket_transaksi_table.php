@@ -19,7 +19,6 @@ class AddPaketTransaksiTable extends Migration
             $table->unsignedBigInteger('paket_id');
             $table->integer('jumlah');
             $table->timestamps();
-    
             $table->foreign('transaksi_id')->references('id')->on('transaksi');
             $table->foreign('paket_id')->references('id')->on('paket');
         });

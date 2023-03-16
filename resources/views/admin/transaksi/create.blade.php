@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="assets/vendor/select2/css/select2.min.css">
+<link href="assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<script src="assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="assets/js/plugins-init/select2-init.js"></script>
+<script src="assets/js/custom.min.js"></script>
 <form>
     <div class="row">
         <div class="col-lg-6">
@@ -31,13 +38,14 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
-                <select class="default-select form-control wide" name="paket_id" id="paket_id">
+                <select class="multi-select" name="paket_id[]" id="paket_id" multiple="multiple">
                     <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
             </div>
+
             <div class="mb-3 col-md-12">
                 <label class="form-label">Kode Invoice</label>
                 <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
@@ -86,48 +94,66 @@
 </form>
 <script>
     function addPercent() {
-        if (diskon > 100) {
-    alert('Diskon tidak boleh melebihi 100%');
-    $(this).val('');
-    return;
+    if (diskon > 100) {
+        alert('Diskon tidak boleh melebihi 100%');
+        $(this).val('');
+        return;
     }
-        var diskonInput = document.getElementById("diskon");
-        var diskonValue = parseInt(diskonInput.value);
-        if (!isNaN(diskonValue)) {
-            diskonInput.value = diskonValue + "%";
-        }
+    var diskonInput = document.getElementById("diskon");
+    var diskonValue = parseInt(diskonInput.value);
+    if (!isNaN(diskonValue)) {
+        diskonInput.value = diskonValue + "%";
     }
-    // event listener untuk inputan diskon
-    $('#diskon').on('change', function() {
-        var diskon = $(this).val();
-        var total_biaya = $('#total_biaya').val();
-        if (diskon) {
-            diskon = diskon.replace('%', ''); // remove % character
-            var diskon_biaya = (diskon / 100) * total_biaya;
-            $('#total_biaya').val(total_biaya - diskon_biaya);
-        }
-    });
-    // fungsi untuk mengambil data harga paket berdasarkan id paket
-    function getPaketPrice(id) {
+}
+
+// event listener untuk inputan diskon
+$('#diskon').on('change', function() {
+    var diskon = $(this).val();
+    var total_biaya = 0;
+    $('#paket_id option:selected').each(function() {
+        var id = $(this).val();
         $.ajax({
             url: '/transaksi/get-price/' + id,
             method: 'GET',
             success: function(response) {
-                document.getElementById("total_biaya").value = response.harga
+                total_biaya += response.harga;
+                var diskon_biaya = 0;
+                if (diskon) {
+                    diskon = diskon.replace('%', ''); // remove % character
+                    diskon_biaya = (diskon / 100) * total_biaya;
+                }
+                $('#total_biaya').val(total_biaya - diskon_biaya);
             },
             error: function(xhr) {
                 console.log(xhr.responseText);
             }
         });
-    }
-
-    // event listener untuk inputan paket_id
-    $('#paket_id').on('change', function() {
-        var id = $(this).val();
-        if (id) {
-            getPaketPrice(id);
-        } else {
-            $('#total_biaya').val('');
-        }
     });
+});
+
+// event listener untuk inputan paket_id
+$('#paket_id').on('change', function() {
+    var total_biaya = 0;
+    $('#paket_id option:selected').each(function() {
+        var id = $(this).val();
+        $.ajax({
+            url: '/transaksi/get-price/' + id,
+            method: 'GET',
+            success: function(response) {
+                total_biaya += response.harga;
+                var diskon = $('#diskon').val();
+                var diskon_biaya = 0;
+                if (diskon) {
+                    diskon = diskon.replace('%', ''); // remove % character
+                    diskon_biaya = (diskon / 100) * total_biaya;
+                }
+                $('#total_biaya').val(total_biaya - diskon_biaya);
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+});
+
 </script>
