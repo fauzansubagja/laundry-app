@@ -43,9 +43,10 @@ class Transaksi extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
     public function paket()
     {
-        return $this->belongsTo(Paket::class);
+        return $this->hasMany(Paket::class);
     }
 
     public function scopeActive($query)

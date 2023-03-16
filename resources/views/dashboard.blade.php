@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-sm-6">
-                                    <div class="widget-stat card bg-success">
+                                    <div class="widget-stat card bg-info">
                                         <div class="card-body p-4">
                                             <div class="media">
                                                 <span class="me-3">
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-sm-6">
-                                    <div class="widget-stat card bg-info">
+                                    <div class="widget-stat card bg-success">
                                         <div class="card-body p-4">
                                             <div class="media">
                                                 <span class="me-3">
@@ -136,7 +136,7 @@
                                                                 </svg>
                                                                 Pesanan Selesai
                                                             </span>
-                                                            <span class="fs-18 font-w600">763</span>
+                                                            <span class="fs-18 font-w600">{{ $selesai }}</span>
                                                         </div>
                                                         <div
                                                             class="d-flex align-items-center justify-content-between  mb-4">
@@ -150,7 +150,7 @@
                                                                 </svg>
                                                                 Pesanan Tersisa
                                                             </span>
-                                                            <span class="fs-18 font-w600">321</span>
+                                                            <span class="fs-18 font-w600">{{ $transaksi_baru }}</span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Middleware\CheckRole;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
@@ -27,6 +29,9 @@ Auth::routes();
 Route::get('/', function () {
     return redirect(url('/login'));
 });
+Route::get('/coba', function () {
+    return view('coba');
+});
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -44,7 +49,9 @@ Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
 Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
 Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
-Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
+// Route::post('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
+Route::post('/transaksi/get-price', [TransaksiController::class, 'getPaketPrice']);
+// Route::get('/transaksi/get-paket-options', [TransaksiController::class, 'getPaketOption']);
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
 Route::get('/pesanan', [MemberController::class, 'index']);
 // end route transaksi

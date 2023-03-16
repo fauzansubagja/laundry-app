@@ -21,8 +21,6 @@ class CreateTransaksiTable extends Migration
             $table->foreign('member_id')->references('id')->on('member');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('paket_id');
-            $table->foreign('paket_id')->references('id')->on('paket');
             $table->string('kode_invoice');
             $table->dateTime('tgl_transaksi');
             $table->integer('diskon')->nullable();

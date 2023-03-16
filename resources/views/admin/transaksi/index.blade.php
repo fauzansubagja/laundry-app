@@ -186,7 +186,6 @@
             var outlet_id = $("#outlet_id").val();
             var member_id = $("#member_id").val();
             var user_id = $("#user_id").val();
-            var paket_id = $("#paket_id").val();
             var kode_invoice = $("#kode_invoice").val();
             var tgl_transaksi = $("#tgl_transaksi").val();
             var diskon = $("#diskon").val();
@@ -200,7 +199,6 @@
                     'outlet_id': outlet_id,
                     'member_id': member_id,
                     'user_id': user_id,
-                    'paket_id': paket_id,
                     'kode_invoice': kode_invoice,
                     'tgl_transaksi': tgl_transaksi,
                     'diskon': diskon,
@@ -242,7 +240,6 @@
             var outlet_id = $("#outlet_id").val();
             var member_id = $("#member_id").val();
             var user_id = $("#user_id").val();
-            var paket_id = $("#paket_id").val();
             var kode_invoice = $("#kode_invoice").val();
             var tgl_transaksi = $("#tgl_transaksi").val();
             var diskon = $("#diskon").val();
@@ -256,7 +253,6 @@
                     'outlet_id': outlet_id,
                     'member_id': member_id,
                     'user_id': user_id,
-                    'paket_id': paket_id,
                     'kode_invoice': kode_invoice,
                     'tgl_transaksi': tgl_transaksi,
                     'diskon': diskon,
