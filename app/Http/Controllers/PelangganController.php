@@ -14,7 +14,6 @@ class PelangganController extends Controller
             'member' => Member::all(),
         ]);
     }
-
     public function read()
     {
         $data = Member::all();
