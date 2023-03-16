@@ -52,16 +52,9 @@ class HomeController extends Controller
             'outlets' => Outlet::count(),
             'transaksi' => Transaksi::all(),
             'data' => Transaksi::count(),
-            'selesai' => Transaksi::where('status', ['Selesai','Diambil','Dikirim'])->count(),
+            'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
             'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
             'totalBiayaPerDay' => $totalBiayaPerDay,
-            // 'totalBiayaSenin' => $totalBiayaSenin,
-            // 'totalBiayaSelasa' => $totalBiayaSelasa,
-            // 'totalBiayaRabu' => $totalBiayaRabu,
-            // 'totalBiayaKamis' => $totalBiayaKamis,
-            // 'totalBiayaJumat' => $totalBiayaJumat,
-            // 'totalBiayaSabtu' => $totalBiayaSabtu,
-            // 'totalBiayaMinggu' => $totalBiayaMinggu,
         ]);
     }
 }

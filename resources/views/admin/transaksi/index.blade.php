@@ -65,14 +65,15 @@
                                         <td>
                                             <div class="d-flex">
                                                 <button type="button" id="btn-modal-detail" item-id="{{ $item->id }}"
-                                                    class="btn btn-info shadow btn-xs sharp me-1"
-                                                    item-bs-toggle="modal" item-bs-target="#modal-detail"
-                                                    onclick="detail({{ $item->id }})" title="Lihat"><i class="fas fa-eye"></i>
+                                                    class="btn btn-info shadow btn-xs sharp me-1" item-bs-toggle="modal"
+                                                    item-bs-target="#modal-detail" onclick="detail({{ $item->id }})"
+                                                    title="Lihat"><i class="fas fa-eye"></i>
                                                 </button>
                                                 <button type="button" id="btn-modal-edit" item-id="{{ $item->id }}"
                                                     class="btn btn-primary shadow btn-xs sharp me-1"
                                                     item-bs-toggle="modal" item-bs-target="#modal-edit"
-                                                    onclick="edit({{ $item->id }})" title="Edit"><i class="fas fa-pencil-alt"></i>
+                                                    onclick="edit({{ $item->id }})" title="Edit"><i
+                                                        class="fas fa-pencil-alt"></i>
                                                 </button>
                                                 <button class="btn btn-danger shadow btn-xs sharp"
                                                     item-id="{{ $item->id }}" id="btn-delete"
@@ -149,12 +150,10 @@
                 sisa    = split[0].length % 3,
                 rupiah  = split[0].substr(0, sisa),
                 ribuan  = split[0].substr(sisa).match(/\d{3}/gi);
-
             if (ribuan) {
                 separator = sisa ? '.' : '';
                 rupiah += separator + ribuan.join('.');
             }
-
             rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
             angka.value = 'Rp ' + rupiah;
         }
@@ -163,14 +162,12 @@
     $(document).ready(function() {
             read()
         });
-
         // Read Database
         function read() {
             $.get("{{ url('/transaksi/read') }}", {}, function(data, status) {
                 $("#read").html(data);
             });
         }
-
         // Untuk modal halaman create
         function create() {
             $.get("{{ url('/transaksi/create') }}", {}, function(data, status) {
@@ -178,14 +175,13 @@
                 $("#page").html(data);
                 $("#exampleModal").modal('show');
             });
-
         }
-
         // untuk proses create data
         function store() {
             var outlet_id = $("#outlet_id").val();
             var member_id = $("#member_id").val();
             var user_id = $("#user_id").val();
+            var paket_id = $("#paket_id").val();
             var kode_invoice = $("#kode_invoice").val();
             var tgl_transaksi = $("#tgl_transaksi").val();
             var diskon = $("#diskon").val();
@@ -199,6 +195,7 @@
                     'outlet_id': outlet_id,
                     'member_id': member_id,
                     'user_id': user_id,
+                    'paket_id': paket_id,
                     'kode_invoice': kode_invoice,
                     'tgl_transaksi': tgl_transaksi,
                     'diskon': diskon,
@@ -214,7 +211,6 @@
                 }
             });
         }
-
         // Untuk modal halaman edit show
         function edit(id) {
             $.get("{{ url('/transaksi/edit') }}/" + id, {}, function(data, status) {
@@ -224,7 +220,6 @@
                 $("#exampleModal").modal('show');
             });
         }
-
         // Untuk modal halaman edit show
         function detail(id) {
             $.get("{{ url('/transaksi/detail') }}/" + id, {}, function(data, status) {
@@ -234,12 +229,12 @@
                 $("#basicModal").modal('show');
             });
         }
-
         // untuk proses update data
         function update(id) {
             var outlet_id = $("#outlet_id").val();
             var member_id = $("#member_id").val();
             var user_id = $("#user_id").val();
+            var paket_id = $("#paket_id").val();
             var kode_invoice = $("#kode_invoice").val();
             var tgl_transaksi = $("#tgl_transaksi").val();
             var diskon = $("#diskon").val();
@@ -253,6 +248,7 @@
                     'outlet_id': outlet_id,
                     'member_id': member_id,
                     'user_id': user_id,
+                    'paket_id': paket_id,
                     'kode_invoice': kode_invoice,
                     'tgl_transaksi': tgl_transaksi,
                     'diskon': diskon,
@@ -269,7 +265,6 @@
                 }
             });
         }
-
         // untuk delete atau destroy data
         function destroy(id) {
             $.ajax({

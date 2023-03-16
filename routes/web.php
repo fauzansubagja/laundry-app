@@ -49,9 +49,7 @@ Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
 Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
 Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
-// Route::post('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
-Route::post('/transaksi/get-price', [TransaksiController::class, 'getPaketPrice']);
-// Route::get('/transaksi/get-paket-options', [TransaksiController::class, 'getPaketOption']);
+Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
 Route::get('/pesanan', [MemberController::class, 'index']);
 // end route transaksi

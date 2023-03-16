@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Member;
 
 class PelangganController extends Controller
-{   
+{
     public function index()
     {
-        
+
         return view('admin.pelanggan.index')->with([
             'member' => Member::all(),
         ]);
     }
-    
+
     public function read()
-    {        
+    {
         $data = Member::all();
         // dd($data);
         return view('admin.pelanggan.read')->with([
@@ -41,9 +41,8 @@ class PelangganController extends Controller
 
     public function edit($id)
     {
-        $data = Member::findOrFail($id);
         return view('admin.pelanggan.edit')->with([
-            'data' => $data
+            'member' => Member::findOrFail($id),
         ]);
     }
 

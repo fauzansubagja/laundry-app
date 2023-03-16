@@ -10,9 +10,9 @@ class OutletController extends Controller
     public function __construct()
     {
         // $this->middleware('role:admin,owner');
-        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy']]);
+        $this->middleware('role:admin', ['except' => ['index', 'read', 'create', 'store', 'edit', 'update', 'destroy']]);
     }
-    
+
     public function index()
     {
         return view('admin.outlet.index', [
@@ -44,9 +44,8 @@ class OutletController extends Controller
 
     public function edit($id)
     {
-        $data = Outlet::findOrFail($id);
-        return view('admin.outlet.edit')->with([
-            'data' => $data
+        return view('admin.outlet.edit', [
+            'outlet' => Outlet::findOrFail($id),
         ]);
     }
 

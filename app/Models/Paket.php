@@ -18,7 +18,7 @@ class Paket extends Model
     ];
     public function transaksi()
     {
-        return $this->belongsToMany(Transaksi::class);
+        return $this->belongsTo(Transaksi::class);
     }
     public function outlet()
     {
