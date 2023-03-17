@@ -77,7 +77,7 @@
                 <tr>
                     <td>Total Biaya</td>
                     <td>:</td>
-                    <td>{{ $transaksi->total_biaya }}</td>
+                    <td>Rp. {{ number_format($transaksi->total_biaya, 0, ',', '.') }}</td>
                 </tr>
                 <tr>
                     <td>Ket Bayar</td>

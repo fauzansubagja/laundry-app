@@ -61,6 +61,9 @@
                                                     @elseif($item->status == 'Diambil')
                                                         <button type="button" class="btn btn-rounded btn-danger"
                                                             disabled="disabled">{{ $item->status }}</button>
+                                                    @elseif($item->status == 'Dikirim')
+                                                        <button type="button" class="btn btn-rounded btn-danger"
+                                                            disabled="disabled">{{ $item->status }}</button>
                                                     @endif
                                                 </td>
                                                 <td>{{ $item->dibayar }}</td>
