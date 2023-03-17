@@ -755,6 +755,9 @@
                                                             @elseif ($item->status == 'Diambil')
                                                             <span class="badge badge-warning">{{ $item->status }}<span
                                                                     class="ms-1 fa fa-paper-plane"></span></span>
+                                                            @elseif ($item->status == 'Dikirim')
+                                                            <span class="badge badge-warning">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-paper-plane"></span></span>
                                                             @endif
                                                         </h6>
                                                         <small class="d-block">{{ $item->created_at->diffForHumans() }}
