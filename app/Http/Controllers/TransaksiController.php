@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\Member;
@@ -15,8 +16,7 @@ class TransaksiController extends Controller
     {
         return view('admin.transaksi.index', [
             'transaksi' => Transaksi::all(),
-            'user' => User::all(),
-            'outlet' => Outlet::all(),
+            // 'datas' => DetailTransaksi::all(),
         ]);
     }
 
@@ -78,21 +78,23 @@ class TransaksiController extends Controller
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
 
-        // create an array to store the package IDs
-        $paket_ids = [];
+        // save the transaction data to the database
+        $transaksi = Transaksi::create($data);
 
         if ($request->has('paket_id') && !empty($request->paket_id)) {
-            // loop through the selected package IDs and add them to the $paket_ids array
             foreach ($request->paket_id as $id) {
                 $paket = Paket::find($id);
                 if ($paket) {
-                    $paket_ids[] = $id;
+                    // create a new detail_transaksi record for each selected package
+                    $detail = new DetailTransaksi();
+                    $detail->transaksi_id = $transaksi->id;
+                    $detail->paket_id = $paket->id;
+                    // $detail->member_id = $request->member_id;
+                    // $detail->outlet_id = $request->outlet_id;
+                    $detail->save();
                 }
             }
         }
-
-        // save the package IDs to the $data variable
-        $data['paket_id'] = $paket_ids;
 
         if ($request->has('diskon') && $request->diskon != null) {
             // extract the numeric value of the discount from the input
@@ -103,9 +105,8 @@ class TransaksiController extends Controller
             $data['diskon'] = (int) $diskon_numerik;
         }
 
-        // save the data to the database
-        Transaksi::create($data);
-        dd($data);
+        // update the transaction record with the final data, including the discount value (if any)
+        $transaksi->update($data);
     }
 
 
@@ -124,16 +125,15 @@ class TransaksiController extends Controller
 
     public function detail($id)
     {
-        // dd(Transaksi::where('id',$id)->get());
+        $transaksi = Transaksi::where('id', $id)->first();
+        $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+
         return view('admin.transaksi.detail', [
-            'transaksi' => Transaksi::where('id', $id)->first(),
-            'transaksis' => Transaksi::find($id),
-            'outlet' => Outlet::all(),
-            'user' => User::all(),
-            'member' => Member::all(),
-            'paket' => Paket::all(),
+            'transaksi' => $transaksi,
+            'detailTransaksi' => $detailTransaksi
         ]);
     }
+
 
     public function show($id)
     {

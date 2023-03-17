@@ -20,7 +20,6 @@ class Transaksi extends Model
         'outlet_id',
         'member_id',
         'user_id',
-        'paket_id',
         'kode_invoice',
         'tgl_transaksi',
         'diskon',
@@ -31,6 +30,10 @@ class Transaksi extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function detailTransaksi()
+    {
+        return $this->hasMany(DetailTransaksi::class);
+    }
     public function outlet()
     {
         return $this->belongsTo(Outlet::class);
@@ -46,7 +49,7 @@ class Transaksi extends Model
 
     public function paket()
     {
-        return $this->belongsTo(Paket::class);
+        return $this->belongsToMany(Paket::class, 'detail_transaksi');
     }
 
     public function scopeActive($query)

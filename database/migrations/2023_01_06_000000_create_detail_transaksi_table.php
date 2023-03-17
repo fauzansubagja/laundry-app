@@ -19,10 +19,6 @@ class CreateDetailTransaksiTable extends Migration
             $table->foreign('transaksi_id')->references('id')->on('transaksi');
             $table->unsignedBigInteger('paket_id');
             $table->foreign('paket_id')->references('id')->on('paket');
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('member');
-            $table->unsignedBigInteger('outlet_id');
-            $table->foreign('outlet_id')->references('id')->on('outlet');
             $table->timestamps();
         });
     }

@@ -16,6 +16,11 @@ class Paket extends Model
         'nama_paket',
         'harga'
     ];
+
+    public function detailTransaksi()
+{
+    return $this->hasMany(DetailTransaksi::class);
+}
     public function transaksi()
     {
         return $this->belongsTo(Transaksi::class);

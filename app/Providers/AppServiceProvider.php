@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Transaksi;
+use App\Models\DetailTransaksi;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -42,9 +43,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function($view) {
             $data = Transaksi::whereNull('deleted_at')->take(5)->get();
             $count = Transaksi::whereNull('deleted_at')->count();
+            $datas = DetailTransaksi::all();
             
             $view->with('data', $data)
-                ->with('count', $count);
+                ->with('count', $count)
+                ->with('datas', $datas);
        });       
     }
 }
