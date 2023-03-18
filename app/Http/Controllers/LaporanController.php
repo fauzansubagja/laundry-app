@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Outlet;
 use App\Models\Laporan;
 use App\Models\Transaksi;
+use Illuminate\Http\Request;
 use App\Exports\LaporanExport;
 use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
     public function index()
     {
         return view('admin.laporan.index', [
-            'laporan' => Laporan::all(),
             'transaksi' => Transaksi::all(),
             'paket' => Paket::all(),
             'outlet' => Outlet::all(),
             'member' => Member::all(),
+            'user' => User::all(),
         ]);
     }
 
@@ -37,7 +38,7 @@ class LaporanController extends Controller
         $transaksi->status = $status;
         // dd($request->all());
         $transaksi->save();
-    
+
         return redirect('/pelanggan');
     }
 

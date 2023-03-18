@@ -127,7 +127,6 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::where('id', $id)->first();
         $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
-
         return view('admin.transaksi.detail', [
             'transaksi' => $transaksi,
             'detailTransaksi' => $detailTransaksi

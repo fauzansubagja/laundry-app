@@ -14,10 +14,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Data Laporan Transaksi</h4>
-                        {{-- <button type="button" class="btn btn-rounded btn-warning"><span class="btn-icon-start text-warning"><i class="fa fa-download color-warning"></i>
-                        </span>Download</button> --}}
-                        <a href="{{ route('laporan.export') }}" class="btn btn-success"><span class="btn-icon-start text-success"><i class="fa fa-download color-warning"></i>
-                        </span>Export Excel</a>
+                        <a href="{{ route('laporan.export') }}" class="btn btn-success"><span
+                                class="btn-icon-start text-success"><i class="fa fa-download color-warning"></i>
+                            </span>Export Excel</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -25,26 +24,25 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Member</th>
-                                        <th>Jenis Paket</th>
                                         <th>Nama Outlet</th>
                                         <th>Kode Invoice</th>
+                                        <th>Nama Member</th>
+                                        <th>Tanggal Transaksi</th>
                                         <th>Total Bayar</th>
-                                        <th>Status</th>
+                                        <th>Pegawai</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- {{dd($laporan)}} --}}
                                     @php $no = 1; @endphp
                                     @foreach ($transaksi as $item)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $item->member->nama }}</td>
-                                        <td>{{ $item->paket->nama_paket }}</td>
                                         <td>{{ $item->outlet->nama }}</td>
                                         <td>{{ $item->kode_invoice }}</td>
+                                        <td>{{ $item->member->nama }}</td>
+                                        <td>{{ date('Y-m-d', strtotime($item->tgl_transaksi)) }}</td>
                                         <td>Rp. {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>{{ $item->user->name }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
