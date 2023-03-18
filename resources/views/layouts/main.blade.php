@@ -16,7 +16,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- PAGE TITLE HERE -->
-    <title>Laundry APP</title>
+    <title>LaundryOn </title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -756,7 +756,7 @@
                                                             <span class="badge badge-warning">{{ $item->status }}<span
                                                                     class="ms-1 fa fa-paper-plane"></span></span>
                                                             @elseif ($item->status == 'Dikirim')
-                                                            <span class="badge badge-warning">{{ $item->status }}<span
+                                                            <span class="badge badge-danger">{{ $item->status }}<span
                                                                     class="ms-1 fa fa-paper-plane"></span></span>
                                                             @endif
                                                         </h6>
@@ -928,11 +928,16 @@
                         </a>
                     </li>
                     @endcan
-                    <li><a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}"
-                            aria-expanded="false">
+                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-cart-plus"></i>
                             <span class="nav-text">Transaksi</span>
                         </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ url('/transaksi') }}"
+                                    class="{{ request()->is('transaksi*') ? 'active' : '' }}">Transaksi Baru</a></li>
+                            <li><a href="{{ url('/pesanan') }}"
+                                    class="{{ request()->is('transaksi*') ? 'active' : '' }}">Kelola Pesanan</a></li>
+                        </ul>
                     </li>
                     @can('admin')
                     <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}"

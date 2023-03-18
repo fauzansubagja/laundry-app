@@ -9,6 +9,11 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="mb-3 col-md-12">
+                <label class="form-label">Kode Invoice</label>
+                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" value="{{$kode_invoice}}"
+                    readonly>
+            </div>
+            <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
                 <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
                     @foreach ($outlet as $item)
@@ -44,12 +49,6 @@
                     <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
-            </div>
-
-            <div class="mb-3 col-md-12">
-                <label class="form-label">Kode Invoice</label>
-                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
-                    readonly>
             </div>
         </div>
         <div class="col-lg-6">

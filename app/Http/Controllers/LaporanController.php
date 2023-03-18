@@ -39,7 +39,7 @@ class LaporanController extends Controller
         // dd($request->all());
         $transaksi->save();
 
-        return redirect('/pelanggan');
+        return redirect('/pesanan');
     }
 
     public function deleteView(Request $request, $id)

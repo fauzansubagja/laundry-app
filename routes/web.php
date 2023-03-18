@@ -51,8 +51,12 @@ Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
 Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
-Route::get('/pesanan', [MemberController::class, 'index']);
 // end route transaksi
+
+Route::get('/pesanan', [MemberController::class, 'index']);
+Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
+// Route::put('/pesanan/{id}/status', [MemberController::class, 'updateStatus']);
+// Route::delete('/delete-view/{id}', [App\Http\Controllers\MemberController::class, 'deleteView']);
 
 // route registrasi pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
@@ -96,7 +100,6 @@ Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     Route::delete('/outlet/destroy/{id}', [OutletController::class, 'destroy']);
     // end route outlet
 });
-
 Route::put('/pelanggan/{id}/status', [LaporanController::class, 'updateStatus']);
 Route::delete('/delete-view/{id}', [App\Http\Controllers\LaporanController::class, 'deleteView']);
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);

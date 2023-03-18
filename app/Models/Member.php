@@ -11,6 +11,7 @@ class Member extends Model
 
     protected $table = 'member';
     protected $fillable = [
+        'kode_member',
         'nama',
         'alamat',
         'tlp',

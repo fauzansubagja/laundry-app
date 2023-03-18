@@ -15,6 +15,7 @@ class MemberSeeder extends Seeder
     public function run()
     {
         Member::create([
+            'kode_member' => 'KM-2023001',
             'nama' => 'Ilham',
             'alamat' => 'Jl Ranca',
             'tlp' => '0890',
@@ -22,6 +23,7 @@ class MemberSeeder extends Seeder
             'jenis_kelamin' => 'Laki-Laki',
         ]);
         Member::create([
+            'kode_member' => 'KM-2023002',
             'nama' => 'Rangga',
             'alamat' => 'Jl Moh Toha',
             'tlp' => '0891',
@@ -29,6 +31,7 @@ class MemberSeeder extends Seeder
             'jenis_kelamin' => 'Laki-Laki',
         ]);
         Member::create([
+            'kode_member' => 'KM-2023003',
             'nama' => 'Eva',
             'alamat' => 'Jl braga',
             'tlp' => '0892',
@@ -36,6 +39,7 @@ class MemberSeeder extends Seeder
             'jenis_kelamin' => 'Perempuan',
         ]);
         Member::create([
+            'kode_member' => 'KM-2023004',
             'nama' => 'Shafira',
             'alamat' => 'Jl Supratman',
             'tlp' => '0893',

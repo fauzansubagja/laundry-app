@@ -30,7 +30,12 @@ class TransaksiController extends Controller
 
     public function create()
     {
+        $kode_tahun = 'INV-' . date('Ym') . date('d');
+        $no_urut = sprintf('%02d', Transaksi::count() + 1);
+        $kode_invoice = $kode_tahun . $no_urut;
+
         return view('admin.transaksi.create', [
+            'kode_invoice' => $kode_invoice,
             'outlet' => Outlet::all(),
             'transaksi' => Transaksi::all(),
             'user' => User::all(),
@@ -67,18 +72,14 @@ class TransaksiController extends Controller
         $data['outlet_id'] = $request->outlet_id;
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
+        $data['kode_invoice'] = $request->kode_invoice;
         $data['tgl_transaksi'] = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
-
-        // generate kode_invoice dengan format "INV-tgl skrng"
-        $kode_invoice = "INV-" . date('Ymd');
-        $data['kode_invoice'] = $kode_invoice;
-
         $data['diskon'] = null;
         $data['total_biaya'] = $request->total_biaya;
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
 
-        // save the transaction data to the database
+        // create a new transaction data in the database
         $transaksi = Transaksi::create($data);
 
         if ($request->has('paket_id') && !empty($request->paket_id)) {
@@ -133,39 +134,47 @@ class TransaksiController extends Controller
         ]);
     }
 
-
     public function show($id)
     {
     }
 
+
     public function update(Request $request, $id)
     {
-        $data = Transaksi::where('id', $id)->first();
-        $data['outlet_id'] = $request->outlet_id;
-        $data['member_id'] = $request->member_id;
-        $data['user_id'] = $request->user_id;
-        $data['paket_id'] = $request->paket_id;
-        $data['tgl_transaksi'] = $request->tgl_transaksi;
+        $transaksi = Transaksi::findOrFail($id);
 
-        // generate kode_invoice dengan format "INV-tgl skrng"
-        $tgl_sekarang = date('Ymd');
-        $data['kode_invoice'] = "INV-$tgl_sekarang";
+        $transaksi->outlet_id = $request->outlet_id;
+        $transaksi->member_id = $request->member_id;
+        $transaksi->user_id = $request->user_id;
+        $transaksi->tgl_transaksi = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
 
-        $data['diskon'] = null;
-        $data['total_biaya'] = $request->total_biaya;
-        $data['status'] = $request->status;
-        $data['dibayar'] = $request->dibayar;
+        $transaksi->diskon = null;
+        $transaksi->total_biaya = $request->total_biaya;
+        $transaksi->status = $request->status;
+        $transaksi->dibayar = $request->dibayar;
+
+        if ($request->has('paket_id') && !empty($request->paket_id)) {
+            $transaksi->detailTransaksi()->delete();
+            foreach ($request->paket_id as $id) {
+                $paket = Paket::find($id);
+                if ($paket) {
+                    $detail = new DetailTransaksi();
+                    $detail->transaksi_id = $transaksi->id;
+                    $detail->paket_id = $paket->id;
+                    $detail->save();
+                }
+            }
+        }
 
         if ($request->has('diskon') && $request->diskon != null) {
-            // ekstraksi nilai diskon numerik dari input diskon
             preg_match_all('/\d+/', $request->diskon, $matches);
             $diskon_numerik = implode('', $matches[0]);
-
-            // simpan nilai diskon numerik ke dalam variabel 'diskon'
-            $data['diskon'] = (int) $diskon_numerik;
+            $transaksi->diskon = (int) $diskon_numerik;
         }
-        $data->save();
+
+        $transaksi->save();
     }
+
 
     public function destroy($id)
     {
