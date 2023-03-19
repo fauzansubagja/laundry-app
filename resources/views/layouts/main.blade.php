@@ -27,6 +27,7 @@
     <!-- Datatable -->
     <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Custom Stylesheet -->
+    <link href="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/css/select2.min.css') }}">
     <link href="{{ asset('assets/vendor/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
@@ -1038,7 +1039,8 @@
     <script src="{{ asset('assets/js/dlabnav-init.js') }}"></script>
     <script src="{{ asset('assets/js/demo.js') }}"></script>
     <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
-
+    <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.')}}js"></script>
+    <script src="{{ asset('js/plugins-init/sweetalert.init.js')}}"></script>
     <script>
         function deleteView(button, id) {
             $.ajax({

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
@@ -29,17 +30,12 @@ Auth::routes();
 Route::get('/', function () {
     return redirect(url('/login'));
 });
-Route::get('/coba', function () {
-    return view('coba');
-});
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
-
-// route pelanggan
-// end route pelanggan
-
+Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
+// Route::put('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice']);
+Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
 // route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::get('/transaksi/read', [TransaksiController::class, 'read']);

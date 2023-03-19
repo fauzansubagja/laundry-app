@@ -76,7 +76,7 @@
             <tr>
                 <th class="center">#</th>
                 <th>Paket</th>
-                <th>Harga</th>
+                <th>Jenis</th>
                 <th class="right">Total</th>
             </tr>
         </thead>
@@ -112,7 +112,7 @@
                 $totalSetelahDiskon = $totalHarga - $diskonNominal;
                 @endphp
                 <tr>
-                    <td class="left"><strong>Total Paket</strong></td>
+                    <td class="left"><strong>Total</strong></td>
                     <td class="right">Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
                 </tr>
                 <tr>
@@ -120,7 +120,7 @@
                     <td class="right">Rp. {{ number_format($diskonNominal, 0, ',', '.') }}</td>
                 </tr>
                 <tr>
-                    <td class="left"><strong>Total</strong></td>
+                    <td class="left"><strong>Total Biaya</strong></td>
                     <td class="right"><strong>Rp. {{ number_format($totalSetelahDiskon, 0, ',', '.') }}</strong>
                     </td>
                 </tr>
