@@ -128,16 +128,3 @@
         </table>
     </div>
 </div>
-{{-- <div style="display: flex; justify-content: center;">
-    @if ($transaksi->status == 'Baru')
-    <img src="assets/images/status/baru.gif" alt="" style="width: 30%; height: auto;">
-    @elseif($transaksi->status == 'Proses')
-    <img src="assets/images/status/proses.gif" alt="" style="width: 30%; height: auto;">
-    @elseif($transaksi->status == 'Selesai')
-    <img src="assets/images/status/selesai.gif" alt="" style="width: 30%; height: auto;">
-    @elseif($transaksi->status == 'Diambil')
-    <img src="assets/images/status/diambil.gif" alt="" style="width: 30%; height: auto;">
-    @elseif($transaksi->status == 'Dikirim')
-    <img src="assets/images/status/dikirim.gif" alt="" style="width: 30%; height: auto;">
-    @endif
-</div> --}}

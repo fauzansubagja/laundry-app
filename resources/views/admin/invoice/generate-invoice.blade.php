@@ -201,11 +201,11 @@
             @endphp
             <tr>
                 <td colspan="3" width="80%" class="total-heading">Total:</td>
-                <td colspan="1" class="total-heading">Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
+                <td colspan="1">Rp. {{ number_format($totalHarga, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td colspan="3" width="80%" class="total-heading">Diskon ({{$transaksi->diskon}}%):</td>
-                <td colspan="1" class="total-heading">Rp. {{ number_format($diskonNominal, 0, ',', '.') }}</td>
+                <td colspan="1">Rp. {{ number_format($diskonNominal, 0, ',', '.') }}</td>
             </tr>
             <tr>
                 <td colspan="3" width="80%" class="total-heading">Total Biaya:</td>

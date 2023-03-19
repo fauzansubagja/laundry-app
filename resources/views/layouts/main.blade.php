@@ -69,7 +69,7 @@
                     </defs>
                 </svg> --}}
                 <div class="brand-title">
-                    <h2 class="">Laundry</h2>
+                    <h2 class="">LaundryOn</h2>
                     <span class="brand-sub-title">{{ Auth::user()->name }}</span>
                 </div>
             </a>

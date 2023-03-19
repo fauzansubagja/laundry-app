@@ -130,7 +130,10 @@
                     <div id="page1"></div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary mx-auto w-100">Cetak Transaksi</button>
+                        @foreach ($transaksi as $item)
+                        <a href="{{ route('invoice.generate', ['id' => $item->id]) }}" download
+                            class="btn btn-primary mx-auto w-100">Cetak Transaksi</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
