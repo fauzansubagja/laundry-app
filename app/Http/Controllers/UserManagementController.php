@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Member;
 use App\Models\Outlet;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
@@ -12,7 +13,7 @@ class UserManagementController extends Controller
     public function __construct()
     {
         // $this->middleware('role:admin,owner');
-        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy','profile']]);
+        $this->middleware('role:admin', ['except' => ['index', 'read', 'create', 'store', 'edit', 'update', 'destroy', 'profile']]);
     }
     public function index()
     {
@@ -26,8 +27,9 @@ class UserManagementController extends Controller
     {
         return view('admin.profile.index', [
             'user' => User::findOrFail($id),
-            // 'data' => User::all(),
             'member' => Member::all(),
+            'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
+            'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
             'members' => Member::count(),
             'outlet' => Outlet::all(),
             'outlets' => Outlet::count(),

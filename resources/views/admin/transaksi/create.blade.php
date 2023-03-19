@@ -55,7 +55,7 @@
             <div class="mb-3 col-md-12">
                 <label class="form-label">Tanggal Transaksi</label>
                 <input type="datetime-local" name="tgl_transaksi" id="tgl_transaksi" class="form-control"
-                    placeholder="Tanggal Transaksi">
+                    value="{{$tgl_transaksi}}" readonly>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Diskon</label>

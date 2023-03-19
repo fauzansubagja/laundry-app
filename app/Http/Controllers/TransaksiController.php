@@ -16,7 +16,6 @@ class TransaksiController extends Controller
     {
         return view('admin.transaksi.index', [
             'transaksi' => Transaksi::all(),
-            // 'datas' => DetailTransaksi::all(),
         ]);
     }
 
@@ -30,11 +29,17 @@ class TransaksiController extends Controller
 
     public function create()
     {
+        // membuat kode invoice otomatis dengan format INV-ymd(no urut)
         $kode_tahun = 'INV-' . date('Ym') . date('d');
         $no_urut = sprintf('%02d', Transaksi::count() + 1);
         $kode_invoice = $kode_tahun . $no_urut;
 
+        // membuat tanggal transaksi otomatis dengan format Y-m-d H:i:s
+        date_default_timezone_set('Asia/Jakarta');
+        $tgl_transaksi = date('Y-m-d H:i:s');
+
         return view('admin.transaksi.create', [
+            'tgl_transaksi' => $tgl_transaksi,
             'kode_invoice' => $kode_invoice,
             'outlet' => Outlet::all(),
             'transaksi' => Transaksi::all(),
@@ -73,7 +78,7 @@ class TransaksiController extends Controller
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
         $data['kode_invoice'] = $request->kode_invoice;
-        $data['tgl_transaksi'] = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
+        $data['tgl_transaksi'] = $request->tgl_transaksi;
         $data['diskon'] = null;
         $data['total_biaya'] = $request->total_biaya;
         $data['status'] = $request->status;
@@ -146,8 +151,7 @@ class TransaksiController extends Controller
         $transaksi->outlet_id = $request->outlet_id;
         $transaksi->member_id = $request->member_id;
         $transaksi->user_id = $request->user_id;
-        $transaksi->tgl_transaksi = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
-
+        $transaksi->tgl_transaksi = $request->tgl_transaksi;
         $transaksi->diskon = null;
         $transaksi->total_biaya = $request->total_biaya;
         $transaksi->status = $request->status;
