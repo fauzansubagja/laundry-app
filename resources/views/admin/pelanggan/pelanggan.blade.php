@@ -130,10 +130,8 @@
                     <div id="page1"></div>
 
                     <div class="modal-footer">
-                        @foreach ($transaksi as $item)
                         <a href="{{ route('invoice.generate', ['id' => $item->id]) }}" download
                             class="btn btn-primary mx-auto w-100">Cetak Transaksi</a>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -147,8 +145,6 @@
     const dropdownItems = document.querySelectorAll('.dropdown-item');
     dropdownItems.forEach(function(dropdownItem) {
         dropdownItem.addEventListener('click', function() {
-            // const status = dropdownItem.dataset.status;
-            // console.log(status);
             const id = 1; // Isi dengan ID order yang ingin diupdate statusnya
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const status = $(this).data('status')

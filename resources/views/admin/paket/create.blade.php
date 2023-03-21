@@ -21,7 +21,7 @@
         <div class="mb-3 col-md-12">
             <label class="form-label">Nama Outlet</label>
             <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
-                @foreach ($outlet as $item)    
+                @foreach ($outlet as $item)
                 <option value="{{ $item->id}}">{{ $item->nama}}</option>
                 @endforeach
             </select>

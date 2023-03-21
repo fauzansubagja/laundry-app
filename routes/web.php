@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Middleware\CheckRole;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
@@ -27,10 +24,6 @@ use App\Http\Controllers\UserManagementController;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect(url('/login'));
-});
-
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
@@ -51,8 +44,6 @@ Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDisk
 
 Route::get('/pesanan', [MemberController::class, 'index']);
 Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
-// Route::put('/pesanan/{id}/status', [MemberController::class, 'updateStatus']);
-// Route::delete('/delete-view/{id}', [App\Http\Controllers\MemberController::class, 'deleteView']);
 
 // route registrasi pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
