@@ -57,7 +57,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -68,11 +67,11 @@
 
 
         <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Pengguna</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Pengguna</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -128,6 +127,7 @@
             var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
+            var image = $("#image").val();
             $.ajax({
                 type: "post",
                 url: "{{ url('/management/user/store') }}",
@@ -138,6 +138,7 @@
                     'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
+                    'image': image,
                     '_token': '{{ csrf_token() }}',
                 },
                 success: function(data) {
@@ -165,6 +166,7 @@
             var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
+            var image = $("#image").val();
             $.ajax({
                 type: "post",
                 url: "{{ url('/management/user/update') }}/" + id,
@@ -175,6 +177,7 @@
                     'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
+                    'image': image,
                     '_token': '{{ csrf_token() }}',
                     '_method': 'PUT',
                 },

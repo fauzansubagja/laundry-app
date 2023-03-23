@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['Admin', 'Kasir', 'Owner']);
             $table->unsignedBigInteger('outlet_id')->nullable();
             $table->foreign('outlet_id')->references('id')->on('outlet');
+            $table->string('image');
             $table->dateTime('notifikasi_terakhir')->nullable();
             $table->rememberToken();
             $table->timestamps();

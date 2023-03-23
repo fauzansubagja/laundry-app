@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_detail_transaksi` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `id_transaksi` int(11) NOT NULL,
   `id_pake` int(11) NOT NULL,
   `qty` double NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `tb_detail_transaksi` (
 --
 
 CREATE TABLE `tb_member` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
   `jenis_kelamin` enum('L','P') NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `tb_member` (
 --
 
 CREATE TABLE `tb_outlet` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
   `tlp` varchar(15) NOT NULL
@@ -69,7 +69,7 @@ CREATE TABLE `tb_outlet` (
 --
 
 CREATE TABLE `tb_paket` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `id_outlet` int(11) NOT NULL,
   `jenis` enum('kilioan','selimut','bed_cover','kaos','lain') NOT NULL,
   `nama_paket` varchar(100) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `tb_paket` (
 --
 
 CREATE TABLE `tb_transaksi` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `id_outlet` int(11) NOT NULL,
   `kode_invoice` varchar(100) NOT NULL,
   `id_member` int(11) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `tb_transaksi` (
 --
 
 CREATE TABLE `tb_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
   `nama` varchar(100) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` text NOT NULL,

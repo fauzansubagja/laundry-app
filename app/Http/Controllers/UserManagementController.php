@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Member;
 use App\Models\Outlet;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
@@ -12,7 +13,7 @@ class UserManagementController extends Controller
     public function __construct()
     {
         // $this->middleware('role:admin,owner');
-        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy','profile']]);
+        $this->middleware('role:admin', ['except' => ['index', 'read', 'create', 'store', 'edit', 'update', 'destroy', 'profile']]);
     }
     public function index()
     {
@@ -26,8 +27,9 @@ class UserManagementController extends Controller
     {
         return view('admin.profile.index', [
             'user' => User::findOrFail($id),
-            // 'data' => User::all(),
             'member' => Member::all(),
+            'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
+            'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
             'members' => Member::count(),
             'outlet' => Outlet::all(),
             'outlets' => Outlet::count(),
@@ -53,12 +55,24 @@ class UserManagementController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $data['name'] = $request->name;
-        $data['username'] = $request->username;
-        $data['email'] = $request->email;
-        $data['password'] = $request->password;
-        $data['role'] = $request->role;
-        $data['outlet_id'] = $request->outlet_id;
+        $data = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+            'outlet_id' => $request->outlet_id,
+            'image' => 'default.png', // default value jika image tidak diupload
+        ];
+
+        if ($request->hasFile('image')) {
+            $destinationPath = 'image/profile';
+            $image = $request->file('image');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = $profileImage;
+        }
+
         User::create($data);
     }
 
@@ -83,6 +97,14 @@ class UserManagementController extends Controller
         $data->password = $request->password;
         $data->role = $request->role;
         $data->outlet_id = $request->outlet_id;
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/profile';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data->image = $profileImage;
+        }
+
         $data->save();
     }
 

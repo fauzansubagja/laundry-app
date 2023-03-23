@@ -1,6 +1,12 @@
 <form>
     <div class="row">
         <div class="mb-3 col-md-12">
+            <label class="form-label">Kode Pelanggan</label>
+            <input type="text" name="kode_member" id="kode_member" class="form-control" value="{{ $kode_member }}"
+                readonly>
+        </div>
+
+        <div class="mb-3 col-md-12">
             <label class="form-label">Nama Pelanggan</label>
             <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Pelanggan">
         </div>
@@ -24,5 +30,4 @@
             <button type="button" class="btn btn-primary" onclick="store()">Simpan</button>
         </div>
     </div>
-
 </form>

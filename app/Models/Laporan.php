@@ -9,7 +9,7 @@ class Laporan extends Model
 {
     use HasFactory;
 
-    protected $table = 'detail_transaksi';
+    protected $table = 'transaksi';
 
     public function outlet()
     {
@@ -18,10 +18,6 @@ class Laporan extends Model
     public function member()
     {
         return $this->belongsTo(Member::class);
-    }
-    public function transaksi()
-    {
-        return $this->belongsTo(Transaksi::class);
     }
     public function paket()
     {

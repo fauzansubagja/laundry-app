@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailTransaksi;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Outlet;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\DetailTransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -16,7 +17,6 @@ class TransaksiController extends Controller
     {
         return view('admin.transaksi.index', [
             'transaksi' => Transaksi::all(),
-            // 'datas' => DetailTransaksi::all(),
         ]);
     }
 
@@ -30,12 +30,30 @@ class TransaksiController extends Controller
 
     public function create()
     {
+        // membuat kode invoice otomatis dengan format INV-ymd(no urut)
+        $kode_tahun = 'INV-' . date('Ym') . date('d');
+        $no_urut = sprintf('%02d', Transaksi::count() + 1);
+        $kode_invoice = $kode_tahun . $no_urut;
+
+        // membuat tanggal transaksi otomatis dengan format Y-m-d H:i:s
+        date_default_timezone_set('Asia/Jakarta');
+        $tgl_transaksi = date('Y-m-d H:i:s');
+
+        // mengirim data user berdasarkan user yang sedang login
+        $user = Auth::user();
+        $userData = User::where('id', $user->id)->first();
+
+        // mengirim data paket berdasarkan outlet yang dipilih
+        $outlet_id = Auth::user()->outlet_id;
+        $paket = Paket::where('outlet_id', $outlet_id)->get();
+
         return view('admin.transaksi.create', [
-            'outlet' => Outlet::all(),
+            'tgl_transaksi' => $tgl_transaksi,
+            'kode_invoice' => $kode_invoice,
+            'userData' => $userData,
+            'paket' => $paket,
             'transaksi' => Transaksi::all(),
-            'user' => User::all(),
             'member' => Member::all(),
-            'paket' => Paket::all(),
         ]);
     }
 
@@ -67,18 +85,14 @@ class TransaksiController extends Controller
         $data['outlet_id'] = $request->outlet_id;
         $data['member_id'] = $request->member_id;
         $data['user_id'] = $request->user_id;
-        $data['tgl_transaksi'] = date('Y-m-d', strtotime($request->input('tgl_transaksi')));
-
-        // generate kode_invoice dengan format "INV-tgl skrng"
-        $kode_invoice = "INV-" . date('Ymd');
-        $data['kode_invoice'] = $kode_invoice;
-
+        $data['kode_invoice'] = $request->kode_invoice;
+        $data['tgl_transaksi'] = $request->tgl_transaksi;
         $data['diskon'] = null;
         $data['total_biaya'] = $request->total_biaya;
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
 
-        // save the transaction data to the database
+        // create a new transaction data in the database
         $transaksi = Transaksi::create($data);
 
         if ($request->has('paket_id') && !empty($request->paket_id)) {
@@ -127,51 +141,58 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::where('id', $id)->first();
         $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
-
         return view('admin.transaksi.detail', [
             'transaksi' => $transaksi,
             'detailTransaksi' => $detailTransaksi
         ]);
     }
 
-
     public function show($id)
     {
     }
 
+
     public function update(Request $request, $id)
     {
-        $data = Transaksi::where('id', $id)->first();
-        $data['outlet_id'] = $request->outlet_id;
-        $data['member_id'] = $request->member_id;
-        $data['user_id'] = $request->user_id;
-        $data['paket_id'] = $request->paket_id;
-        $data['tgl_transaksi'] = $request->tgl_transaksi;
+        $transaksi = Transaksi::findOrFail($id);
 
-        // generate kode_invoice dengan format "INV-tgl skrng"
-        $tgl_sekarang = date('Ymd');
-        $data['kode_invoice'] = "INV-$tgl_sekarang";
+        $transaksi->outlet_id = $request->outlet_id;
+        $transaksi->member_id = $request->member_id;
+        $transaksi->user_id = $request->user_id;
+        $transaksi->tgl_transaksi = $request->tgl_transaksi;
+        $transaksi->diskon = null;
+        $transaksi->total_biaya = $request->total_biaya;
+        $transaksi->status = $request->status;
+        $transaksi->dibayar = $request->dibayar;
 
-        $data['diskon'] = null;
-        $data['total_biaya'] = $request->total_biaya;
-        $data['status'] = $request->status;
-        $data['dibayar'] = $request->dibayar;
+        if ($request->has('paket_id') && !empty($request->paket_id)) {
+            $transaksi->detailTransaksi()->delete();
+            foreach ($request->paket_id as $id) {
+                $paket = Paket::find($id);
+                if ($paket) {
+                    $detail = new DetailTransaksi();
+                    $detail->transaksi_id = $transaksi->id;
+                    $detail->paket_id = $paket->id;
+                    $detail->save();
+                }
+            }
+        }
 
         if ($request->has('diskon') && $request->diskon != null) {
-            // ekstraksi nilai diskon numerik dari input diskon
             preg_match_all('/\d+/', $request->diskon, $matches);
             $diskon_numerik = implode('', $matches[0]);
-
-            // simpan nilai diskon numerik ke dalam variabel 'diskon'
-            $data['diskon'] = (int) $diskon_numerik;
+            $transaksi->diskon = (int) $diskon_numerik;
         }
-        $data->save();
+
+        $transaksi->save();
     }
+
 
     public function destroy($id)
     {
-        $data = Transaksi::where('id', $id)->first();
         // dd($data);
-        $data->delete();
+        $data = Transaksi::findOrFail($id);
+        $data->deleted_at = now();
+        $data->save();
     }
 }

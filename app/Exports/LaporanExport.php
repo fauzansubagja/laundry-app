@@ -23,12 +23,12 @@ class LaporanExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
     {
         return [
             'No',
-            'Nama Member',
-            'Jenis Paket',
             'Nama Outlet',
             'Kode Invoice',
+            'Nama Member',
+            'Tanggal Transaksi',
             'Total Bayar',
-            'Status'
+            'Pegawai'
         ];
     }
 
@@ -36,12 +36,12 @@ class LaporanExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
     {
         return [
             $transaksi->id,
-            $transaksi->member->nama, // Ubah member_id menjadi nama anggota
-            $transaksi->paket->nama_paket,
             $transaksi->outlet->nama,
             $transaksi->kode_invoice,
+            $transaksi->member->nama,
+            $transaksi->tgl_transaksi,
             'Rp. ' . number_format($transaksi->total_biaya, 0, ',', '.'),
-            $transaksi->status
+            $transaksi->user->name
         ];
     }
 }

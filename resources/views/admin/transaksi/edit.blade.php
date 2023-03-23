@@ -1,14 +1,25 @@
+<link rel="stylesheet" href="assets/vendor/select2/css/select2.min.css">
+<link href="assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<script src="assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="assets/js/plugins-init/select2-init.js"></script>
+<script src="assets/js/custom.min.js"></script>`
 <form>
     <div class="row">
-        {{-- {{dd($kode_invoice)}} --}}
         <div class="col-lg-6">
+            <div class="mb-3 col-md-12">
+                <label class="form-label">Kode Invoice</label>
+                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
+                    disabled value={{ $transaksi->kode_invoice }}>
+            </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
                 <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
                     <option value="" selected>-- Pilih Outlet --</option>
                     @foreach ($outlet as $item)
-                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>
-                            {{ $item->nama }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>
+                        {{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -17,8 +28,8 @@
                 <select class="default-select  form-control wide" name="member_id" id="member_id">
                     <option value="" selected>-- Pilih Member --</option>
                     @foreach ($member as $item)
-                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>
-                            {{ $item->nama }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>
+                        {{ $item->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -27,27 +38,21 @@
                 <select class="default-select  form-control wide" name="user_id" id="user_id">
                     <option value="" selected>-- Pilih Kasir --</option>
                     @foreach ($user as $item)
-                        @if ($item->role == 'Kasir')
-                            <option value="{{ $item->id }}"
-                                {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{ $item->name }}</option>
-                        @endif
+                    @if ($item->role == 'Kasir')
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{
+                        $item->name }}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
                 <select class="default-select form-control wide" name="paket_id" id="paket_id">
-                    <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
-                        <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>
-                            {{ $item->nama_paket }}</option>
+                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>
+                        {{ $item->nama_paket }}</option>
                     @endforeach
                 </select>
-            </div>
-            <div class="mb-3 col-md-12">
-                <label class="form-label">Kode Invoice</label>
-                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control"
-                    placeholder="Kode Invoice" disabled value={{ $transaksi->kode_invoice }}>
             </div>
         </div>
         <div class="col-lg-6">
@@ -78,8 +83,8 @@
             <div class="mb-3 col-md-12">
                 <label class="form-label">Status Bayar</label>
                 <select class="default-select  form-control wide" name="dibayar" id="dibayar">
-                    <option value="dibayar">Dibayar</option>
-                    <option value="belum_dibayar">Belum Dibayar</option>
+                    <option value="Dibayar">Dibayar</option>
+                    <option value="Belum Dibayar">Belum Dibayar</option>
                 </select>
             </div>
         </div>
@@ -90,19 +95,21 @@
         </div>
     </div>
 </form>
-{{-- <script>
-    $('form').submit(function() {
-        $('#kode_invoice').val('INV-' + Date.now());
-    });
-</script> --}}
 <script>
     function addPercent() {
-        var diskonInput = document.getElementById("diskon");
-        var diskonValue = parseInt(diskonInput.value);
-        if (!isNaN(diskonValue)) {
-            diskonInput.value = diskonValue + "%";
-        }
+    if (diskon > 100) {
+        alert('Diskon tidak boleh melebihi 100%');
+        $(this).val('');
+        return;
     }
+    var diskonInput = document.getElementById("diskon");
+    var diskonValue = parseInt(diskonInput.value);
+    if (!isNaN(diskonValue)) {
+        diskonInput.value = diskonValue + "%";
+    }
+}
+
+
     // event listener untuk inputan diskon
     $('#diskon').on('change', function() {
         var diskon = $(this).val();

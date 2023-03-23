@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Outlet;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,8 +27,10 @@ class User extends Authenticatable
         'email',
         'outlet_id',
         'role',
+        'image',
         'password',
     ];
+
     public function outlet()
     {
         return $this->belongsTo(Outlet::class);

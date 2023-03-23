@@ -1,13 +1,11 @@
 <?php
 
-use App\Http\Middleware\CheckRole;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
@@ -26,19 +24,10 @@ use App\Http\Controllers\UserManagementController;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect(url('/login'));
-});
-Route::get('/coba', function () {
-    return view('coba');
-});
-
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index']);
-
-// route pelanggan
-// end route pelanggan
+Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
+Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
 
 // route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
@@ -51,8 +40,10 @@ Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
 Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
 Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
 Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
-Route::get('/pesanan', [MemberController::class, 'index']);
 // end route transaksi
+
+Route::get('/pesanan', [MemberController::class, 'index']);
+Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
 
 // route registrasi pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
@@ -96,8 +87,6 @@ Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     Route::delete('/outlet/destroy/{id}', [OutletController::class, 'destroy']);
     // end route outlet
 });
-
 Route::put('/pelanggan/{id}/status', [LaporanController::class, 'updateStatus']);
-Route::delete('/delete-view/{id}', [App\Http\Controllers\LaporanController::class, 'deleteView']);
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
 Route::get('/laporan/export', [App\Http\Controllers\LaporanController::class, 'export'])->name('laporan.export');
