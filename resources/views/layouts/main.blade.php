@@ -14,7 +14,6 @@
     <meta property="og:image" content="https:/fillow.dexignlab.com/xhtml/social-image.png">
     <meta name="format-detection" content="telephone=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- PAGE TITLE HERE -->
     <title>LaundryOn </title>
     @include('partials.style')

@@ -27,8 +27,8 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
-// Route::put('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice']);
 Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
+
 // route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index']);
 Route::get('/transaksi/read', [TransaksiController::class, 'read']);
@@ -88,6 +88,5 @@ Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     // end route outlet
 });
 Route::put('/pelanggan/{id}/status', [LaporanController::class, 'updateStatus']);
-Route::delete('/delete-view/{id}', [App\Http\Controllers\LaporanController::class, 'deleteView']);
 Route::get('/laporan', [App\Http\Controllers\LaporanController::class, 'index']);
 Route::get('/laporan/export', [App\Http\Controllers\LaporanController::class, 'export'])->name('laporan.export');

@@ -128,3 +128,7 @@
         </table>
     </div>
 </div>
+<div class="modal-footer">
+    <a href="{{ route('invoice.generate', [$transaksi->id]) }}" download class="btn btn-primary mx-auto w-100">Cetak
+        Transaksi</a>
+</div>

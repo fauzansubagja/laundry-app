@@ -31,20 +31,20 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <div id="DZ_W_Notification1" class="widget-media dlab-scroll p-3" style="height:380px;">
                                 <ul class="timeline">
-                                    @foreach ($data->whereNull('deleted_at') as $item)
+                                    @foreach ($data as $item)
                                     <li>
                                         <div class="timeline-panel">
                                             <div class="media me-2">
                                                 @if ($item->status == 'Baru')
-                                                <img alt="image" width="50" src="assets/images/status/baru.gif">
+                                                <i class="fas fa-shopping-cart"></i>
                                                 @elseif($item->status == 'Proses')
-                                                <img alt="image" width="50" src="assets/images/status/proses.gif">
+                                                <i class="fas fa-hourglass-half"></i>
                                                 @elseif($item->status == 'Selesai')
-                                                <img alt="image" width="50" src="assets/images/status/selesai.gif">
+                                                <i class="fas fa-check-circle"></i>
                                                 @elseif($item->status == 'Diambil')
-                                                <img alt="image" width="50" src="assets/images/status/diambil.gif">
+                                                <i class="fas fa-clipboard-check"></i>
                                                 @elseif($item->status == 'Dikirim')
-                                                <img alt="image" width="50" src="assets/images/status/dikirim.gif">
+                                                <i class="fas fa-truck"></i>
                                                 @endif
                                             </div>
                                             <div class="media-body">
@@ -69,11 +69,6 @@
                                                 <small class="d-block">{{ $item->created_at->diffForHumans() }}
                                                     By <strong>{{ $item->user->name }}</strong></small>
                                             </div>
-                                            <div class="delete-button">
-                                                <button type="button" style="border:none; background:none;"
-                                                    onclick="deleteView(this, {{ $item->id }})"><span
-                                                        class="ms-1 fa fa-times"></span></button>
-                                            </div>
                                         </div>
                                     </li>
                                     @endforeach
@@ -86,7 +81,7 @@
 
                     <li class="nav-item dropdown  header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                            <img src="assets/images/avatar/1.png" alt="">
+                            <img src="{{ asset('/assets/images' . Auth::user()->image)}}" alt="">
                             {{-- <img src="{{ Storage::url('public/images/default.jpg') }}" width="56" alt="">
                             --}}
                         </a>

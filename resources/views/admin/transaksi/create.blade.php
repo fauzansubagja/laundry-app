@@ -15,11 +15,8 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
-                <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
-                    @foreach ($outlet as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control" value="{{ Auth::user()->outlet->nama }}" readonly>
+                <input type="hidden" name="outlet_id" id="outlet_id" value="{{ Auth::user()->outlet_id }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Member</label>
@@ -31,20 +28,13 @@
                 </select>
             </div>
             <div class="mb-3 col-md-12">
-                <label class="form-label">User</label>
-                <select class="default-select  form-control wide" name="user_id" id="user_id">
-                    <option value="" selected>-- Pilih Kasir --</option>
-                    @foreach ($user as $item)
-                    @if ($item->role == 'Kasir')
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endif
-                    @endforeach
-                </select>
+                <label class="form-label">Nama Kasir</label>
+                <input type="text" class="form-control" value="{{ $userData->name }}" readonly>
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
                 <select class="multi-select" name="paket_id[]" id="paket_id" multiple="multiple">
-                    <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_paket }}</option>
                     @endforeach
@@ -91,6 +81,7 @@
         </div>
     </div>
 </form>
+
 <script>
     function addPercent() {
     if (diskon > 100) {

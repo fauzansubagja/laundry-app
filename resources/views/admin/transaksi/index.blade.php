@@ -9,6 +9,7 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
             </ol>
         </div>
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -87,7 +88,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -102,7 +102,7 @@
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Transaksi</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -125,10 +125,6 @@
                         </button>
                     </div>
                     <div id="page1"></div>
-                    <div class="modal-footer">
-                        <a href="{{ route('invoice.generate', ['id' => $item->id]) }}" download
-                            class="btn btn-primary mx-auto w-100">Cetak Transaksi</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -224,15 +220,16 @@
                 $("#exampleModal").modal('show');
             });
         }
-        // Untuk modal halaman edit show
+
+        // Untuk modal halaman detail
         function detail(id) {
             $.get("{{ url('/transaksi/detail') }}/" + id, {}, function(data, status) {
-                // console.log(data)
                 $("#exampleModalLabel").html('Detail Transaksi')
                 $("#page1").html(data);
                 $("#basicModal").modal('show');
             });
         }
+
         // untuk proses update data
         function update(id) {
             var outlet_id = $("#outlet_id").val();

@@ -127,6 +127,7 @@
             var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
+            var image = $("#image").val();
             $.ajax({
                 type: "post",
                 url: "{{ url('/management/user/store') }}",
@@ -137,6 +138,7 @@
                     'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
+                    'image': image,
                     '_token': '{{ csrf_token() }}',
                 },
                 success: function(data) {
@@ -164,6 +166,7 @@
             var password = $("#password").val();
             var outlet_id = $("#outlet_id").val();
             var role = $("#role").val();
+            var image = $("#image").val();
             $.ajax({
                 type: "post",
                 url: "{{ url('/management/user/update') }}/" + id,
@@ -174,6 +177,7 @@
                     'password': password,
                     'outlet_id': outlet_id,
                     'role': role,
+                    'image': image,
                     '_token': '{{ csrf_token() }}',
                     '_method': 'PUT',
                 },

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailTransaksi;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Outlet;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\DetailTransaksi;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -38,14 +39,21 @@ class TransaksiController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         $tgl_transaksi = date('Y-m-d H:i:s');
 
+        // mengirim data user berdasarkan user yang sedang login
+        $user = Auth::user();
+        $userData = User::where('id', $user->id)->first();
+
+        // mengirim data paket berdasarkan outlet yang dipilih
+        $outlet_id = Auth::user()->outlet_id;
+        $paket = Paket::where('outlet_id', $outlet_id)->get();
+
         return view('admin.transaksi.create', [
             'tgl_transaksi' => $tgl_transaksi,
             'kode_invoice' => $kode_invoice,
-            'outlet' => Outlet::all(),
+            'userData' => $userData,
+            'paket' => $paket,
             'transaksi' => Transaksi::all(),
-            'user' => User::all(),
             'member' => Member::all(),
-            'paket' => Paket::all(),
         ]);
     }
 
@@ -182,8 +190,9 @@ class TransaksiController extends Controller
 
     public function destroy($id)
     {
-        $data = Transaksi::where('id', $id)->first();
         // dd($data);
-        $data->delete();
+        $data = Transaksi::findOrFail($id);
+        $data->deleted_at = now();
+        $data->save();
     }
 }

@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'username' => 'Administrator',
             'email' => 'admin@gmail.com',
             'role' => 'Admin',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '1',
         ]);
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
             'username' => 'Doofildoofis',
             'email' => 'doofis@gmail.com',
             'role' => 'Kasir',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '1',
         ]);
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
             'username' => 'LuisMora',
             'email' => 'luis@gmail.com',
             'role' => 'Kasir',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '2',
         ]);
@@ -43,6 +46,7 @@ class UserSeeder extends Seeder
             'username' => 'Takuya',
             'email' => 'takuya@gmail.com',
             'role' => 'Kasir',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '3',
         ]);
@@ -51,6 +55,7 @@ class UserSeeder extends Seeder
             'username' => 'Dolly',
             'email' => 'dolly@gmail.com',
             'role' => 'Kasir',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '4',
         ]);
@@ -59,6 +64,7 @@ class UserSeeder extends Seeder
             'username' => 'RyanLi',
             'email' => 'ryan@gmail.com',
             'role' => 'Owner',
+            'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '1',
         ]);

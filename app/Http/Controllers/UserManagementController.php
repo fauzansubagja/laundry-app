@@ -55,12 +55,24 @@ class UserManagementController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $data['name'] = $request->name;
-        $data['username'] = $request->username;
-        $data['email'] = $request->email;
-        $data['password'] = $request->password;
-        $data['role'] = $request->role;
-        $data['outlet_id'] = $request->outlet_id;
+        $data = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+            'outlet_id' => $request->outlet_id,
+            'image' => 'default.png', // default value jika image tidak diupload
+        ];
+
+        if ($request->hasFile('image')) {
+            $destinationPath = 'image/profile';
+            $image = $request->file('image');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['image'] = $profileImage;
+        }
+
         User::create($data);
     }
 
@@ -85,6 +97,14 @@ class UserManagementController extends Controller
         $data->password = $request->password;
         $data->role = $request->role;
         $data->outlet_id = $request->outlet_id;
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/profile';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data->image = $profileImage;
+        }
+
         $data->save();
     }
 

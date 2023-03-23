@@ -23,11 +23,6 @@ class InvoiceController extends Controller
 
     public function generateInvoice($id)
     {
-        // $transaksi = Transaksi::where('id', $id)->first();
-        // $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
-        // $data = ['transaksi' => $transaksi];
-        // $data1 = ['detailTransaksi' => $detailTransaksi];
-
         $transaksi = Transaksi::where('id', $id)->first();
         $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
 
@@ -35,9 +30,5 @@ class InvoiceController extends Controller
 
         $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
         return $pdf->download('invoice-' . $transaksi->id . '.pdf');
-
-        // $todayDate = Carbon::now()->format('d-m-Y');
-        // $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data, $data1);
-        // return $pdf->download('invoice-' . $transaksi->id . '-' . $todayDate . '.pdf');
     }
 }

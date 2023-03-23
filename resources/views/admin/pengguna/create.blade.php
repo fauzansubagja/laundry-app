@@ -1,4 +1,5 @@
-<form>
+<link href="assets/css/style.css" rel="stylesheet">
+<form enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-6">
             <div class="mb-3 col-md-12">
@@ -36,6 +37,12 @@
                 </select>
             </div>
         </div>
+        {{-- <div class="input-group mb-3">
+            <span class="input-group-text">Upload</span>
+            <div class="form-file">
+                <input type="file" class="form-file-input form-control">
+            </div>
+        </div> --}}
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCreateClose">Batal</button>
             <button type="button" class="btn btn-primary" onclick="store()">Simpan</button>

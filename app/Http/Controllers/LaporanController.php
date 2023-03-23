@@ -41,11 +41,4 @@ class LaporanController extends Controller
 
         return redirect('/pesanan');
     }
-
-    public function deleteView(Request $request, $id)
-    {
-        $data = Transaksi::findOrFail($id);
-        $data->deleted_at = now();
-        $data->save();
-    }
 }

@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="assets/vendor/select2/css/select2.min.css">
+<link href="assets/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+<script src="assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="assets/js/plugins-init/select2-init.js"></script>
+<script src="assets/js/custom.min.js"></script>`
 <form>
     <div class="row">
         <div class="col-lg-6">
@@ -41,7 +48,6 @@
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
                 <select class="default-select form-control wide" name="paket_id" id="paket_id">
-                    <option value="" selected>-- Pilih Paket --</option>
                     @foreach ($paket as $item)
                     <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>
                         {{ $item->nama_paket }}</option>

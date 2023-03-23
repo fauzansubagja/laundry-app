@@ -21,18 +21,3 @@
 <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
 <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.')}}js"></script>
 <script src="{{ asset('js/plugins-init/sweetalert.init.js')}}"></script>
-<script>
-    function deleteView(button, id) {
-        $.ajax({
-            type: "post",
-            url: "{{ url('/delete-view') }}/" + id,
-            data: {
-                '_token': '{{ csrf_token() }}',
-                '_method': 'delete',
-            },
-            success: function(data) {
-                $(button).closest('li').remove();
-            }
-        });
-    }
-</script>

@@ -128,11 +128,6 @@
                         </button>
                     </div>
                     <div id="page1"></div>
-
-                    <div class="modal-footer">
-                        <a href="{{ route('invoice.generate', ['id' => $item->id]) }}" download
-                            class="btn btn-primary mx-auto w-100">Cetak Transaksi</a>
-                    </div>
                 </div>
             </div>
         </div>

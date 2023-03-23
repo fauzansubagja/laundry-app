@@ -1,88 +1,84 @@
 @extends('layouts.main')
 @section('konten')
-    <div class="content-body">
-        <!-- row -->
-        <div class="container-fluid">
-            <div class="row page-titles">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Outlet</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
-                </ol>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Data Outlet</h4>
-                            {{-- <button class="btn btn-primary" onClick="create()">+ Tambah Product</button> --}}
-                            <button type="button" class="btn btn-rounded btn-primary" onClick="create()"><i
-                                    class="fas fa-plus"></i>
-                                Tambah
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="example3" class="display" style="min-width: 845px">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Alamat</th>
-                                            <th>Telephone</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $no = 1; @endphp
-                                        @foreach ($outlet as $item)
-                                            {{-- {{dd($item)}} --}}
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->alamat }}</td>
-                                                <td>{{ $item->tlp }}</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <button type="button" id="btn-modal-edit"
-                                                            item-id="{{ $item->id }}"
-                                                            class="btn btn-primary shadow btn-xs sharp me-1"
-                                                            item-bs-toggle="modal" item-bs-target="#modal-edit"
-                                                            onclick="edit({{ $item->id }})"><i
-                                                                class="fas fa-pencil-alt"></i>
-                                                        </button>
-                                                        <button class="btn btn-danger shadow btn-xs sharp"
-                                                            item-id="{{ $item->id }}"
-                                                            id="btn-delete-{{ $item->id }}"
-                                                            onclick="destroy({{ $item->id }})">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Outlet</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">List</a></li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Data Outlet</h4>
+                        {{-- <button class="btn btn-primary" onClick="create()">+ Tambah Product</button> --}}
+                        <button type="button" class="btn btn-rounded btn-primary" onClick="create()"><i
+                                class="fas fa-plus"></i>
+                            Tambah
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example3" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Telephone</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach ($outlet as $item)
+                                    {{-- {{dd($item)}} --}}
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->tlp }}</td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <button type="button" id="btn-modal-edit" item-id="{{ $item->id }}"
+                                                    class="btn btn-primary shadow btn-xs sharp me-1"
+                                                    item-bs-toggle="modal" item-bs-target="#modal-edit"
+                                                    onclick="edit({{ $item->id }})"><i class="fas fa-pencil-alt"></i>
+                                                </button>
+                                                <button class="btn btn-danger shadow btn-xs sharp"
+                                                    item-id="{{ $item->id }}" id="btn-delete-{{ $item->id }}"
+                                                    onclick="destroy({{ $item->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-            <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Outlet</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="basic-form">
-                                    <div id="page"></div>
-                                </div>
+        <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambah Outlet</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <div id="page"></div>
                             </div>
                         </div>
                     </div>
@@ -90,8 +86,8 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
-
 @push('ajax_crud')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -107,8 +103,6 @@
         read()
 
     });
-
-
     // Read Database
     function read() {
         $.get("{{ url('/outlet/read') }}", {}, function(data, status) {
