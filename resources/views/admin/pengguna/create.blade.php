@@ -37,12 +37,12 @@
                 </select>
             </div>
         </div>
-        {{-- <div class="input-group mb-3">
+        <div class="input-group mb-3">
             <span class="input-group-text">Upload</span>
             <div class="form-file">
-                <input type="file" class="form-file-input form-control">
+                <input type="file" class="form-file-input form-control" id="image" name="image">
             </div>
-        </div> --}}
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCreateClose">Batal</button>
             <button type="button" class="btn btn-primary" onclick="store()">Simpan</button>

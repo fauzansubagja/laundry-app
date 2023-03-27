@@ -92,34 +92,27 @@ class TransaksiController extends Controller
         $data['status'] = $request->status;
         $data['dibayar'] = $request->dibayar;
 
-        // create a new transaction data in the database
         $transaksi = Transaksi::create($data);
 
         if ($request->has('paket_id') && !empty($request->paket_id)) {
             foreach ($request->paket_id as $id) {
                 $paket = Paket::find($id);
                 if ($paket) {
-                    // create a new detail_transaksi record for each selected package
                     $detail = new DetailTransaksi();
                     $detail->transaksi_id = $transaksi->id;
                     $detail->paket_id = $paket->id;
-                    // $detail->member_id = $request->member_id;
-                    // $detail->outlet_id = $request->outlet_id;
                     $detail->save();
                 }
             }
         }
 
         if ($request->has('diskon') && $request->diskon != null) {
-            // extract the numeric value of the discount from the input
             preg_match_all('/\d+/', $request->diskon, $matches);
             $diskon_numerik = implode('', $matches[0]);
 
-            // save the discount value to the $data variable
             $data['diskon'] = (int) $diskon_numerik;
         }
 
-        // update the transaction record with the final data, including the discount value (if any)
         $transaksi->update($data);
     }
 
@@ -146,11 +139,6 @@ class TransaksiController extends Controller
             'detailTransaksi' => $detailTransaksi
         ]);
     }
-
-    public function show($id)
-    {
-    }
-
 
     public function update(Request $request, $id)
     {

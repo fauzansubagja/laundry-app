@@ -2,20 +2,12 @@
 <html lang="en" class="h-100">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="robots" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
-    <meta property="og:title" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
-    <meta property="og:description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
-    <meta property="og:image" content="https://fillow.dexignlab.com/xhtml/social-image.png">
-    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- PAGE TITLE HERE -->
-    <title>Admin Dashboard</title>
+    <title>LaundryOn</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -33,7 +25,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <img src="{{ asset('assets/images/logo.png') }}" alt="">
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form form method="POST" action="{{ route('login') }}">
@@ -84,7 +76,8 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="{{ route('register') }}">Sign
+                                        <p>Don't have an account? <a class="text-primary"
+                                                href="{{ route('register') }}">Sign
                                                 up</a></p>
                                     </div>
                                 </div>

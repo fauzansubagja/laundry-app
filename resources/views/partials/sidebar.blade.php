@@ -20,9 +20,10 @@
                     <span class="nav-text">Transaksi</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ url('/transaksi') }}"
-                            class="{{ request()->is('transaksi*') ? 'active' : '' }}">Transaksi Baru</a></li>
-                    <li><a href="{{ url('/pesanan') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}">Kelola
+                    <li><a href="{{ url('/transaksi') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}"
+                            aria-expanded="false">Transaksi Baru</a></li>
+                    <li><a href="{{ url('/pesanan') }}" class="{{ request()->is('transaksi*') ? 'active' : '' }}"
+                            aria-expanded="false">Kelola
                             Pesanan</a></li>
                 </ul>
             </li>

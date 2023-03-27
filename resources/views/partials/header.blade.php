@@ -32,45 +32,45 @@
                             <div id="DZ_W_Notification1" class="widget-media dlab-scroll p-3" style="height:380px;">
                                 <ul class="timeline">
                                     @foreach ($data as $item)
-                                    <li>
-                                        <div class="timeline-panel">
-                                            <div class="media me-2">
-                                                @if ($item->status == 'Baru')
-                                                <i class="fas fa-shopping-cart"></i>
-                                                @elseif($item->status == 'Proses')
-                                                <i class="fas fa-hourglass-half"></i>
-                                                @elseif($item->status == 'Selesai')
-                                                <i class="fas fa-check-circle"></i>
-                                                @elseif($item->status == 'Diambil')
-                                                <i class="fas fa-clipboard-check"></i>
-                                                @elseif($item->status == 'Dikirim')
-                                                <i class="fas fa-truck"></i>
-                                                @endif
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="mb-1">{{ $item->member->nama }} Order
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media me-2">
                                                     @if ($item->status == 'Baru')
-                                                    <span class="badge badge-secondary">{{ $item->status }}<span
-                                                            class="ms-1 fa fa-archive"></span></span>
-                                                    @elseif ($item->status == 'Proses')
-                                                    <span class="badge badge-primary">{{ $item->status }}<span
-                                                            class="ms-1 fa fa-redo"></span></span>
-                                                    @elseif ($item->status == 'Selesai')
-                                                    <span class="badge badge-success">{{ $item->status }}<span
-                                                            class="ms-1 fa fa-check"></span></span>
-                                                    @elseif ($item->status == 'Diambil')
-                                                    <span class="badge badge-warning">{{ $item->status }}<span
-                                                            class="ms-1 fa fa-paper-plane"></span></span>
-                                                    @elseif ($item->status == 'Dikirim')
-                                                    <span class="badge badge-danger">{{ $item->status }}<span
-                                                            class="ms-1 fa fa-paper-plane"></span></span>
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    @elseif($item->status == 'Proses')
+                                                        <i class="fas fa-hourglass-half"></i>
+                                                    @elseif($item->status == 'Selesai')
+                                                        <i class="fas fa-check-circle"></i>
+                                                    @elseif($item->status == 'Diambil')
+                                                        <i class="fas fa-clipboard-check"></i>
+                                                    @elseif($item->status == 'Dikirim')
+                                                        <i class="fas fa-truck"></i>
                                                     @endif
-                                                </h6>
-                                                <small class="d-block">{{ $item->created_at->diffForHumans() }}
-                                                    By <strong>{{ $item->user->name }}</strong></small>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mb-1">{{ $item->member->nama }} Order
+                                                        @if ($item->status == 'Baru')
+                                                            <span class="badge badge-secondary">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-archive"></span></span>
+                                                        @elseif ($item->status == 'Proses')
+                                                            <span class="badge badge-primary">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-redo"></span></span>
+                                                        @elseif ($item->status == 'Selesai')
+                                                            <span class="badge badge-success">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-check"></span></span>
+                                                        @elseif ($item->status == 'Diambil')
+                                                            <span class="badge badge-warning">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-paper-plane"></span></span>
+                                                        @elseif ($item->status == 'Dikirim')
+                                                            <span class="badge badge-danger">{{ $item->status }}<span
+                                                                    class="ms-1 fa fa-paper-plane"></span></span>
+                                                        @endif
+                                                    </h6>
+                                                    <small class="d-block">{{ $item->created_at->diffForHumans() }}
+                                                        By <strong>{{ $item->user->name }}</strong></small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -81,32 +81,34 @@
 
                     <li class="nav-item dropdown  header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                            <img src="{{ asset('/assets/images' . Auth::user()->image)}}" alt="">
-                            {{-- <img src="{{ Storage::url('public/images/default.jpg') }}" width="56" alt="">
-                            --}}
+                            <img src="{{ asset('image/profile/' . Auth::user()->image) }}" alt="">
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="{{ url('/profile/' . Auth::user()->id) }}" class="dropdown-item ai-icon">
-                                <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18"
-                                    height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary"
+                                    width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
                                 <span class="ms-2">Profile </span>
                             </a>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();"
                                 class="dropdown-item ai-icon">
-                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18"
-                                    height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger"
+                                    width="18" height="18" viewbox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                     <polyline points="16 17 21 12 16 7"></polyline>
                                     <line x1="21" y1="12" x2="9" y2="12">
                                     </line>
                                 </svg>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                                 <span class="ms-2">Logout </span>

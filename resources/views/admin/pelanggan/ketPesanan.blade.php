@@ -50,7 +50,7 @@
                                 <tr>
                                     <td>Kode Pelanggan</td>
                                     <td>:</td>
-                                    <td>{{ $transaksi->kode_invoice }}</td>
+                                    <td>{{ $transaksi->member->kode_member }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
@@ -130,7 +130,7 @@
                                 <tr>
                                     <td>Kode Pelanggan</td>
                                     <td>:</td>
-                                    <td>{{ $transaksi->kode_invoice }}</td>
+                                    <td>{{ $transaksi->member->kode_member }}</td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>

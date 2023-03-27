@@ -112,7 +112,7 @@
                     <h2 class="text-start">LaundryOn</h2>
                 </th>
                 <th width="50%" colspan="2" class="text-end company-data">
-                    <span>Invoice Id: #{{ $transaksi->kode_invoice }}</span> <br>
+                    <span>Invoice Id: {{ $transaksi->kode_invoice }}</span> <br>
                     <span>Tanggal: {{ date('d / m / Y')}}</span> <br>
                     <span>Kode Pelanggan : {{ $transaksi->member->kode_member }}</span> <br>
                     <span>Alamat: {{ $transaksi->member->alamat }}</span> <br>

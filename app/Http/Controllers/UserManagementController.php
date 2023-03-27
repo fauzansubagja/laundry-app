@@ -94,12 +94,18 @@ class UserManagementController extends Controller
         $data->name = $request->name;
         $data->username = $request->username;
         $data->email = $request->email;
-        $data->password = $request->password;
+        $data->password = bcrypt($request->password);
         $data->role = $request->role;
         $data->outlet_id = $request->outlet_id;
 
         if ($image = $request->file('image')) {
             $destinationPath = 'image/profile';
+
+            // hapus gambar lama jika ada
+            if ($data->image && file_exists($destinationPath . '/' . $data->image)) {
+                unlink($destinationPath . '/' . $data->image);
+            }
+
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $data->image = $profileImage;
@@ -107,6 +113,7 @@ class UserManagementController extends Controller
 
         $data->save();
     }
+
 
     public function destroy($id)
     {

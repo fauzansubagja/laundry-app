@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- PAGE TITLE HERE -->
-    <title>Admin Dashboard</title>
+    <title>LaundryOn</title>
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
@@ -33,10 +33,11 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                        <img src="{{ asset('assets/images/logo.png') }}" alt="">
                                     </div>
                                     <h4 class="text-center mb-4">Sign up your account</h4>
-                                    <form action="index.html">
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Username</strong></label>
                                             <input id="name" type="text"
@@ -75,7 +76,8 @@
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Already have an account? <a class="text-primary" href="{{ route('login') }}">Login</a></p>
+                                        <p>Already have an account? <a class="text-primary"
+                                                href="{{ route('login') }}">Login</a></p>
                                     </div>
                                 </div>
                             </div>

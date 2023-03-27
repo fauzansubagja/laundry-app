@@ -1,8 +1,7 @@
 <!-- FAVICONS ICON -->
-<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+<link rel="shortcut icon" type="image/png" href="">
 <link href="{{ asset('assets/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css') }}">
-
 <!-- Datatable -->
 <link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 <!-- Custom Stylesheet -->
