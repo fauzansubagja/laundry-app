@@ -42,7 +42,7 @@
                                         <td>{{ $item->member->nama }}</td>
                                         <td>{{ date('Y-m-d', strtotime($item->tgl_transaksi)) }}</td>
                                         <td>Rp. {{ number_format($item->total_biaya, 0, ',', '.') }}</td>
-                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->user->username }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

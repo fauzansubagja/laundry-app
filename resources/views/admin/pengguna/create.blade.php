@@ -3,23 +3,15 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="mb-3 col-md-12">
-                <label class="form-label">Nama</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Nama">
+                <label class="form-label">Email</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Username</label>
                 <input type="text" name="username" id="username" class="form-control" placeholder="Username">
             </div>
-            <div class="mb-3 col-md-12">
-                <label class="form-label">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-            </div>
         </div>
         <div class="col-lg-6">
-            <div class="mb-3 col-md-12">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-            </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
                 <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
@@ -29,13 +21,17 @@
                 </select>
             </div>
             <div class="mb-3 col-md-12">
-                <label class="form-label">Hak Akses</label>
-                <select class="default-select  form-control wide" name="role" id="role">
-                    <option value="Admin">Admin</option>
-                    <option value="Kasir">Kasir</option>
-                    <option value="Owner">Owner</option>
-                </select>
+                <label class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password">
             </div>
+        </div>
+        <div class="mb-3 col-md-12">
+            <label class="form-label">Hak Akses</label>
+            <select class="default-select  form-control wide" name="role" id="role">
+                {{-- <option value="Admin">Admin</option> --}}
+                <option value="Kasir">Kasir</option>
+                <option value="Owner">Owner</option>
+            </select>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text">Upload</span>

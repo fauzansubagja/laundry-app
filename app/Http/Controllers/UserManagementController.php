@@ -59,7 +59,6 @@ class UserManagementController extends Controller
     {
         // dd($request);
         $data = [
-            'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -94,7 +93,6 @@ class UserManagementController extends Controller
     public function update(Request $request, $id)
     {
         $data = User::findOrFail($id);
-        $data->name = $request->name;
         $data->username = $request->username;
         $data->email = $request->email;
         $data->password = bcrypt($request->password);

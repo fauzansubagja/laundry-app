@@ -133,7 +133,7 @@
             </tr>
             <tr>
                 <td>Pegawai:</td>
-                <td>{{ $transaksi->user->name }}</td>
+                <td>{{ $transaksi->user->username }}</td>
 
                 <td>Nama Pelanggan:</td>
                 <td>{{$transaksi->member->nama}}</td>

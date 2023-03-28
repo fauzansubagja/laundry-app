@@ -33,16 +33,16 @@
     <div class="default-tab">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#home"><i class="la la-check-circle me-2"></i>
+                <a class="nav-link active" data-bs-toggle="tab" href="#pesanan"><i class="la la-check-circle me-2"></i>
                     Pesanan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#profile"><i class="la la-exclamation-circle me-2"></i>
+                <a class="nav-link" data-bs-toggle="tab" href="#keterangan"><i class="la la-exclamation-circle me-2"></i>
                     Keterangan</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="home" role="tabpanel">
+            <div class="tab-pane fade show active" id="pesanan" role="tabpanel">
                 <div class="pt-4">
                     <div class="row">
                         <div class="col-md-6">
@@ -122,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="profile">
+            <div class="tab-pane fade" id="keterangan">
                 <div class="pt-4">
                     <div class="row">
                         <div class="col-md-6">

@@ -26,8 +26,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
                                             <th>Username</th>
+                                            <th>Email</th>
                                             <th>Nama Outlet</th>
                                             <th>Akses</th>
                                             <th>Aksi</th>
@@ -38,7 +38,7 @@
                                         @foreach ($user as $item)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->username }}</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->outlet->nama }}</td>
                                                 <td>{{ $item->role }}</td>

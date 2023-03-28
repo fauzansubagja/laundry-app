@@ -41,7 +41,7 @@ class LaporanExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
             $transaksi->member->nama,
             $transaksi->tgl_transaksi,
             'Rp. ' . number_format($transaksi->total_biaya, 0, ',', '.'),
-            $transaksi->user->name
+            $transaksi->user->username
         ];
     }
 }
