@@ -48,6 +48,7 @@ Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDisk
 
 Route::get('/pesanan', [MemberController::class, 'index']);
 Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
+Route::get('/pelanggan/pesanan/detail/{id}', [HomeController::class, 'detailPesanan']);
 
 
 // route registrasi pelanggan

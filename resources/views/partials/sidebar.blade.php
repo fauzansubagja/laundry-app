@@ -15,6 +15,7 @@
                 </a>
             </li>
             @endcan
+            @canany(['admin', 'kasir'])
             <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                     <i class="fas fa-cart-plus"></i>
                     <span class="nav-text">Transaksi</span>
@@ -27,6 +28,7 @@
                             Pesanan</a></li>
                 </ul>
             </li>
+            @endcanany
             @can('admin')
             <li><a href="{{ url('/paket') }}" class="{{ request()->is('paket*') ? 'active' : '' }}"
                     aria-expanded="false">
@@ -41,12 +43,14 @@
                 </a>
             </li>
             @endcan
+            @canany(['admin', 'kasir'])
             <li><a href="{{ url('/registrasi/pelanggan') }}"
                     class="{{ request()->is('registrasi/pelanggan*') ? 'active' : '' }}" aria-expanded="false">
                     <i class="fas fa-users"></i>
                     <span class="nav-text">Registrasi Pelanggan</span>
                 </a>
             </li>
+            @endcanany
             <li><a href="{{ url('/laporan') }}" class="{{ request()->is('laporan*') ? 'active' : '' }}"
                     aria-expanded="false">
                     <i class="fas fa-info-circle"></i>

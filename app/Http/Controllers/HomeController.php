@@ -45,27 +45,36 @@ class HomeController extends Controller
 
             $totalBiayaPerDay[] = $totalBiaya;
         }
-        // $user_id = Auth::id();
 
-        // $transaksis = Transaksi::where('user_id', $user_id)->first();
-        // $detailTransaksi = DetailTransaksi::whereHas('transaksi', function ($query) use ($user_id) {
-        //     $query->where('user_id', $user_id);
+        // $transaksis = Transaksi::whereHas('member', function ($query) {
+        //     $query->where('user_id', Auth::user()->id);
         // })->get();
-        // dd($transaksis);
-        // dd($totalBiayaPerDay[0]);
+        $user_id = Auth::user()->id;
+        $transaksis = Transaksi::whereHas('member', function ($query) use ($user_id) {
+            $query->where('user_id', $user_id);
+        })->get();
         return view('dashboard', [
-            // 'transaksis' => $transaksis,
-            // 'detailTransaksi' => $detailTransaksi,
             'user' => User::all(),
             'member' => Member::all(),
             'members' => Member::count(),
             'outlet' => Outlet::all(),
-            'outlets' => Outlet::count(),
+            'transaksis' => $transaksis,
             'transaksi' => Transaksi::all(),
+            'outlets' => Outlet::count(),
             'data' => Transaksi::count(),
             'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
             'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
             'totalBiayaPerDay' => $totalBiayaPerDay,
+        ]);
+    }
+
+    public function detailPesanan($id)
+    {
+        $transaksi = Transaksi::where('id', $id)->first();
+        $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+        return view('admin.pelanggan.ketPesanan', [
+            'transaksi' => $transaksi,
+            'detailTransaksi' => $detailTransaksi
         ]);
     }
 }

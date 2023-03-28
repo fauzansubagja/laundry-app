@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('member', function ($user) {
-            return $user->role === 'Member';
+            return $user->role === 'Pelanggan';
         });
 
         view()->composer('*', function ($view) {

@@ -170,9 +170,104 @@
             </div>
         </div>
         @endcanany
+        @can('member')
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle">
+                                            <div class="form-check custom-checkbox">
+                                                <input type="checkbox" class="form-check-input" id="checkAll">
+                                                <label class="form-check-label" for="checkAll"></label>
+                                            </div>
+                                        </th>
+                                        <th class="align-middle">Pesanan</th>
+                                        <th class="align-middle pe-7">Tanggal</th>
+                                        <th class="align-middle" style="min-width: 12.5rem;">Dikirim Ke</th>
+                                        <th class="align-middle text-end">Status</th>
+                                        <th class="align-middle text-end">Jumlah Bayar</th>
+                                        <th class="no-sort"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orders">
+                                    @foreach ($transaksis as $item)
+                                    <tr class="btn-reveal-trigger">
+                                        <td class="py-2">
+                                            <button type="button" id="btn-modal-detail" item-id="{{ $item->id }}"
+                                                class="btn btn-info shadow btn-xs sharp me-1" item-bs-toggle="modal"
+                                                item-bs-target="#modal-detail" onclick="detail({{ $item->id }})"
+                                                title="Lihat"><i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                        <td class="py-2">
+                                            <a href="#"><strong>#{{ $item->id }}</strong></a> by
+                                            <strong>{{ $item->user->name }}</strong><br><a>{{ $item->user->email }}</a>
+                                        </td>
+                                        <td class="py-2">{{ date('Y-m-d', strtotime($item->tgl_transaksi)) }}</td>
+                                        <td class="py-2">{{ $item->member->nama }}, {{ $item->member->alamat }}
+                                            <p class="mb-0 text-500">Via GRABEXPRESS</p>
+                                        </td>
+                                        <td class="py-2 text-end">
+                                            @if ($item->status == 'Baru')
+                                            <span class="badge badge-secondary" id="status">{{ $item->status }}<span
+                                                    class="ms-1 fa fa-archive"></span></span>
+                                            @elseif ($item->status == 'Proses')
+                                            <span class="badge badge-primary" id="status">{{ $item->status }}<span
+                                                    class="ms-1 fa fa-redo"></span></span>
+                                            @elseif ($item->status == 'Selesai')
+                                            <span class="badge badge-success" id="status">{{ $item->status }}<span
+                                                    class="ms-1 fa fa-check"></span></span>
+                                            @elseif ($item->status == 'Diambil')
+                                            <span class="badge badge-warning" id="status">{{ $item->status }}<span
+                                                    class="ms-1 fa fa-paper-plane"></span></span>
+                                            @elseif ($item->status == 'Dikirim')
+                                            <span class="badge badge-info" id="status">{{ $item->status }}<span
+                                                    class="ms-1 fa fa-paper-plane"></span></span>
+                                            @endif
+                                        </td>
+                                        <td class="py-2 text-end">Rp.
+                                            {{ number_format($item->total_biaya, 0, ',', '.') }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="basicModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Detail Pesanan</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <div id="page1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endcan
     </div>
 </div>
 @endsection
+<script>
+    // Untuk modal halaman show
+        function detail(id) {
+            $.get("{{ url('/pesanan/detail') }}/" + id, {}, function(data, status) {
+                // console.log(data)
+                $("#exampleModalLabel").html('Detail Pesanan')
+                $("#page1").html(data);
+                $("#basicModal").modal('show');
+            });
+        }
+</script>
 <script>
     var revenueMap = function() {
     var options = {

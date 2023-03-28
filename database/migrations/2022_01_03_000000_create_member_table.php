@@ -15,12 +15,14 @@ class CreateMemberTable extends Migration
     {
         Schema::create('member', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_member')->unique();
+            $table->string('kode_member')->unique()->nullable(false);
             $table->string('nama');
             $table->string('alamat');
             $table->string('tlp');
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
-            $table->enum('member_status', ['Member', 'Non Member']);
+            $table->enum('member_status', ['Member', 'Non Member'])->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
