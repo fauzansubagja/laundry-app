@@ -7,8 +7,8 @@ use App\Models\Paket;
 use App\Models\Member;
 use App\Models\Outlet;
 use App\Models\Transaksi;
-use Illuminate\Http\Request;
 use App\Models\DetailTransaksi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
@@ -47,6 +47,7 @@ class TransaksiController extends Controller
         $outlet_id = Auth::user()->outlet_id;
         $paket = Paket::where('outlet_id', $outlet_id)->get();
 
+        // dd($userData);
         return view('admin.transaksi.create', [
             'tgl_transaksi' => $tgl_transaksi,
             'kode_invoice' => $kode_invoice,
@@ -119,7 +120,21 @@ class TransaksiController extends Controller
 
     public function edit($id)
     {
-        // dd(Transaksi::where('id',$id)->get());
+        // mengirim data user berdasarkan user yang sedang login
+        $user = Auth::user();
+        $userData = User::where('id', $user->id)->first();
+
+        // mengirim data paket berdasarkan outlet yang dipilih
+        $outlet_id = Auth::user()->outlet_id;
+        $paket = Paket::where('outlet_id', $outlet_id)->get();
+
+        $detailTransaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+
+        $paketTerpilih = [];
+        foreach ($detailTransaksi as $detail) {
+            $paketTerpilih[] = $detail->paket_id;
+        }
+
         return view('admin.transaksi.edit', [
             'transaksi' => Transaksi::where('id', $id)->first(),
             'transaksis' => Transaksi::find($id),
@@ -127,6 +142,9 @@ class TransaksiController extends Controller
             'user' => User::all(),
             'member' => Member::all(),
             'paket' => Paket::all(),
+            'userData' => $userData,
+            'paket' => $paket,
+            'paketTerpilih' => $paketTerpilih,
         ]);
     }
 

@@ -40,6 +40,10 @@ class AppServiceProvider extends ServiceProvider
             return $user->role === 'Owner';
         });
 
+        Gate::define('member', function ($user) {
+            return $user->role === 'Member';
+        });
+
         view()->composer('*', function ($view) {
             $data = Transaksi::whereNull('deleted_at')->orderBy('created_at', 'desc')->take(5)->get();
             $count = Transaksi::whereNull('deleted_at')->count();

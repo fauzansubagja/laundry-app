@@ -10,6 +10,8 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,9 @@ use App\Http\Controllers\UserManagementController;
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/pelanggan/dashboard', [DashboardController::class, 'index']);
+Route::get('/profile/{id}', [UserManagementController::class, 'profile']);
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
 Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
@@ -44,6 +48,7 @@ Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDisk
 
 Route::get('/pesanan', [MemberController::class, 'index']);
 Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
+
 
 // route registrasi pelanggan
 Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
@@ -74,7 +79,6 @@ Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     Route::get('/management/user/edit/{id}', [UserManagementController::class, 'edit']);
     Route::put('/management/user/update/{id}', [UserManagementController::class, 'update']);
     Route::delete('/management/user/destroy/{id}', [UserManagementController::class, 'destroy']);
-    Route::get('/profile/{id}', [UserManagementController::class, 'profile']);
     // end route pengguna
 
     // route outlet

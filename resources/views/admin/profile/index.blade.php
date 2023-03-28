@@ -102,29 +102,32 @@
                                             <div class="pt-3">
                                                 <div class="settings-form">
                                                     <h4 class="text-primary">Account Setting</h4>
-                                                    <form>
+                                                    <form action="" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
                                                         <div class="row">
                                                             <div class="mb-3 col-md-6">
                                                                 <label class="form-label">Email</label>
-                                                                <input type="email" placeholder="Email"
-                                                                    class="form-control">
+                                                                <input type="email" placeholder="Email" name="email"
+                                                                    class="form-control" value="{{ $user->email }}">
                                                             </div>
                                                             <div class="mb-3 col-md-6">
                                                                 <label class="form-label">New Password</label>
                                                                 <input type="password" placeholder="Password"
-                                                                    class="form-control">
+                                                                    name="password" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-3 col-md-6">
-                                                                <label class="form-label">Username</label>
-                                                                <input type="text" placeholder="Username"
-                                                                    class="form-control">
+                                                                <label class="form-label">Nama</label>
+                                                                <input type="text" placeholder="Username" name="name"
+                                                                    class="form-control" value="{{ $user->name }}">
                                                             </div>
                                                             <div class="mb-3 col-md-6">
-                                                                <label class="form-label">Confirm Password</label>
-                                                                <input type="password" placeholder="Confirm Password"
-                                                                    class="form-control">
+                                                                <label class="form-label">Username</label>
+                                                                <input type="text" placeholder="Confirm Password"
+                                                                    name="username" class="form-control"
+                                                                    value="{{ $user->username }}">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
@@ -132,28 +135,23 @@
                                                                 <span class="input-group-text">Upload</span>
                                                                 <div class="form-file">
                                                                     <input type="file"
-                                                                        class="form-file-input form-control">
+                                                                        class="form-file-input form-control"
+                                                                        id="image" name="image"
+                                                                        onchange="previewImage()">
                                                                 </div>
                                                             </div>
+                                                            @if (isset($user) && $user->image)
+                                                                <img id="preview"
+                                                                    src="{{ asset('image/profile/' . $user->image) }}"
+                                                                    alt="Preview" class="img-fluid rounded-circle"
+                                                                    width="100" height="100">
+                                                            @else
+                                                                <img id="preview" src="#" alt="Preview"
+                                                                    class="img-fluid rounded-circle" width="100"
+                                                                    height="100">
+                                                            @endif
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="mb-3 col-md-6">
-                                                                <label class="form-label">Mengelola Cabang</label>
-                                                                <input type="text" placeholder="Mengelola Cabang"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="mb-3 col-md-6">
-                                                                <label class="form-label">Role</label>
-                                                                <select class="default-select  form-control wide"
-                                                                    name="role" id="role">
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Kasir">Kasir</option>
-                                                                    <option value="Owner">Owner</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <button class="btn btn-primary" type="submit">Sign
-                                                            in</button>
+                                                        <button class="btn btn-primary" type="submit">Simpan</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -260,3 +258,27 @@
         </div>
     </div>
 @endsection
+@push('ajax_crud')
+    <script>
+        function previewImage() {
+            var fileInput = document.getElementById('image');
+            var preview = document.getElementById('preview');
+            var label = document.querySelector('.custom-file-label');
+            var oldImage = document.getElementById('old_image');
+            // Jika ada gambar lama, tampilkan dulu previewnya
+            if (oldImage) {
+                preview.setAttribute('src', oldImage.src);
+                preview.style.display = 'block';
+            }
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.setAttribute('src', e.target.result);
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+                label.innerHTML = fileInput.files[0].name;
+            }
+        }
+    </script>
+@endpush

@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Member;
 use App\Models\Outlet;
 use App\Models\Transaksi;
+use Illuminate\Support\Facades\Auth;
+use App\Models\DetailTransaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -43,8 +45,17 @@ class HomeController extends Controller
 
             $totalBiayaPerDay[] = $totalBiaya;
         }
+        // $user_id = Auth::id();
+
+        // $transaksis = Transaksi::where('user_id', $user_id)->first();
+        // $detailTransaksi = DetailTransaksi::whereHas('transaksi', function ($query) use ($user_id) {
+        //     $query->where('user_id', $user_id);
+        // })->get();
+        // dd($transaksis);
         // dd($totalBiayaPerDay[0]);
         return view('dashboard', [
+            // 'transaksis' => $transaksis,
+            // 'detailTransaksi' => $detailTransaksi,
             'user' => User::all(),
             'member' => Member::all(),
             'members' => Member::count(),

@@ -10,47 +10,32 @@
         <div class="col-lg-6">
             <div class="mb-3 col-md-12">
                 <label class="form-label">Kode Invoice</label>
-                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control" placeholder="Kode Invoice"
-                    disabled value={{ $transaksi->kode_invoice }}>
+                <input type="text" name="kode_invoice" id="kode_invoice" class="form-control"
+                    placeholder="Kode Invoice" disabled value={{ $transaksi->kode_invoice }}>
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Outlet</label>
-                <select class="default-select  form-control wide" name="outlet_id" id="outlet_id">
-                    <option value="" selected>-- Pilih Outlet --</option>
-                    @foreach ($outlet as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->outlet_id ? 'selected' : '' }}>
-                        {{ $item->nama }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control" value="{{ Auth::user()->outlet->nama }}" readonly>
+                <input type="hidden" name="outlet_id" id="outlet_id" value="{{ Auth::user()->outlet_id }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Member</label>
-                <select class="default-select  form-control wide" name="member_id" id="member_id">
-                    <option value="" selected>-- Pilih Member --</option>
-                    @foreach ($member as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->member_id ? 'selected' : '' }}>
-                        {{ $item->nama }}</option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control" value="{{ $transaksi->member->nama }}" readonly>
+                <input type="hidden" name="member_id" id="member_id" class="form-control"
+                    value="{{ $transaksi->member->id }}" readonly>
             </div>
             <div class="mb-3 col-md-12">
-                <label class="form-label">User</label>
-                <select class="default-select  form-control wide" name="user_id" id="user_id">
-                    <option value="" selected>-- Pilih Kasir --</option>
-                    @foreach ($user as $item)
-                    @if ($item->role == 'Kasir')
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->user_id ? 'selected' : '' }}>{{
-                        $item->name }}</option>
-                    @endif
-                    @endforeach
-                </select>
+                <label class="form-label">Nama Kasir</label>
+                <input type="text" class="form-control" value="{{ $userData->name }}" readonly>
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Paket</label>
-                <select class="default-select form-control wide" name="paket_id" id="paket_id">
+                <select class="multi-select" name="paket_id[]" id="paket_id" multiple="multiple">
                     @foreach ($paket as $item)
-                    <option value="{{ $item->id }}" {{ $item->id == $transaksi->paket_id ? 'selected' : '' }}>
-                        {{ $item->nama_paket }}</option>
+                        <option value="{{ $item->id }}" {{ in_array($item->id, $paketTerpilih) ? 'selected' : '' }}>
+                            {{ $item->nama_paket }}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -69,7 +54,7 @@
             <div class="mb-3 col-md-12">
                 <label class="form-label">Total Biaya</label>
                 <input type="text" name="total_biaya" id="total_biaya" class="form-control" placeholder="Total Biaya"
-                    readonly value={{ $transaksi->total_biaya }}>
+                    readonly value="{{ $transaksi->total_biaya }}">
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Status</label>
@@ -95,52 +80,68 @@
         </div>
     </div>
 </form>
+
 <script>
     function addPercent() {
-    if (diskon > 100) {
-        alert('Diskon tidak boleh melebihi 100%');
-        $(this).val('');
-        return;
+        if (diskon > 100) {
+            alert('Diskon tidak boleh melebihi 100%');
+            $(this).val('');
+            return;
+        }
+        var diskonInput = document.getElementById("diskon");
+        var diskonValue = parseInt(diskonInput.value);
+        if (!isNaN(diskonValue)) {
+            diskonInput.value = diskonValue + "%";
+        }
     }
-    var diskonInput = document.getElementById("diskon");
-    var diskonValue = parseInt(diskonInput.value);
-    if (!isNaN(diskonValue)) {
-        diskonInput.value = diskonValue + "%";
-    }
-}
-
 
     // event listener untuk inputan diskon
     $('#diskon').on('change', function() {
         var diskon = $(this).val();
-        var total_biaya = $('#total_biaya').val();
-        if (diskon) {
-            diskon = diskon.replace('%', ''); // remove % character
-            var diskon_biaya = (diskon / 100) * total_biaya;
-            $('#total_biaya').val(total_biaya - diskon_biaya);
-        }
-    });
-    // fungsi untuk mengambil data harga paket berdasarkan id paket
-    function getPaketPrice(id) {
-        $.ajax({
-            url: '/transaksi/get-price/' + id,
-            method: 'GET',
-            success: function(response) {
-                document.getElementById("total_biaya").value = response.harga
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-            }
+        var total_biaya = 0;
+        $('#paket_id option:selected').each(function() {
+            var id = $(this).val();
+            $.ajax({
+                url: '/transaksi/get-price/' + id,
+                method: 'GET',
+                success: function(response) {
+                    total_biaya += response.harga;
+                    var diskon_biaya = 0;
+                    if (diskon) {
+                        diskon = diskon.replace('%', ''); // remove % character
+                        diskon_biaya = (diskon / 100) * total_biaya;
+                    }
+                    $('#total_biaya').val(total_biaya - diskon_biaya);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
         });
-    }
+    });
 
     // event listener untuk inputan paket_id
     $('#paket_id').on('change', function() {
-        var id = $(this).val();
-        if (id) {
-            getPaketPrice(id);
-        } else {
-            $('#total_biaya').val('');
-        }
+        var total_biaya = 0;
+        $('#paket_id option:selected').each(function() {
+            var id = $(this).val();
+            $.ajax({
+                url: '/transaksi/get-price/' + id,
+                method: 'GET',
+                success: function(response) {
+                    total_biaya += response.harga;
+                    var diskon = $('#diskon').val();
+                    var diskon_biaya = 0;
+                    if (diskon) {
+                        diskon = diskon.replace('%', ''); // remove % character
+                        diskon_biaya = (diskon / 100) * total_biaya;
+                    }
+                    $('#total_biaya').val(total_biaya - diskon_biaya);
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
     });
 </script>

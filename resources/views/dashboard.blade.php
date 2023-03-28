@@ -1,9 +1,36 @@
 @extends('layouts.main')
 @section('konten')
+<style>
+    .table_modal tr td,
+    .table_modal tr td {
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .modal-body {
+        padding: 10px;
+    }
+
+    .table-responsive {
+        padding: 10px;
+    }
+
+    .table.table-striped tr td,
+    .table.table-striped tr td {
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .table.table-clear tr td,
+    .table.table-clear tr td {
+        padding: 3px;
+        font-size: 12px;
+    }
+</style>
 <div class="content-body">
     <!-- row -->
     <div class="container-fluid">
-
+        @canany(['admin', 'owner', 'kasir'])
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
@@ -142,6 +169,7 @@
                 </div>
             </div>
         </div>
+        @endcanany
     </div>
 </div>
 @endsection

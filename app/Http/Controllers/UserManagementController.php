@@ -18,21 +18,9 @@ class UserManagementController extends Controller
     public function index()
     {
         return view('admin.pengguna.index', [
-            'user' => User::all(),
+            // 'user' => User::all(),
+            'user' => User::where('role', '<>', 'Admin')->get(),
             'outlet' => Outlet::all(),
-        ]);
-    }
-
-    public function profile($id)
-    {
-        return view('admin.profile.index', [
-            'user' => User::findOrFail($id),
-            'member' => Member::all(),
-            'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
-            'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
-            'members' => Member::count(),
-            'outlet' => Outlet::all(),
-            'outlets' => Outlet::count(),
         ]);
     }
 
@@ -41,6 +29,21 @@ class UserManagementController extends Controller
         $data = User::all();
         return view('admin.pengguna.read')->with([
             'data' => $data
+        ]);
+    }
+
+    public function profile($id)
+    {
+        $user = auth()->user();
+
+        return view('admin.profile.index', [
+            'user' => $user,
+            'member' => Member::all(),
+            'selesai' => Transaksi::where('status', ['Selesai', 'Diambil', 'Dikirim'])->count(),
+            'transaksi_baru' => Transaksi::whereIn('status', ['Baru', 'Proses', 'Diambil', 'Dikirim'])->count(),
+            'members' => Member::count(),
+            'outlet' => Outlet::all(),
+            'outlets' => Outlet::count(),
         ]);
     }
 

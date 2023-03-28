@@ -38,38 +38,94 @@
                                     <h4 class="text-center mb-4">Sign up your account</h4>
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>Username</strong></label>
-                                            <input id="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>Email</strong></label>
-                                            <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email">
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="mb-1"><strong>Password</strong></label>
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="new-password">
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>Username</strong></label>
+                                                    <input id="username" type="text"
+                                                        class="form-control @error('username') is-invalid @enderror"
+                                                        name="username" value="{{ old('username') }}" required
+                                                        autocomplete="username" autofocus>
+                                                        <input type="hidden" name="kode_member" value="{{ $kode_member }}">
+                                                    @error('username')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>Email</strong></label>
+                                                    <input id="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                                        value="{{ old('email') }}" required autocomplete="email">
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>Password</strong></label>
+                                                    <input id="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        name="password" required autocomplete="new-password">
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>Nama</strong></label>
+                                                    <input id="nama" type="text"
+                                                        class="form-control @error('nama') is-invalid @enderror"
+                                                        name="nama" value="{{ old('nama') }}" required
+                                                        autocomplete="nama" autofocus>
+                                                    @error('nama')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>Alamat</strong></label>
+                                                    <input id="alamat" type="text"
+                                                        class="form-control @error('alamat') is-invalid @enderror"
+                                                        name="alamat" value="{{ old('alamat') }}" required
+                                                        autocomplete="alamat" autofocus>
+                                                    @error('alamat')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1"><strong>No Telp</strong></label>
+                                                    <input id="tlp" type="text"
+                                                        class="form-control @error('tlp') is-invalid @enderror"
+                                                        name="tlp" value="{{ old('tlp') }}" required
+                                                        autocomplete="tlp" autofocus>
+                                                    @error('tlp')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Jenis Kelamin</label>
+                                                <select class="default-select  form-control wide" name="jenis_kelamin" id="jenis_kelamin">
+                                                    <option>Laki-Laki</option>
+                                                    <option>Perempuan</option>
+                                                </select>
+                                                @error('jenis_kelamin')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn btn-primary btn-block">Register</button>

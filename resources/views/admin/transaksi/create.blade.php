@@ -29,7 +29,7 @@
             </div>
             <div class="mb-3 col-md-12">
                 <label class="form-label">Nama Kasir</label>
-                <input type="text" class="form-control" value="{{ $userData->name }}" readonly>
+                <input type="text" class="form-control" value="{{ $userData->username }}" readonly>
                 <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
             </div>
             <div class="mb-3 col-md-12">
@@ -145,5 +145,4 @@ $('#paket_id').on('change', function() {
         });
     });
 });
-
 </script>
