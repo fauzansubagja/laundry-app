@@ -67,7 +67,7 @@
                                                         @endif
                                                     </h6>
                                                     <small class="d-block">{{ $item->created_at->diffForHumans() }}
-                                                        By <strong>{{ $item->user->name }}</strong></small>
+                                                        By <strong>{{ $item->user->username }}</strong></small>
                                                 </div>
                                             </div>
                                         </li>

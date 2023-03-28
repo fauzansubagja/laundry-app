@@ -27,7 +27,7 @@ use App\Http\Controllers\ProfileController;
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/pelanggan/dashboard', [DashboardController::class, 'index']);
+// Route::get('/pelanggan/dashboard', [DashboardController::class, 'index'])->middleware(['CheckRole:Member']);
 Route::get('/profile/{id}', [UserManagementController::class, 'profile']);
 
 Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
