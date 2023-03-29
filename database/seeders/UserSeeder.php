@@ -36,28 +36,68 @@ class UserSeeder extends Seeder
             'role' => 'Kasir',
             'image' => 'profile.png',
             'password' => bcrypt('password'),
-            'outlet_id' => '2',
-        ]);
-        User::create([
-            'username' => 'Takuya',
-            'email' => 'takuya@gmail.com',
-            'role' => 'Kasir',
-            'image' => 'profile.png',
-            'password' => bcrypt('password'),
-            'outlet_id' => '3',
-        ]);
-        User::create([
-            'username' => 'Dolly',
-            'email' => 'dolly@gmail.com',
-            'role' => 'Kasir',
-            'image' => 'profile.png',
-            'password' => bcrypt('password'),
-            'outlet_id' => '4',
+            'outlet_id' => '1',
         ]);
         User::create([
             'username' => 'RyanLi',
             'email' => 'ryan@gmail.com',
             'role' => 'Owner',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Ilham',
+            'email' => 'ilham@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Rangga',
+            'email' => 'rangga@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Eva',
+            'email' => 'eva@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Shafira',
+            'email' => 'shafira@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Nadhil',
+            'email' => 'nadhil@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Takuya',
+            'email' => 'takuya@gmail.com',
+            'role' => 'Pelanggan',
+            'image' => 'profile.png',
+            'password' => bcrypt('password'),
+            'outlet_id' => '1',
+        ]);
+        User::create([
+            'username' => 'Dolly',
+            'email' => 'dolly@gmail.com',
+            'role' => 'Pelanggan',
             'image' => 'profile.png',
             'password' => bcrypt('password'),
             'outlet_id' => '1',

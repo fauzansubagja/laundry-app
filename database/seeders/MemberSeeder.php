@@ -21,6 +21,7 @@ class MemberSeeder extends Seeder
             'tlp' => '0890',
             'member_status' => 'Member',
             'jenis_kelamin' => 'Laki-Laki',
+            'user_id' => '5',
         ]);
         Member::create([
             'kode_member' => 'KM-2023002',
@@ -29,6 +30,7 @@ class MemberSeeder extends Seeder
             'tlp' => '0891',
             'member_status' => 'Non Member',
             'jenis_kelamin' => 'Laki-Laki',
+            'user_id' => '6',
         ]);
         Member::create([
             'kode_member' => 'KM-2023003',
@@ -37,6 +39,7 @@ class MemberSeeder extends Seeder
             'tlp' => '0892',
             'member_status' => 'Non Member',
             'jenis_kelamin' => 'Perempuan',
+            'user_id' => '7',
         ]);
         Member::create([
             'kode_member' => 'KM-2023004',
@@ -45,6 +48,34 @@ class MemberSeeder extends Seeder
             'tlp' => '0893',
             'member_status' => 'Member',
             'jenis_kelamin' => 'Perempuan',
+            'user_id' => '8',
+        ]);
+        Member::create([
+            'kode_member' => 'KM-2023005',
+            'nama' => 'Nadhil',
+            'alamat' => 'Jl Supratman',
+            'tlp' => '0893',
+            'member_status' => 'Member',
+            'jenis_kelamin' => 'Laki-Laki',
+            'user_id' => '9',
+        ]);
+        Member::create([
+            'kode_member' => 'KM-2023006',
+            'nama' => 'Takuya',
+            'alamat' => 'Jl Supratman',
+            'tlp' => '0893',
+            'member_status' => 'Member',
+            'jenis_kelamin' => 'Laki-Laki',
+            'user_id' => '10',
+        ]);
+        Member::create([
+            'kode_member' => 'KM-2023007',
+            'nama' => 'Dolly',
+            'alamat' => 'Jl Supratman',
+            'tlp' => '0893',
+            'member_status' => 'Member',
+            'jenis_kelamin' => 'Laki-Laki',
+            'user_id' => '11',
         ]);
     }
 }

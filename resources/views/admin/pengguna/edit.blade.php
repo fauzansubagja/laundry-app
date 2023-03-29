@@ -29,9 +29,7 @@
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Hak Akses</label>
-            <select class="default-select  form-control wide" name="role" id="role"
-                value="{{ $user->role }}">
-                <option value="Admin">Admin</option>
+            <select class="default-select  form-control wide" name="role" id="role" value="{{ $user->role }}">
                 <option value="Kasir">Kasir</option>
                 <option value="Owner">Owner</option>
             </select>

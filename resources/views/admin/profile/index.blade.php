@@ -24,7 +24,7 @@
                                 <div class="profile-details">
                                     {{-- {{dd($data)}} --}}
                                     <div class="profile-name px-3 pt-2">
-                                        <h4 class="text-primary mb-0">{{ $user->name }}</h4>
+                                        <h4 class="text-primary mb-0">{{ $user->username }}</h4>
                                         <p>{{ $user->role }}</p>
                                     </div>
                                     <div class="profile-email px-2 pt-2">
@@ -56,14 +56,6 @@
                                         <div id="about-me" class="tab-pane fade active show">
                                             <div class="profile-personal-info">
                                                 <h4 class="text-primary mb-4 mt-1">Personal Information</h4>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-4 col-5">
-                                                        <h5 class="f-w-500">Nama <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-8 col-7"><span>{{ $user->name }}</span>
-                                                    </div>
-                                                </div>
                                                 <div class="row mb-2">
                                                     <div class="col-sm-4 col-5">
                                                         <h5 class="f-w-500">Username <span class="pull-end">:</span>

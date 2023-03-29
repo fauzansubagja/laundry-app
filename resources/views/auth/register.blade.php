@@ -46,7 +46,8 @@
                                                         class="form-control @error('username') is-invalid @enderror"
                                                         name="username" value="{{ old('username') }}" required
                                                         autocomplete="username" autofocus>
-                                                        <input type="hidden" name="kode_member" value="{{ $kode_member }}">
+                                                    <input type="hidden" name="kode_member"
+                                                        value="{{ $kode_member }}">
                                                     @error('username')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -56,8 +57,9 @@
                                                 <div class="mb-3">
                                                     <label class="mb-1"><strong>Email</strong></label>
                                                     <input id="email" type="email"
-                                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                                        value="{{ old('email') }}" required autocomplete="email">
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email">
                                                     @error('email')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -103,7 +105,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="mb-1"><strong>No Telp</strong></label>
-                                                    <input id="tlp" type="text"
+                                                    <input id="tlp" type="number"
                                                         class="form-control @error('tlp') is-invalid @enderror"
                                                         name="tlp" value="{{ old('tlp') }}" required
                                                         autocomplete="tlp" autofocus>
@@ -116,7 +118,8 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Jenis Kelamin</label>
-                                                <select class="default-select  form-control wide" name="jenis_kelamin" id="jenis_kelamin">
+                                                <select class="default-select  form-control wide" name="jenis_kelamin"
+                                                    id="jenis_kelamin">
                                                     <option>Laki-Laki</option>
                                                     <option>Perempuan</option>
                                                 </select>

@@ -12,19 +12,21 @@
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Jenis</label>
-            <select class="default-select  form-control wide" name="jenis" id="jenis" value="{{ $pakets->jenis }}"> 
+            <select class="default-select  form-control wide" name="jenis" id="jenis"
+                value="{{ $pakets->jenis }}">
                 <option value="kiloan">Kilioan</option>
                 <option value="selimut">Selimut</option>
                 <option value="bed_cover">Bed Cover</option>
                 <option value="kaos">Kaos</option>
-                <option value="lain-lain">Lain-lain</option>
+                <option value="lain">Lain-lain</option>
             </select>
         </div>
         <div class="mb-3 col-md-12">
             <label class="form-label">Nama Outlet</label>
-            <select class="default-select  form-control wide" name="outlet_id" id="outlet_id" value="{{ $pakets->outlet_id }}">
-                @foreach ($outlet as $item)    
-                <option value="{{ $item->id}}">{{ $item->nama}}</option>
+            <select class="default-select  form-control wide" name="outlet_id" id="outlet_id"
+                value="{{ $pakets->outlet_id }}">
+                @foreach ($outlet as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
                 @endforeach
             </select>
         </div>

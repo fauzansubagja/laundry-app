@@ -72,6 +72,7 @@ class RegisterController extends Controller
         ]);
 
         $user->save();
+        $userId = $user->id;
 
         Member::create([
             'kode_member' => $data['kode_member'],
@@ -79,6 +80,7 @@ class RegisterController extends Controller
             'alamat' => $data['alamat'],
             'tlp' => $data['tlp'],
             'jenis_kelamin' => $data['jenis_kelamin'],
+            'user_id' => $userId,
         ]);
 
         return $user;

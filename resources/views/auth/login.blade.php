@@ -17,7 +17,7 @@
 
 <body class="vh-100">
     <div class="authincation h-100">
-        <div class="container h-100">
+        <div class="container">
             <div class="row justify-content-center h-100 align-items-center">
                 <div class="col-md-6">
                     <div class="authincation-content">
@@ -28,7 +28,7 @@
                                         <img src="{{ asset('assets/images/logo.png') }}" alt="">
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
-                                    <form form method="POST" action="{{ route('login') }}">
+                                    <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Email</strong></label>

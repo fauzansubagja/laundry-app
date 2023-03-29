@@ -32,7 +32,7 @@ class TransaksiController extends Controller
     {
         // membuat kode invoice otomatis dengan format INV-ymd(no urut)
         $kode_tahun = 'INV-' . date('Ym') . date('d');
-        $no_urut = sprintf('%02d', Transaksi::count() + 1);
+        $no_urut = sprintf('%02d', Transaksi::whereNull('deleted_at')->count() + 1);
         $kode_invoice = $kode_tahun . $no_urut;
 
         // membuat tanggal transaksi otomatis dengan format Y-m-d H:i:s

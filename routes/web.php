@@ -29,37 +29,38 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // Route::get('/pelanggan/dashboard', [DashboardController::class, 'index'])->middleware(['CheckRole:Member']);
 Route::get('/profile/{id}', [UserManagementController::class, 'profile']);
-
-Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
-Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
-
-// route transaksi
-Route::get('/transaksi', [TransaksiController::class, 'index']);
-Route::get('/transaksi/read', [TransaksiController::class, 'read']);
-Route::get('/transaksi/create', [TransaksiController::class, 'create']);
-Route::post('/transaksi/store', [TransaksiController::class, 'store']);
-Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
-Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
-Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
-Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
-Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
-Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
-// end route transaksi
-
-Route::get('/pesanan', [MemberController::class, 'index']);
 Route::get('/pesanan/detail/{id}', [MemberController::class, 'detail']);
-Route::get('/pelanggan/pesanan/detail/{id}', [HomeController::class, 'detailPesanan']);
 
 
-// route registrasi pelanggan
-Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
-Route::get('/registrasi/pelanggan/read', [PelangganController::class, 'read']);
-Route::get('/registrasi/pelanggan/create', [PelangganController::class, 'create']);
-Route::post('/registrasi/pelanggan/store', [PelangganController::class, 'store']);
-Route::get('/registrasi/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
-Route::put('/registrasi/pelanggan/update/{id}', [PelangganController::class, 'update']);
-Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
-// end route registrasi pelanggan
+Route::middleware(['auth', 'checkRole:Kasir,Admin'])->group(function () {
+    Route::get('/invoice/{id}', [InvoiceController::class, 'show']);
+    Route::get('/invoice/{id}/generate', [InvoiceController::class, 'generateInvoice'])->name('invoice.generate');
+    // route transaksi
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    Route::get('/transaksi/read', [TransaksiController::class, 'read']);
+    Route::get('/transaksi/create', [TransaksiController::class, 'create']);
+    Route::post('/transaksi/store', [TransaksiController::class, 'store']);
+    Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit']);
+    Route::get('/transaksi/detail/{id}', [TransaksiController::class, 'detail']);
+    Route::put('/transaksi/update/{id}', [TransaksiController::class, 'update']);
+    Route::delete('/transaksi/destroy/{id}', [TransaksiController::class, 'destroy']);
+    Route::get('/transaksi/get-price/{id}', [TransaksiController::class, 'getPaketPrice']);
+    Route::get('/transaksi/get-diskon/{kode}', [TransaksiController::class, 'getDiskon']);
+    // end route transaksi
+
+    Route::get('/pesanan', [MemberController::class, 'index']);
+    Route::get('/pelanggan/pesanan/detail/{id}', [HomeController::class, 'detailPesanan']);
+
+    // route registrasi pelanggan
+    Route::get('/registrasi/pelanggan', [PelangganController::class, 'index']);
+    Route::get('/registrasi/pelanggan/read', [PelangganController::class, 'read']);
+    Route::get('/registrasi/pelanggan/create', [PelangganController::class, 'create']);
+    Route::post('/registrasi/pelanggan/store', [PelangganController::class, 'store']);
+    Route::get('/registrasi/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
+    Route::put('/registrasi/pelanggan/update/{id}', [PelangganController::class, 'update']);
+    Route::delete('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
+    // end route registrasi pelanggan
+});
 
 Route::middleware(['auth', 'checkRole:Admin,Owner'])->group(function () {
     // route paket
