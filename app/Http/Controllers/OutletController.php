@@ -15,16 +15,17 @@ class OutletController extends Controller
 
     public function index()
     {
-        return view('admin.outlet.index', [
-            'outlet' => Outlet::all(),
+        $outlet = Outlet::all();
+        return view('admin.outlet.index')->with([
+            'outlet' => $outlet
         ]);
     }
 
     public function read()
     {
-        $data = Outlet::all();
+        $outlet = Outlet::all();
         return view('admin.outlet.read')->with([
-            'data' => $data
+            'outlet' => $outlet
         ]);
     }
 

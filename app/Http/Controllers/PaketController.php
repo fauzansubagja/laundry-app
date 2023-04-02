@@ -11,12 +11,12 @@ class PaketController extends Controller
     public function __construct()
     {
         // $this->middleware('role:admin,owner');
-        $this->middleware('role:admin', ['except' => ['index', 'read','create','store','edit','update','destroy']]);
+        $this->middleware('role:admin', ['except' => ['index', 'read', 'create', 'store', 'edit', 'update', 'destroy']]);
     }
 
     public function index()
     {
-        return view('admin.Paket.index',[
+        return view('admin.Paket.index', [
             'paket' => Paket::all(),
             'outlet' => Outlet::all(),
         ]);
@@ -32,7 +32,7 @@ class PaketController extends Controller
 
     public function create()
     {
-        return view('admin.Paket.create',[
+        return view('admin.Paket.create', [
             'paket' => Paket::all(),
             'outlet' => Outlet::all(),
         ]);
@@ -50,7 +50,7 @@ class PaketController extends Controller
 
     public function edit($id)
     {
-        return view('admin.Paket.edit',[
+        return view('admin.Paket.edit', [
             'outlet' => Outlet::all(),
             'pakets' => Paket::findOrFail($id),
         ]);
